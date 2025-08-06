@@ -1,4 +1,4 @@
-package co.edu.poli.actividad1;
+package co.edu.poli.actividad1.vista;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

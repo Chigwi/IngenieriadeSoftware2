@@ -1,4 +1,4 @@
-package co.edu.poli.actividad1;
+package co.edu.poli.actividad1.vista;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
