@@ -7,11 +7,7 @@ import java.util.*;
  */
 public class Pasaporte {
 
-    /**
-     * Default constructor
-     */
-    public Pasaporte() {
-    }
+  
 
     /**
      * 
@@ -42,5 +38,73 @@ public class Pasaporte {
      * 
      */
     private Ciudad ciudadEmision;
+
+	public Pasaporte(String numeroId, Pais paisEmisor, String fechaEmision, String fechaExpiracion, Titular titular,
+			Ciudad ciudadEmision) {
+		super();
+		this.numeroId = numeroId;
+		this.paisEmisor = paisEmisor;
+		this.fechaEmision = fechaEmision;
+		this.fechaExpiracion = fechaExpiracion;
+		this.titular = titular;
+		this.ciudadEmision = ciudadEmision;
+	}
+
+	public String getNumeroId() {
+		return numeroId;
+	}
+
+	public void setNumeroId(String numeroId) {
+		this.numeroId = numeroId;
+	}
+
+	public Pais getPaisEmisor() {
+		return paisEmisor;
+	}
+
+	public void setPaisEmisor(Pais paisEmisor) {
+		this.paisEmisor = paisEmisor;
+	}
+
+	public String getFechaEmision() {
+		return fechaEmision;
+	}
+
+	public void setFechaEmision(String fechaEmision) {
+		this.fechaEmision = fechaEmision;
+	}
+
+	public String getFechaExpiracion() {
+		return fechaExpiracion;
+	}
+
+	public void setFechaExpiracion(String fechaExpiracion) {
+		this.fechaExpiracion = fechaExpiracion;
+	}
+
+	public Titular getTitular() {
+		return titular;
+	}
+
+	public void setTitular(Titular titular) {
+		this.titular = titular;
+	}
+
+	public Ciudad getCiudadEmision() {
+		return ciudadEmision;
+	}
+
+	public void setCiudadEmision(Ciudad ciudadEmision) {
+		this.ciudadEmision = ciudadEmision;
+	}
+
+	@Override
+	public String toString() {
+		return "Pasaporte [numeroId=" + numeroId + ", paisEmisor=" + paisEmisor + ", fechaEmision=" + fechaEmision
+				+ ", fechaExpiracion=" + fechaExpiracion + ", titular=" + titular + ", ciudadEmision=" + ciudadEmision
+				+ "]";
+	}
+    
+    
 
 }
