@@ -1,5 +1,6 @@
-package co.edu.poli.actividad1.vista;
+package co.edu.poli.actividad1.Controlador;
 
+import co.edu.poli.actividad1.vista.App;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
