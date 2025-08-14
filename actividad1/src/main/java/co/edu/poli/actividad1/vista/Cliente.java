@@ -11,7 +11,9 @@ public class Cliente {
 		// TODO Auto-generated method stub
 		//t
 		
+		
+		Ciudad medellin = new Ciudad ("medellin", "1", )
 	}
-	//all
+	
 
 }
