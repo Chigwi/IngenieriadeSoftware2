@@ -11,5 +11,6 @@ public class Cliente {
 		// TODO Auto-generated method stub
 		
 	}
+	//all
 
 }
