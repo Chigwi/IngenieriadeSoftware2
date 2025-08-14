@@ -1,7 +1,5 @@
 package co.edu.poli.actividad1.Modelo;
 
-
-
 /**
  * 
  */
