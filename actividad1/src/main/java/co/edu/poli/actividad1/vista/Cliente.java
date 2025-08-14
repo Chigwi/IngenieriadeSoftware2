@@ -10,7 +10,9 @@ public class Cliente {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		
+		Ciudad medellin = new Ciudad ("medellin", "1", )
 	}
-	//all
+	
 
 }
