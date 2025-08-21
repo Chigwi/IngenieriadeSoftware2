@@ -1,7 +1,17 @@
 package co.edu.poli.actividad1.Repositorios;
 
-public interface Dao <T> {
-	public String insert (T t);
-	public T select (String id);
+import java.util.List;
 
+public interface Dao <T> {
+	
+	public String insert (T t);
+	
+	public T select (String id);
+	
+	public List <T> selectAll ();
+	
+	public String Update (T t);
+	
+	public String Delete (T t);
+	
 }
