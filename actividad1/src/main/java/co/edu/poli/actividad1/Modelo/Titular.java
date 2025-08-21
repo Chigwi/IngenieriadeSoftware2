@@ -55,6 +55,6 @@ public class Titular {
 		return "Titular [nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", identificacion="
 				+ identificacion + "]";
 	}
-
+//tt
     
 }
