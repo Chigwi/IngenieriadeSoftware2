@@ -15,6 +15,7 @@ String password = "Servidor123";
             System.out.println("Connected to the database!");
         } catch (SQLException e) {
             System.out.println("Connection failed: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
