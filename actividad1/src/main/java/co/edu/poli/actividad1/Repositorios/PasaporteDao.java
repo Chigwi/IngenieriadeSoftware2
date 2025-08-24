@@ -76,11 +76,22 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	}
 
 	@Override
-	public List<Pasaporte> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Pasaporte> selectAll(){
+		List<Pasaporte> pasaportes = new ArrayList<>();
+        String sql = "SELECT * FROM users";
+        try (Statement stmt = connection.createStatement()){
+             ResultSet rs = stmt.executeQuery(sql); {
+             while (rs.next()) {
+                pasaportes.add(mapRStuPasaporte(rs));
+             }
+        }
+        return pasaportes;
+      
+	}catch (SQLException e) {
+		System.out.println("Error de lectura " + e.getMessage());
+    }
+    return null;
 	}
-
 	@Override
 	public String Update(Pasaporte t) {
 		// TODO Auto-generated method stub
@@ -93,5 +104,12 @@ public class PasaporteDao implements Dao <Pasaporte>{
 		return null;
 	}
 	
-
+	private Pasaporte mapRStuPasaporte(ResultSet rs) throws SQLException{
+		Titular selectTitular = new Titular (" "," ", rs.getString("titular"));
+    	Ciudad selectCiudad = new Ciudad("",rs.getString("ciudadEmision"),false);
+    	List <Ciudad> c = new ArrayList<Ciudad>();
+    	Pais selectPais = new Pais (rs.getInt("paisEmisor"),"","",c);
+    	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
+    	return p;
+	}
 }
