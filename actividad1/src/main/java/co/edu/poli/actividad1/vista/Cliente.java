@@ -35,14 +35,22 @@ public class Cliente {
 			
 			Pasaporte AlliePasport = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, medellin);
 			
+			Pasaporte AlliePasporte = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2045", Allyson, medellin);
+			
 			//System.out.println(AlliePasport);
 			
 			PasaporteDao regPass = new PasaporteDao (conn);
 			
 			//System.out.println(regPass.insert(AlliePasport));
-			System.out.println(regPass.select("AX400"));
-			System.out.println(regPass.selectAll());
 			
+			System.out.println(regPass.select("AX400"));
+			
+			System.out.println(regPass.Update(AlliePasporte));
+			
+			System.out.println(regPass.select("AX400"));
+			
+			
+			//System.out.println(regPass.insert(AlliePasport));
 	    }catch(SQLException e) {
 	    	
 	    }
