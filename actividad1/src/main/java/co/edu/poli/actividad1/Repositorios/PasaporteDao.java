@@ -41,11 +41,27 @@ public class PasaporteDao implements Dao <Pasaporte>{
 		}
 		return "";
 	}
+	
+	
 
 	@Override
 	public Pasaporte select(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String sql = "SELECT * FROM \"Pasaporte\" WHERE id = ?";
+		
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
+			
+			pstmt.setString(1, id);
+			
+			 ResultSet rs = pstmt.executeQuery();
+			 
+	            if (rs.next()) {
+	            	
+	            	Pasaporte p = new Pasaporte();
+	            	
+	                return mapResultSetToPasaporte(rs);
+	            }
+		}
 	}
 
 	@Override
