@@ -41,6 +41,7 @@ public class Cliente {
 			
 			//System.out.println(regPass.insert(AlliePasport));
 			System.out.println(regPass.select("AX400"));
+			System.out.println(regPass.selectAll());
 			
 	    }catch(SQLException e) {
 	    	

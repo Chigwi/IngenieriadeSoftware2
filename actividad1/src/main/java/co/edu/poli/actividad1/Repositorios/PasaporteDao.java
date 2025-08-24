@@ -78,7 +78,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	@Override
 	public List<Pasaporte> selectAll(){
 		List<Pasaporte> pasaportes = new ArrayList<>();
-        String sql = "SELECT * FROM users";
+        String sql = "SELECT * FROM \"Pasaporte\"";
         try (Statement stmt = connection.createStatement()){
              ResultSet rs = stmt.executeQuery(sql); {
              while (rs.next()) {
