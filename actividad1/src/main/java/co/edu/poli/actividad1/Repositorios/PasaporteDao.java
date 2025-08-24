@@ -118,7 +118,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 			e.printStackTrace();
 			
 		}
-		return null;
+		return "Error de actualizacion";
 	}
 
 	@Override
@@ -135,7 +135,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 			e.printStackTrace();
 			
         }
-		return null;
+		return "Error de eliminacion ";
 		
 	}
 	
