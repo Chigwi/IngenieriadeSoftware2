@@ -94,7 +94,30 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	}
 	@Override
 	public String Update(Pasaporte t) {
-		// TODO Auto-generated method stub
+		String sql = "UPDATE \"Pasaporte\" SET \"paisEmisor\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, \"titular\" = ?, \"ciudadEmision\" = ? WHERE \"numeroId\" = ?";
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			pstmt.setInt(1, t.getPaisEmisor().getIdPais());
+			
+			pstmt.setString(2, t.getFechaEmision());
+			
+			pstmt.setString(3, t.getFechaExpiracion());
+			
+			pstmt.setString(4, t.getTitular().getIdentificacion());
+			
+			pstmt.setString(5, t.getCiudadEmision().getCodigoPostal());
+			
+			pstmt.setString(6, t.getNumeroId());
+			
+			pstmt.executeUpdate();
+			
+			return "Actualizacion exitosa!";
+			
+		}catch(SQLException e) {
+			
+			System.out.println("Error de actualizacion " + e.getMessage());
+			e.printStackTrace();
+			
+		}
 		return null;
 	}
 
