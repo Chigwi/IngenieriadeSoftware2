@@ -1,8 +1,13 @@
 package co.edu.poli.actividad1.Repositorios;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
+import co.edu.poli.actividad1.Modelo.Titular;
+
 import java.sql.*;
 
 public class PasaporteDao implements Dao <Pasaporte>{
@@ -47,7 +52,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	@Override
 	public Pasaporte select(String id) {
 		
-		String sql = "SELECT * FROM \"Pasaporte\" WHERE id = ?";
+		String sql = "SELECT * FROM \"Pasaporte\" WHERE \"numeroId\" = ?";
 		
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
 			
@@ -57,11 +62,17 @@ public class PasaporteDao implements Dao <Pasaporte>{
 			 
 	            if (rs.next()) {
 	            	
-	            	Pasaporte p = new Pasaporte();
-	            	
-	                return mapResultSetToPasaporte(rs);
+	            	Titular selectTitular = new Titular (" "," ", rs.getString("titular"));
+	            	Ciudad selectCiudad = new Ciudad("",rs.getString("ciudadEmision"),false);
+	            	List <Ciudad> c = new ArrayList<Ciudad>();
+	            	Pais selectPais = new Pais (rs.getInt("paisEmisor"),"","",c);
+	            	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
+	            	return p;
 	            }
+		}catch( SQLException e) {
+			System.out.println("Error de lectura " + e.getMessage());
 		}
+		return null;
 	}
 
 	@Override

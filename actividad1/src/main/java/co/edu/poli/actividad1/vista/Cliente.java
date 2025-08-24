@@ -39,7 +39,8 @@ public class Cliente {
 			
 			PasaporteDao regPass = new PasaporteDao (conn);
 			
-			System.out.println(regPass.insert(AlliePasport));
+			//System.out.println(regPass.insert(AlliePasport));
+			System.out.println(regPass.select("AX400"));
 			
 	    }catch(SQLException e) {
 	    	
