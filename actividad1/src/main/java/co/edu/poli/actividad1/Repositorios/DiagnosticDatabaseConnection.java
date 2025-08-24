@@ -8,7 +8,11 @@ import java.util.Properties;
 
 public class DiagnosticDatabaseConnection {
     public static void main(String[] args) {
-        String host = "db.wndblehjsvhczsicivyf.supabase.co";
+    	
+    	
+        DatabaseConnection.getConnection();
+    	
+        /*String host = "db.wndblehjsvhczsicivyf.supabase.co";
         String database = "postgres";
         String user = "postgres";
         String password = "Servidor123";
@@ -43,6 +47,6 @@ public class DiagnosticDatabaseConnection {
         } catch (Exception e) {
             System.err.println("Connection Diagnostic Failed:");
             e.printStackTrace();
-        }
+        }*/
     }
 }

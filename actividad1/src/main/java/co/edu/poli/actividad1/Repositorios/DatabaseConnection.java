@@ -5,26 +5,24 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    public static void main(String[] args) {
-        String host = "db.wndblehjsvhczsicivyf.supabase.co";
-        String database = "postgres";
-        String user = "postgres"; // From Supabase Database Settings
-        String password = "Servidor123"; // From Supabase Database Settings
+    	private static final String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
+	    private static final String USER = "postgres.wndblehjsvhczsicivyf";
+	    private static final String PASSWORD = "Servidor123";
 
-        String url = String.format("jdbc:postgresql://%s:5432/%s", host, database);
+	    public static Connection getConnection() {
+	        Connection conn = null;
+	        try {
+	            // Cargar driver PostgreSQL
+	            Class.forName("org.postgresql.Driver");
 
-        try {
-            Class.forName("org.postgresql.Driver");
-            
-            Connection conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected to the database!");
-            conn.close();
-        } catch (ClassNotFoundException e) {
-            System.out.println("PostgreSQL JDBC Driver not found");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.out.println("Connection failed: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+	            // Conexión a Supabase
+	            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+	            System.out.println("Conexion exitosa a Supabase");
+	        } catch (ClassNotFoundException | SQLException e) {
+	            System.out.println("Error de conexion: " + e.getMessage());
+	        }
+	        return conn;
+	    }
+
+		
 }
