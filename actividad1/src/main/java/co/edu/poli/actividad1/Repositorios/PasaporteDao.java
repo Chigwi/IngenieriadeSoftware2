@@ -3,6 +3,7 @@ package co.edu.poli.actividad1.Repositorios;
 import java.util.List;
 
 import co.edu.poli.actividad1.Modelo.Pasaporte;
+import java.sql.*;
 
 public class PasaporteDao implements Dao <Pasaporte>{
 

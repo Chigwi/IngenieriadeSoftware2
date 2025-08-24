@@ -14,7 +14,6 @@ public class DatabaseConnection {
         String url = String.format("jdbc:postgresql://%s:5432/%s", host, database);
 
         try {
-            // Ensure you have the PostgreSQL JDBC driver in your classpath
             Class.forName("org.postgresql.Driver");
             
             Connection conn = DriverManager.getConnection(url, user, password);
