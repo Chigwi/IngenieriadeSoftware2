@@ -62,8 +62,8 @@ public class PasaporteDao implements Dao <Pasaporte>{
 			 
 	            if (rs.next()) {
 	            	
-	            	Titular selectTitular = new Titular (" "," ", rs.getString("titular"));
-	            	Ciudad selectCiudad = new Ciudad("",rs.getString("ciudadEmision"),false);
+	            	Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
+	            	Ciudad selectCiudad = new Ciudad(rs.getString("ciudadEmision"),"",false);
 	            	List <Ciudad> c = new ArrayList<Ciudad>();
 	            	Pais selectPais = new Pais (rs.getInt("paisEmisor"),"","",c);
 	            	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
@@ -105,8 +105,8 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	}
 	
 	private Pasaporte mapRStuPasaporte(ResultSet rs) throws SQLException{
-		Titular selectTitular = new Titular (" "," ", rs.getString("titular"));
-    	Ciudad selectCiudad = new Ciudad("",rs.getString("ciudadEmision"),false);
+		Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
+    	Ciudad selectCiudad = new Ciudad(rs.getString("ciudadEmision"),"",false);
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	Pais selectPais = new Pais (rs.getInt("paisEmisor"),"","",c);
     	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);

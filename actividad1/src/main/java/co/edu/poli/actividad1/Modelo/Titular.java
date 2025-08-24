@@ -7,7 +7,7 @@ public class Titular {
     /**
      * 
      */
-    private String nombre;
+	private String identificacion;
 
     /**
      * 
@@ -17,13 +17,13 @@ public class Titular {
     /**
      * 
      */
-    private String identificacion;
+    private String nombre;
 
-	public Titular(String nombre, String fechaNacimiento, String identificacion) {
+	public Titular(String identificacion, String fechaNacimiento, String nombre) {
 		super();
-		this.nombre = nombre;
-		this.fechaNacimiento = fechaNacimiento;
 		this.identificacion = identificacion;
+		this.fechaNacimiento = fechaNacimiento;
+		this.nombre = nombre;
 	}
 
 	public String getNombre() {
@@ -52,9 +52,11 @@ public class Titular {
 
 	@Override
 	public String toString() {
-		return "Titular [nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", identificacion="
-				+ identificacion + "]";
+		return "Titular [identificacion=" + identificacion + ", fechaNacimiento=" + fechaNacimiento + ", nombre="
+				+ nombre + "]";
 	}
+
+
 //tt
     
 }
