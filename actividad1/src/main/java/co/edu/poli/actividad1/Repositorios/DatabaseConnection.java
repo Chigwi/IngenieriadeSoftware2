@@ -17,11 +17,14 @@ public class DatabaseConnection {
 
 	            // Conexión a Supabase
 	            conn = DriverManager.getConnection(URL, USER, PASSWORD);
-	            System.out.println("Conexion exitosa a Supabase");
+	            System.out.println("Conexion exitosa!");
 	        } catch (ClassNotFoundException | SQLException e) {
 	            System.out.println("Error de conexion: " + e.getMessage());
 	        }
 	        return conn;
+	    }
+	    public static void main(String[] args) {
+	        DatabaseConnection.getConnection();
 	    }
 
 		
