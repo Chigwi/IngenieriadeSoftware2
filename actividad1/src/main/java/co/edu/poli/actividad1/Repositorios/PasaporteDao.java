@@ -123,8 +123,20 @@ public class PasaporteDao implements Dao <Pasaporte>{
 
 	@Override
 	public String Delete(Pasaporte t) {
-		// TODO Auto-generated method stub
+		String sql = "DELETE FROM \"Pasaporte\" WHERE \"numeroId\" = ?" ;
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, t.getNumeroId());
+            pstmt.executeUpdate();
+            
+            return "eliminacion exitosa";
+        }catch(SQLException e) {
+			
+			System.out.println("Error de eliminacion " + e.getMessage());
+			e.printStackTrace();
+			
+        }
 		return null;
+		
 	}
 	
 	private Pasaporte mapRStuPasaporte(ResultSet rs) throws SQLException{
