@@ -83,6 +83,24 @@ public class Cliente {
 			//System.out.println(regPass.Delete(AlliePasporte));
 			
 			//System.out.println(regPass.insert(AlliePasport));
+			
+			Ciudad Washington = new Ciudad ("0001", "washington", true);
+			
+			System.out.println(regCiud.insert(Washington));
+			
+			ArrayList <Ciudad> gringos = new ArrayList <Ciudad>();
+			
+			Pais EstadosUnidos = new Pais ("104", "EstadosUnidos", "ingles",gringos);
+			
+			System.out.println(regPais.insert(EstadosUnidos));
+			
+			Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+			
+			System.out.println(regtit.insert(SalomeDorado));
+			
+			Pasaporte SalomePasport = new Pasaporte ("SD2004",EstadosUnidos,"25/08/25", "25/08/35",SalomeDorado,Washington );
+			
+			System.out.println(regPass.insert(SalomePasport));
 	    }catch(SQLException e) {
 	    	
 	    }
