@@ -4,7 +4,6 @@ import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Modelo.Visa;
-import co.edu.poli.actividad1.Repositorios.DatabaseConnection;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 
 import java.sql.Connection;
@@ -14,14 +13,27 @@ import java.util.ArrayList;
 
 public class Cliente {
 
+	public final static String  url ="jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
+	
+	public final static String user = "postgres.wndblehjsvhczsicivyf";
+	
+	public final static String Password = "Servidor123";
+	
+	public static String getUrl() {
+		return url;
+	}
+
+	public static String getUser() {
+		return user;
+	}
+
+	public static String getPassword() {
+		return Password;
+	}
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-    	/*String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
-	    String USER = "postgres.wndblehjsvhczsicivyf";
-	    String PASSWORD = "Servidor123";*/
-		
-	    try(Connection conn = DatabaseConnection.getConnection()){
+	    try(Connection conn = DriverManager.getConnection(Cliente.getUrl(),Cliente.getUser(),Cliente.getPassword())){
 	    	
 			ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
 			
