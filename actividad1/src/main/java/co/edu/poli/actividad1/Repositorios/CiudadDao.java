@@ -23,7 +23,7 @@ private Connection connection;
 
 	@Override
 	public String insert(Ciudad t) {
-		String sql = "INSERT INTO \"Cuidad\" (\"codigoPostal\", \"nombre\", \"esCapital\") VALUES (?, ?, ?)";
+		String sql = "INSERT INTO \"Ciudad\" (\"codigoPostal\", \"nombre\", \"esCapital\") VALUES (?, ?, ?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, t.getCodigoPostal());
 			
@@ -46,7 +46,7 @@ private Connection connection;
 
 	@Override
 	public Ciudad select(String id) {
-String sql = "SELECT * FROM \"Cuidad\" WHERE \"codigoPostal\" = ?";
+String sql = "SELECT * FROM \"Ciudad\" WHERE \"codigoPostal\" = ?";
 		
 		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
 			

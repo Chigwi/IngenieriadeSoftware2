@@ -3,8 +3,10 @@ import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
-import co.edu.poli.actividad1.Modelo.Visa;
+import co.edu.poli.actividad1.Repositorios.CiudadDao;
+import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
+import co.edu.poli.actividad1.Repositorios.TitularDao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,15 +37,32 @@ public class Cliente {
 		
 	    try(Connection conn = DriverManager.getConnection(Cliente.getUrl(),Cliente.getUser(),Cliente.getPassword())){
 	    	
+	    	
+	    	PasaporteDao regPass = new PasaporteDao (conn);
+	    	
+	    	CiudadDao regCiud = new CiudadDao(conn);
+	    	
+	    	PaisDao regPais = new PaisDao(conn);
+	    	
+	    	TitularDao regtit = new TitularDao(conn);
+	    	
 			ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
 			
 			Ciudad medellin = new Ciudad ("medellin", "1", false );
+			
+			System.out.println(regCiud.select(medellin.getCodigoPostal()));
 			
 			ciudades.add(medellin);
 			
 			Pais colombia = new Pais (1,"colombia","espaniol", ciudades);
 			
+			String idp = Integer.toString(colombia.getIdPais());
+			
+			System.out.println(regPais.select(idp));
+			
 			Titular Allyson = new Titular ("allyson velandia","14/04/2002", "1089765678");
+			
+			System.out.println(regtit.select(Allyson.getIdentificacion()));
 			
 			Pasaporte AlliePasport = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, medellin);
 			
@@ -51,7 +70,7 @@ public class Cliente {
 			
 			//System.out.println(AlliePasport);
 			
-			PasaporteDao regPass = new PasaporteDao (conn);
+			
 			
 			//System.out.println(regPass.insert(AlliePasport));
 			

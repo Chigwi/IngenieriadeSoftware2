@@ -33,6 +33,8 @@ public class PaisDao implements Dao <Pais> {
 			
 			pstmt.executeUpdate();
 			
+			return "Insercion exitosa";
+			
 		}catch (SQLException e) {
 			System.out.println("Error de insercion " + e.getMessage());
 			e.printStackTrace();
