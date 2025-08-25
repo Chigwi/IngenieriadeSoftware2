@@ -41,9 +41,13 @@ public class Cliente {
 	    try(Connection conn = db1.getConnection()){
 	    	
 	    	
-	    	PasaporteDao regPass = new PasaporteDao (conn);
+	    	PasaporteDao regPass = new PasaporteDao ();
 	    	
-	    	CiudadDao regCiud = new CiudadDao(conn);
+	    	regPass.setConnection(conn);
+	    	
+	    	CiudadDao regCiud = new CiudadDao();
+	    	
+	    	regCiud.setConnection(conn);
 	    	
 	    	PaisDao regPais = new PaisDao(conn);
 	    	

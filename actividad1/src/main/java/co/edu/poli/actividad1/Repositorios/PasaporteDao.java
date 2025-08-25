@@ -14,10 +14,21 @@ public class PasaporteDao implements Dao <Pasaporte>{
 
 	private Connection connection;
 	
-	public PasaporteDao (Connection connection) {
-		this.connection = connection;
+	public PasaporteDao () {
 	}
 	
+	public Connection getConnection() {
+		return connection;
+	}
+
+
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
+
+
 	@Override
 	public String insert(Pasaporte t){
 		String sql = "INSERT INTO \"Pasaporte\" (\"numeroId\", \"paisEmisor\", \"fechaEmision\", \"fechaExpiracion\", titular, \"ciudadEmision\") VALUES (?, ?, ?, ?, ?, ?)";

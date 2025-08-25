@@ -17,9 +17,19 @@ public class CiudadDao implements Dao <Ciudad> {
 	
 private Connection connection;
 	
-	public CiudadDao (Connection connection) {
+	public CiudadDao () {
+	}
+
+	
+	public Connection getConnection() {
+		return connection;
+	}
+
+
+	public void setConnection(Connection connection) {
 		this.connection = connection;
 	}
+
 
 	@Override
 	public String insert(Ciudad t) {
