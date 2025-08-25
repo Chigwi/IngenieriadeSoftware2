@@ -25,7 +25,7 @@ public class PaisDao implements Dao <Pais> {
 	public String insert(Pais t) {
 		String sql = "INSERT INTO \"Pais\" (\"idPais\", \"nombre\", \"idioma\") VALUES (?, ?, ?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
-			pstmt.setInt(1, t.getIdPais());
+			pstmt.setString(1, t.getIdPais());
 			
 			pstmt.setString(2, t.getNombre());
 			
@@ -53,7 +53,7 @@ public class PaisDao implements Dao <Pais> {
 			 
 	            if (rs.next()) {
 	            	List <Ciudad> c = new ArrayList<Ciudad>();
-	            	Pais p = new Pais (rs.getInt("idPais"),rs.getString("nombre"),rs.getString("idioma"),c);
+	            	Pais p = new Pais (rs.getString("idPais"),rs.getString("nombre"),rs.getString("idioma"),c);
 	            	return p;
 	            }
 		}catch( SQLException e) {
@@ -106,7 +106,7 @@ public class PaisDao implements Dao <Pais> {
 	public String Delete(Pais t) {
 		String sql = "DELETE FROM \"Pais\" WHERE \"idPais\" = ?" ;
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, t.getIdPais());
+            pstmt.setString(1, t.getIdPais());
             pstmt.executeUpdate();
             
             return "eliminacion exitosa";
@@ -120,7 +120,7 @@ public class PaisDao implements Dao <Pais> {
 	}
 	private Pais mapRStoPais (ResultSet rs)throws SQLException{
 		List <Ciudad> c = new ArrayList<Ciudad>();
-    	Pais p = new Pais (rs.getInt("idPais"),rs.getString("nombre"),rs.getString("idioma"),c);
+    	Pais p = new Pais (rs.getString("idPais"),rs.getString("nombre"),rs.getString("idioma"),c);
     	return p;
 	}
 

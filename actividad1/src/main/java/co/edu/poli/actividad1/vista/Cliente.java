@@ -54,11 +54,11 @@ public class Cliente {
 			
 			ciudades.add(medellin);
 			
-			Pais colombia = new Pais (1,"colombia","espaniol", ciudades);
+			Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
 			
-			String idp = Integer.toString(colombia.getIdPais());
+			System.out.println(regPais.insert(colombia));
 			
-			System.out.println(regPais.select(idp));
+			System.out.println(regPais.select(colombia.getIdPais()));
 			
 			Titular Allyson = new Titular ("allyson velandia","14/04/2002", "1089765678");
 			
