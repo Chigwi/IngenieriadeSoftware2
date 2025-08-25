@@ -147,12 +147,14 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	}
 	
 	private Pasaporte mapRStuPasaporte(ResultSet rs) throws SQLException{
-		TitularDao regtit = new TitularDao(connection);
+		TitularDao regtit = new TitularDao();
+		regtit.setConnection(connection);
 		
 		CiudadDao regCiu = new CiudadDao();
 		regCiu.setConnection(connection);
 		
-		PaisDao regPais = new PaisDao(connection);
+		PaisDao regPais = new PaisDao();
+		regPais.setConnection(connection);
 		
 		Titular selectTitular = regtit.select(rs.getString("Titular"));
 		

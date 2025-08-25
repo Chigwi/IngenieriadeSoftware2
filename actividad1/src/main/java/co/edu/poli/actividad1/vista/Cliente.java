@@ -49,9 +49,13 @@ public class Cliente {
 	    	
 	    	regCiud.setConnection(conn);
 	    	
-	    	PaisDao regPais = new PaisDao(conn);
+	    	PaisDao regPais = new PaisDao();
 	    	
-	    	TitularDao regtit = new TitularDao(conn);
+	    	regPais.setConnection(conn);
+	    	
+	    	TitularDao regtit = new TitularDao();
+	    	
+	    	regtit.setConnection(conn);
 	    	
 			ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
 			
