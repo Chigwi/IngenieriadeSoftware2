@@ -56,7 +56,7 @@ public class Cliente {
 			
 			Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
 			
-			System.out.println(regPais.insert(colombia));
+			//System.out.println(regPais.insert(colombia));
 			
 			System.out.println(regPais.select(colombia.getIdPais()));
 			
