@@ -4,6 +4,7 @@ import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Repositorios.CiudadDao;
+import co.edu.poli.actividad1.Repositorios.DatabaseConnection;
 import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class Cliente {
 
-	public final static String  url ="jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
+	/*public final static String  url ="jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
 	
 	public final static String user = "postgres.wndblehjsvhczsicivyf";
 	
@@ -31,11 +32,13 @@ public class Cliente {
 
 	public static String getPassword() {
 		return Password;
-	}
+	}*/
 
 	public static void main(String[] args) {
 		
-	    try(Connection conn = DriverManager.getConnection(Cliente.getUrl(),Cliente.getUser(),Cliente.getPassword())){
+		DatabaseConnection db1 = DatabaseConnection.getInstance();
+		
+	    try(Connection conn = db1.getConnection()){
 	    	
 	    	
 	    	PasaporteDao regPass = new PasaporteDao (conn);
