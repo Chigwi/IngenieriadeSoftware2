@@ -62,11 +62,12 @@ public class PasaporteDao implements Dao <Pasaporte>{
 			 
 	            if (rs.next()) {
 	            	
-	            	Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
+	            	/*Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
 	            	Ciudad selectCiudad = new Ciudad(rs.getString("ciudadEmision"),"",false);
 	            	List <Ciudad> c = new ArrayList<Ciudad>();
 	            	Pais selectPais = new Pais (rs.getString("paisEmisor"),"","",c);
-	            	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
+	            	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);*/
+	            	Pasaporte p = mapRStuPasaporte(rs);
 	            	return p;
 	            }
 		}catch( SQLException e) {
@@ -140,10 +141,24 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	}
 	
 	private Pasaporte mapRStuPasaporte(ResultSet rs) throws SQLException{
-		Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
-    	Ciudad selectCiudad = new Ciudad(rs.getString("ciudadEmision"),"",false);
+		TitularDao regtit = new TitularDao(connection);
+		
+		CiudadDao regCiu = new CiudadDao(connection);
+		
+		PaisDao regPais = new PaisDao(connection);
+		
+		Titular selectTitular = regtit.select(rs.getString("Titular"));
+		
+    	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
+    	
     	List <Ciudad> c = new ArrayList<Ciudad>();
-    	Pais selectPais = new Pais (rs.getString("paisEmisor"),"","",c);
+    	
+    	c.add(selectCiudad);
+    	
+    	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
+    	
+    	selectPais.setCiudades(c);
+    	
     	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
     	return p;
 	}

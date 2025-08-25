@@ -50,7 +50,7 @@ public class Cliente {
 			
 			Ciudad medellin = new Ciudad ("medellin", "1", false );
 			
-			System.out.println(regCiud.select(medellin.getCodigoPostal()));
+			//System.out.println(regCiud.select(medellin.getCodigoPostal()));
 			
 			ciudades.add(medellin);
 			
@@ -58,11 +58,11 @@ public class Cliente {
 			
 			//System.out.println(regPais.insert(colombia));
 			
-			System.out.println(regPais.select(colombia.getIdPais()));
+			//System.out.println(regPais.select(colombia.getIdPais()));
 			
 			Titular Allyson = new Titular ("allyson velandia","14/04/2002", "1089765678");
 			
-			System.out.println(regtit.select(Allyson.getIdentificacion()));
+			//System.out.println(regtit.select(Allyson.getIdentificacion()));
 			
 			Pasaporte AlliePasport = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, medellin);
 			
@@ -76,13 +76,13 @@ public class Cliente {
 			
 			System.out.println(regPass.select("AX400"));
 			
-			System.out.println(regPass.Update(AlliePasporte));
+			//System.out.println(regPass.Update(AlliePasporte));
 			
 			System.out.println(regPass.select("AX400"));
 			
-			System.out.println(regPass.Delete(AlliePasporte));
+			//System.out.println(regPass.Delete(AlliePasporte));
 			
-			System.out.println(regPass.insert(AlliePasport));
+			//System.out.println(regPass.insert(AlliePasport));
 	    }catch(SQLException e) {
 	    	
 	    }
