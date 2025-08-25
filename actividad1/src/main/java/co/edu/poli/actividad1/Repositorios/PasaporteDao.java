@@ -24,7 +24,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, t.getNumeroId());
 			
-			pstmt.setInt(2, t.getPaisEmisor().getIdPais());
+			pstmt.setString(2, t.getPaisEmisor().getIdPais());
 			
 			pstmt.setString(3, t.getFechaEmision());
 			
@@ -65,7 +65,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	            	Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
 	            	Ciudad selectCiudad = new Ciudad(rs.getString("ciudadEmision"),"",false);
 	            	List <Ciudad> c = new ArrayList<Ciudad>();
-	            	Pais selectPais = new Pais (rs.getInt("paisEmisor"),"","",c);
+	            	Pais selectPais = new Pais (rs.getString("paisEmisor"),"","",c);
 	            	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
 	            	return p;
 	            }
@@ -96,7 +96,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	public String Update(Pasaporte t) {
 		String sql = "UPDATE \"Pasaporte\" SET \"paisEmisor\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, \"titular\" = ?, \"ciudadEmision\" = ? WHERE \"numeroId\" = ?";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
-			pstmt.setInt(1, t.getPaisEmisor().getIdPais());
+			pstmt.setString(1, t.getPaisEmisor().getIdPais());
 			
 			pstmt.setString(2, t.getFechaEmision());
 			
@@ -143,7 +143,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 		Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
     	Ciudad selectCiudad = new Ciudad(rs.getString("ciudadEmision"),"",false);
     	List <Ciudad> c = new ArrayList<Ciudad>();
-    	Pais selectPais = new Pais (rs.getInt("paisEmisor"),"","",c);
+    	Pais selectPais = new Pais (rs.getString("paisEmisor"),"","",c);
     	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
     	return p;
 	}

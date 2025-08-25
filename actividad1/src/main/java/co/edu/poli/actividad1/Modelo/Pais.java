@@ -12,7 +12,7 @@ public class Pais {
     /**
      * 
      */
-    private int idPais;
+    private String idPais;
 
     /**
      * 
@@ -29,7 +29,7 @@ public class Pais {
      */
     private List <Ciudad> ciudades;
 
-	public Pais(int idPais, String nombre, String idioma, List<Ciudad> ciudades) {
+	public Pais(String idPais, String nombre, String idioma, List<Ciudad> ciudades) {
 		super();
 		this.idPais = idPais;
 		this.nombre = nombre;
@@ -37,11 +37,11 @@ public class Pais {
 		this.ciudades = ciudades;
 	}
 
-	public int getIdPais() {
+	public String getIdPais() {
 		return idPais;
 	}
 
-	public void setIdPais(int idPais) {
+	public void setIdPais(String idPais) {
 		this.idPais = idPais;
 	}
 
