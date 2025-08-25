@@ -17,9 +17,23 @@ public class PaisDao implements Dao <Pais> {
 	
 	private Connection connection;
 	
-	public PaisDao (Connection connection) {
+	public PaisDao () {
+		
+	}
+	 
+	
+	
+	public Connection getConnection() {
+		return connection;
+	}
+
+
+
+	public void setConnection(Connection connection) {
 		this.connection = connection;
 	}
+
+
 
 	@Override
 	public String insert(Pais t) {

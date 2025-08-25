@@ -14,10 +14,24 @@ public class TitularDao implements Dao <Titular>{
 
 	private Connection connection;
 	
-	public TitularDao (Connection connection) {
-		this.connection = connection;
+	public TitularDao () {
+		
 	}
 	
+	
+	
+	public Connection getConnection() {
+		return connection;
+	}
+
+
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
+
+
 	@Override
 	public String insert(Titular t){
 		String sql = "INSERT INTO \"Titular\" (\"identificacion\", \"fechaNacimiento\", \"nombre\") VALUES (?, ?, ?)";
