@@ -2,10 +2,15 @@ package co.edu.poli.actividad1.Repositorios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.Pais;
+import co.edu.poli.actividad1.Modelo.Pasaporte;
+import co.edu.poli.actividad1.Modelo.Titular;
 
 public class PaisDao implements Dao <Pais> {
 	
@@ -36,7 +41,21 @@ public class PaisDao implements Dao <Pais> {
 
 	@Override
 	public Pais select(String id) {
-		
+		String sql = "SELECT * FROM \"Pais\" WHERE \"idPais\" = ?";
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
+			
+			pstmt.setString(1, id);
+			
+			 ResultSet rs = pstmt.executeQuery();
+			 
+	            if (rs.next()) {
+	            	List <Ciudad> c = new ArrayList<Ciudad>();
+	            	Pais p = new Pais (rs.getInt("idPais"),rs.getString("nombre"),rs.getString("idioma"),c);
+	            	return p;
+	            }
+		}catch( SQLException e) {
+			System.out.println("Error de lectura " + e.getMessage());
+		}
 		return null;
 	}
 
