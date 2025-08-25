@@ -61,13 +61,8 @@ public class PasaporteDao implements Dao <Pasaporte>{
 			 ResultSet rs = pstmt.executeQuery();
 			 
 	            if (rs.next()) {
-	            	
-	            	/*Titular selectTitular = new Titular (rs.getString("titular")," ", " ");
-	            	Ciudad selectCiudad = new Ciudad(rs.getString("ciudadEmision"),"",false);
-	            	List <Ciudad> c = new ArrayList<Ciudad>();
-	            	Pais selectPais = new Pais (rs.getString("paisEmisor"),"","",c);
-	            	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);*/
 	            	Pasaporte p = mapRStuPasaporte(rs);
+	            	
 	            	return p;
 	            }
 		}catch( SQLException e) {

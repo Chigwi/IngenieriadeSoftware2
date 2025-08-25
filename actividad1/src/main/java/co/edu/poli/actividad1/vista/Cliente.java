@@ -51,8 +51,8 @@ public class Cliente {
 			
 			
 			Ciudad medellin = new Ciudad ("0572", "Medellin", false );
-			
-			//System.out.println(regCiud.select(medellin.getCodigoPostal()));
+
+			System.out.println(regCiud.select(medellin.getCodigoPostal()));
 			
 			ciudades.add(medellin);
 			
@@ -62,17 +62,17 @@ public class Cliente {
 			
 			//System.out.println(regPais.select(colombia.getIdPais()));
 			
+
 			Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
-			
 			//System.out.println(regtit.select(Allyson.getIdentificacion()));
 			
 			Pasaporte AlliePasport = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, medellin);
 			
 			Pasaporte AlliePasporte = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2045", Allyson, medellin);
 			
-			regPass.Delete(AlliePasport);
+			//regPass.Delete(AlliePasport);
 			
-			regPass.insert(AlliePasport);
+			//regPass.insert(AlliePasport);
 			
 			//System.out.println(AlliePasport);
 			
