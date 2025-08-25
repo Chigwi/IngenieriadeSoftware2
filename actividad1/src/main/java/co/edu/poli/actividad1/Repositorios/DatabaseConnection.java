@@ -6,19 +6,21 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 	
-	 private static DatabaseConnection instance;
-	 
-	private static final String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
-	
-    private static final String USER = "postgres.wndblehjsvhczsicivyf";
-    
-    private static final String PASSWORD = "Servidor123";
+	private static DatabaseConnection instance;
     
     private Connection connection;
     
     private DatabaseConnection() {
     	try {
+    		
+    		String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
+    		
+    		String USER = "postgres.wndblehjsvhczsicivyf";
+    	    
+    		String PASSWORD = "Servidor123";
+    		
     		connection = DriverManager.getConnection(URL, USER, PASSWORD);
+    		
     	}catch(SQLException e){
     		System.out.println("Error de conexion " + e.getMessage());
     	}
