@@ -90,14 +90,41 @@ String sql = "SELECT * FROM \"Cuidad\" WHERE \"codigoPostal\" = ?";
 
 	@Override
 	public String Update(Ciudad t) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "UPDATE \"Ciudad\" SET \"nombre\" = ?, \"esCapital\" = ?,  WHERE \"codigoPostal\" = ?";
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
+			pstmt.setString(1, t.getNombre());
+			
+			pstmt.setBoolean(2, t.isEsCapital());
+			
+			pstmt.executeUpdate();
+			
+			return "Actualizacion exitosa!";
+			
+		}catch(SQLException e) {
+			
+			System.out.println("Error de actualizacion " + e.getMessage());
+			e.printStackTrace();
+			
+		}
+		return "Error de actualizacion";
 	}
 
 	@Override
 	public String Delete(Ciudad t) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "DELETE FROM \"Ciudad\" WHERE \"codigoPostal\" = ?" ;
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, t.getCodigoPostal());
+            pstmt.executeUpdate();
+            
+            return "eliminacion exitosa";
+        }catch(SQLException e) {
+			
+			System.out.println("Error de eliminacion " + e.getMessage());
+			e.printStackTrace();
+			
+        }
+		return "Error de eliminacion ";
 	}
 	
 	private Ciudad mapRStoCiudad (ResultSet rs) throws SQLException{
