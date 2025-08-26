@@ -1,14 +1,54 @@
 package co.edu.poli.actividad1.Repositorios;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import co.edu.poli.actividad1.Modelo.Visa;
 
 public class VisaDao implements Dao <Visa>{
+	
+	private Connection connection;
+	
+	public VisaDao () {
+	}
+	
+	public Connection getConnection() {
+		return connection;
+	}
+
+
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
 
 	@Override
 	public String insert(Visa t) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO \"Visa\" (\"idVisa\", \"paisDestino\", \"fechaEmision\", \"fechaExpiracion\", pasaporte) VALUES(?, ?, ?, ?, ?)";
+		
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			pstmt.setString(1, t.getIdVisa());
+			
+			pstmt.setString(2, t.getPaisDestino().getIdPais());
+			
+			pstmt.setString(3, t.getFechaEmision());
+			
+			pstmt.setString(4, t.getFechaExpiracion());
+			
+			pstmt.setString(5, t.getPasaporte().getNumeroId());
+			
+			pstmt.executeUpdate();
+			
+			return "Insercion exitosa!";
+			
+		}catch(SQLException e) {
+			
+			System.out.println("Error de insercion " + e.getMessage());
+			e.printStackTrace();
+			
+		}
 		return null;
 	}
 
