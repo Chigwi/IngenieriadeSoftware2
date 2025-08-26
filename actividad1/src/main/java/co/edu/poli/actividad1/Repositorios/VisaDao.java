@@ -2,6 +2,7 @@ package co.edu.poli.actividad1.Repositorios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -66,13 +67,36 @@ public class VisaDao implements Dao <Visa>{
 
 	@Override
 	public String Update(Visa t) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "UPDATE \"Visa\" SET \"paisDestino\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, pasaporte = ?,WHERE \"idVisa\" = ?";
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			pstmt.setString(1, t.getPaisDestino().getIdPais());
+			
+			pstmt.setString(2, t.getFechaEmision());
+			
+			pstmt.setString(2, t.getFechaExpiracion());
+			
+			pstmt.setString(2, t.getPasaporte().getNumeroId());
+			
+			pstmt.executeUpdate();
+			
+			return "Actualizacion exitosa!";
+			
+		}catch(SQLException e) {
+			
+			System.out.println("Error de actualizacion " + e.getMessage());
+			e.printStackTrace();
+			
+		}
+		return "Error de actualizacion";
 	}
 
 	@Override
 	public String Delete(Visa t) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private Visa mapRStoVisa (ResultSet rs) {
 		return null;
 	}
 
