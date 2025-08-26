@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.Pais;
+import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Modelo.Visa;
 
 public class VisaDao implements Dao <Visa>{
@@ -96,8 +100,29 @@ public class VisaDao implements Dao <Visa>{
 		return null;
 	}
 	
-	private Visa mapRStoVisa (ResultSet rs) {
-		return null;
+	private Visa mapRStoVisa (ResultSet rs) throws SQLException {
+		PasaporteDao regpass = new PasaporteDao();
+		regpass.setConnection(connection);
+		PaisDao regPais = new PaisDao();
+		regPais.setConnection(connection);
+		CiudadDao regCiu = new CiudadDao();
+		regCiu.setConnection(connection);
+		
+		Pasaporte pass = regpass.select(rs.getString("pasaporte"));
+		
+		Ciudad ciu = regpass.select(rs.getString("pasaporte")).getCiudadEmision();
+		
+		List <Ciudad> c = new ArrayList<Ciudad>();
+    	
+    	c.add(ciu);
+    	
+    	Pais selectPais = regPais.select(rs.getString("paisDestino"));
+    	
+    	selectPais.setCiudades(c);
+    	
+    	Visa v = new Visa (rs.getString("idVisa"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),pass);
+		
+		return v;
 	}
 
 }

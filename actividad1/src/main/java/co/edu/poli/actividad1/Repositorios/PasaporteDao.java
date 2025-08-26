@@ -22,7 +22,6 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	}
 
 
-
 	public void setConnection(Connection connection) {
 		this.connection = connection;
 	}
