@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,8 +81,20 @@ String sql = "SELECT * FROM \"Visa\" WHERE \"idVisa\" = ?";
 
 	@Override
 	public List<Visa> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List <Visa> Visas = new ArrayList <Visa>();
+		String sql = "SELECT * FROM \"Visa\"";
+		try (Statement stmt = connection.createStatement()){
+            ResultSet rs = stmt.executeQuery(sql); {
+            while (rs.next()) {
+               Visas.add(mapRStoVisa(rs));
+            }
+       }
+       return Visas;
+     
+	}catch (SQLException e) {
+		System.out.println("Error de lectura " + e.getMessage());
+   }
+   return null;
 	}
 
 	@Override
