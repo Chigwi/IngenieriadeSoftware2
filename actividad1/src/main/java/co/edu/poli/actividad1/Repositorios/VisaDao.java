@@ -59,7 +59,22 @@ public class VisaDao implements Dao <Visa>{
 
 	@Override
 	public Visa select(String id) {
-		// TODO Auto-generated method stub
+String sql = "SELECT * FROM \"Visa\" WHERE \"idVisa\" = ?";
+		
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
+			
+			pstmt.setString(1, id);
+			
+			 ResultSet rs = pstmt.executeQuery();
+			 
+	            if (rs.next()) {
+	            	Visa v = mapRStoVisa(rs);
+	            	
+	            	return v;
+	            }
+		}catch( SQLException e) {
+			System.out.println("Error de lectura " + e.getMessage());
+		}
 		return null;
 	}
 
@@ -96,9 +111,21 @@ public class VisaDao implements Dao <Visa>{
 
 	@Override
 	public String Delete(Visa t) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "DELETE FROM \"Visa\" WHERE \"idVisa\" = ?" ;
+		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, t.getIdVisa());
+            pstmt.executeUpdate();
+            
+            return "eliminacion exitosa";
+        }catch(SQLException e) {
+			
+			System.out.println("Error de eliminacion " + e.getMessage());
+			e.printStackTrace();
+			
+        }
+		return "Error de eliminacion ";
 	}
+
 	
 	private Visa mapRStoVisa (ResultSet rs) throws SQLException {
 		PasaporteDao regpass = new PasaporteDao();
