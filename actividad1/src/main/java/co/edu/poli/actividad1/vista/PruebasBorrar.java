@@ -21,7 +21,7 @@ import co.edu.poli.actividad1.Repositorios.VisaDao;
 public class PruebasBorrar {
 
 public static void main (String []args) {
-		
+//pene		
 	
 }
 }
