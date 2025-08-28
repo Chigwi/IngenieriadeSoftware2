@@ -140,11 +140,12 @@ public class Cliente {
 			
 			Pasaporte CrisPasaport = new Pasaporte ("SD1500", EstadosUnidos, "14/07/2024", "14/07/2045", Cristina, Washington);
 			
-			//sapop
+			Titular Sam = new Titular ("10105413","10/20/2005", "Samuel Arce");
 			
-			regPass.Update(CrisPasaport);
+			Pasaporte SamPasaport = new Pasaporte ("AX1500", EstadosUnidos, "14/07/2024", "14/07/2045", Sam, Washington);
 			
-			System.out.println(regPass.selectIdFiltered("4"));
+			
+			System.out.println(regPass.selectIdFiltered("A"));
 			
 	    }catch(SQLException e) {
 	    	
