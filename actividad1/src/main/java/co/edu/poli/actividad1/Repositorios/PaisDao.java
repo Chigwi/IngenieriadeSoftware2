@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import co.edu.poli.actividad1.Modelo.Ciudad;
@@ -37,6 +38,8 @@ public class PaisDao implements Dao <Pais> {
 
 	@Override
 	public String insert(Pais t) {
+			CiudadDao regCiu = new CiudadDao();
+			regCiu.setConnection(connection);
 		String sql = "INSERT INTO \"Pais\" (\"idPais\", \"nombre\", \"idioma\") VALUES (?, ?, ?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, t.getIdPais());
@@ -44,6 +47,10 @@ public class PaisDao implements Dao <Pais> {
 			pstmt.setString(2, t.getNombre());
 			
 			pstmt.setString(3, t.getIdioma());
+			
+			for (int i = 0; i < t.getCiudades().size(); i++) {
+				regCiu.insert(t.getCiudades().get(i));
+			}
 			
 			pstmt.executeUpdate();
 			
@@ -103,6 +110,8 @@ public class PaisDao implements Dao <Pais> {
 			
 			pstmt.setString(2, t.getIdioma());
 			
+			pstmt.setString(3, t.getIdPais());
+			
 			pstmt.executeUpdate();
 			
 			return "Actualizacion exitosa!";
@@ -134,6 +143,7 @@ public class PaisDao implements Dao <Pais> {
 	}
 	private Pais mapRStoPais (ResultSet rs)throws SQLException{
 		List <Ciudad> c = new ArrayList<Ciudad>();
+		
     	Pais p = new Pais (rs.getString("idPais"),rs.getString("nombre"),rs.getString("idioma"),c);
     	return p;
 	}

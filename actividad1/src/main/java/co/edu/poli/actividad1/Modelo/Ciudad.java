@@ -22,12 +22,18 @@ public class Ciudad {
      */
     
     private boolean esCapital;
+    
+    /**
+     * 
+     */
+    private String codigoPais;
 
-	public Ciudad(String codigoPostal, String nombre, boolean esCapital) {
+	public Ciudad(String codigoPostal, String nombre, boolean esCapital,String codigoPais) {
 		super();
 		this.codigoPostal = codigoPostal;
 		this.nombre = nombre;
 		this.esCapital = esCapital;
+		this.codigoPais = codigoPais;
 	}
 
 	public String getNombre() {
@@ -54,10 +60,21 @@ public class Ciudad {
 		this.esCapital = esCapital;
 	}
 
+	public String getCodigoPais() {
+		return codigoPais;
+	}
+
+	public void setCodigoPais(String codigoPais) {
+		this.codigoPais = codigoPais;
+	}
+
 	@Override
 	public String toString() {
-		return "Ciudad [codigoPostal=" + codigoPostal + ", nombre=" + nombre + ", esCapital=" + esCapital + "]";
+		return "Ciudad [codigoPostal=" + codigoPostal + ", nombre=" + nombre + ", esCapital=" + esCapital
+				+ ", codigoPais=" + codigoPais + "]";
 	}
+	
+
 
 
 

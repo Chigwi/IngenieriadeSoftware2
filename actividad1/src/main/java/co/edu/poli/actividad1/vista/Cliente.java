@@ -48,11 +48,15 @@ public class Cliente {
 			regVis.setConnection(conn);
 			
 			
-			Ciudad medellin = new Ciudad ("0572", "Medellin", false );
+			Ciudad medellin = new Ciudad ("0572", "Medellin", false , "1");
+			
+			Ciudad Bogotá = new Ciudad("0571", "Bogotá", true, "1");
 
 			//System.out.println(regCiud.select(medellin.getCodigoPostal()));
 			
 			ciudades.add(medellin);
+			
+			ciudades.add(Bogotá);
 			
 			Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
 			
@@ -88,11 +92,17 @@ public class Cliente {
 			
 			//System.out.println(regPass.insert(AlliePasport));
 			
-			Ciudad Washington = new Ciudad ("0001", "washington", true);
+			Ciudad Washington = new Ciudad ("0001", "washington", true,"104");
+			
+			Ciudad Miami = new Ciudad ("0002", "Miami", false, "104");
 			
 			//System.out.println(regCiud.select(Washington.getCodigoPostal()));
 			
 			ArrayList <Ciudad> gringos = new ArrayList <Ciudad>();
+			
+			//gringos.add(Washington);
+			
+			gringos.add(Miami);
 			
 			Pais EstadosUnidos = new Pais ("104", "EstadosUnidos", "ingles",gringos);
 			
@@ -142,7 +152,11 @@ public class Cliente {
 			Pasaporte SamPasaport = new Pasaporte ("AX1500", EstadosUnidos, "14/07/2024", "14/07/2045", Sam, Washington);
 			
 			
-			System.out.println(regPass.selectIdFiltered("5"));
+			//System.out.println(regPass.selectIdFiltered("A"));
+			
+			
+			
+			//añadir atributo pais al objeto ciudad
 			
 			
 	    }catch(SQLException e) {

@@ -33,13 +33,15 @@ private Connection connection;
 
 	@Override
 	public String insert(Ciudad t) {
-		String sql = "INSERT INTO \"Ciudad\" (\"codigoPostal\", \"nombre\", \"esCapital\") VALUES (?, ?, ?)";
+		String sql = "INSERT INTO \"Ciudad\" (\"codigoPostal\", \"nombre\", \"esCapital\",\"codigoPais\") VALUES (?, ?, ?,?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, t.getCodigoPostal());
 			
 			pstmt.setString(2, t.getNombre());
 			
 			pstmt.setBoolean(3, t.isEsCapital());
+			
+			pstmt.setString(4, t.getCodigoPais());
 			
 			pstmt.executeUpdate();
 			
@@ -66,9 +68,10 @@ String sql = "SELECT * FROM \"Ciudad\" WHERE \"codigoPostal\" = ?";
 			 
 			 if (rs.next()) {
 	            	
-	            	Ciudad selectCiudad = new Ciudad(rs.getString("codigoPostal"), rs.getString("nombre"),rs.getBoolean("esCapital"));
+	            	Ciudad selectCiudad = new Ciudad(rs.getString("codigoPostal"), rs.getString("nombre"),rs.getBoolean("esCapital"),rs.getString("codigoPostal"));
 	            	
 	            	return selectCiudad;
+	            	
 	            }
 			 
 			 
@@ -100,12 +103,16 @@ String sql = "SELECT * FROM \"Ciudad\" WHERE \"codigoPostal\" = ?";
 
 	@Override
 	public String Update(Ciudad t) {
-		String sql = "UPDATE \"Ciudad\" SET \"nombre\" = ?, \"esCapital\" = ?,  WHERE \"codigoPostal\" = ?";
+		String sql = "UPDATE \"Ciudad\" SET \"nombre\" = ?, \"esCapital\" = ?,\"codigoPais\"  WHERE \"codigoPostal\" = ?";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			
 			pstmt.setString(1, t.getNombre());
 			
 			pstmt.setBoolean(2, t.isEsCapital());
+			
+			pstmt.setString(3, t.getCodigoPais());
+			
+			pstmt.setString(4, t.getCodigoPostal());
 			
 			pstmt.executeUpdate();
 			
@@ -138,7 +145,7 @@ String sql = "SELECT * FROM \"Ciudad\" WHERE \"codigoPostal\" = ?";
 	}
 	
 	private Ciudad mapRStoCiudad (ResultSet rs) throws SQLException{
-		Ciudad selectCiudad = new Ciudad(rs.getString("codigoPostal"), rs.getString("nombre"),rs.getBoolean("esCapital"));
+		Ciudad selectCiudad = new Ciudad(rs.getString("codigoPostal"), rs.getString("nombre"),rs.getBoolean("esCapital"), rs.getString("codigoPais"));
 		
 		return selectCiudad;
 	}
