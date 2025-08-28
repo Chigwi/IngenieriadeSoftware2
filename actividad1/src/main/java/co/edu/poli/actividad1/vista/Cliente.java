@@ -142,7 +142,7 @@ public class Cliente {
 			Pasaporte SamPasaport = new Pasaporte ("AX1500", EstadosUnidos, "14/07/2024", "14/07/2045", Sam, Washington);
 			
 			
-			System.out.println(regPass.selectIdFiltered("A"));
+			System.out.println(regPass.selectIdFiltered("5"));
 			
 			
 	    }catch(SQLException e) {
