@@ -144,7 +144,7 @@ public class Cliente {
 			
 			regPass.Update(CrisPasaport);
 			
-			System.out.println(regPass.selectIdFiltered("S"));
+			System.out.println(regPass.selectIdFiltered("4"));
 			
 	    }catch(SQLException e) {
 	    	
