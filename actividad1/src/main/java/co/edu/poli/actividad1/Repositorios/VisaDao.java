@@ -99,15 +99,18 @@ String sql = "SELECT * FROM \"Visa\" WHERE \"idVisa\" = ?";
 
 	@Override
 	public String Update(Visa t) {
-		String sql = "UPDATE \"Visa\" SET \"paisDestino\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, pasaporte = ?,WHERE \"idVisa\" = ?";
+		String sql = "UPDATE \"Visa\" SET \"paisDestino\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, pasaporte = ? WHERE \"idVisa\" = ?";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+			
 			pstmt.setString(1, t.getPaisDestino().getIdPais());
 			
 			pstmt.setString(2, t.getFechaEmision());
 			
-			pstmt.setString(2, t.getFechaExpiracion());
+			pstmt.setString(3, t.getFechaExpiracion());
 			
-			pstmt.setString(2, t.getPasaporte().getNumeroId());
+			pstmt.setString(4, t.getPasaporte().getNumeroId());
+			
+			pstmt.setString(5, t.getIdVisa());
 			
 			pstmt.executeUpdate();
 			
