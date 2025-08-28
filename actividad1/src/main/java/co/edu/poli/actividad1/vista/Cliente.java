@@ -102,9 +102,9 @@ public class Cliente {
 			
 			//System.out.println(regtit.select(SalomeDorado.getIdentificacion()));
 			
-			Pasaporte SalomePasport = new Pasaporte ("SD2004",EstadosUnidos,"25/08/25", "25/08/35",SalomeDorado,Washington );
+			Pasaporte SalomePasport = new Pasaporte ("A2004",EstadosUnidos,"25/08/25", "25/08/35",SalomeDorado,Washington );
 			
-			//System.out.println(regPass.select(SalomePasport.getNumeroId()));
+			System.out.println(regPass.select(SalomePasport.getNumeroId()));
 			
 			//System.out.println(regPass.selectAll());
 			
@@ -122,13 +122,14 @@ public class Cliente {
 			
 			//System.out.println(regVis.insert(v3));
 			
-			System.out.println(regVis.selectAll());
+			//System.out.println(regVis.selectAll());
 			
 			Visa v4 = new Visa ("VI003", EstadosUnidos,"28/08/2025","28/08/2035",SalomePasport);
 			
 			//System.out.println(regVis.insert(v4));
 			
 			//System.out.println(regVis.Delete(v4));
+			
 			
 			
 	    }catch(SQLException e) {
