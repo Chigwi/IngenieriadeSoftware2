@@ -154,9 +154,9 @@ public class Cliente {
 			
 			//System.out.println(regPass.selectIdFiltered("A"));
 			
+			Ciudad Tunja = new Ciudad("0573", "Tunja", false, "1");
 			
-			
-			//añadir atributo pais al objeto ciudad
+			regCiud.insert(Tunja);
 			
 			
 	    }catch(SQLException e) {
