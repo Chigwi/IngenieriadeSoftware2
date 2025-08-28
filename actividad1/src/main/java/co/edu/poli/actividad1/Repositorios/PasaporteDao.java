@@ -142,7 +142,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 			
         }
 		return "Error de eliminacion ";
-		
+		//comentario
 	}
 	
 	public List<Pasaporte> selectIdFiltered(String condicion) {
