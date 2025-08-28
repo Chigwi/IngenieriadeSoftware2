@@ -140,7 +140,7 @@ public class Cliente {
 			
 			Pasaporte CrisPasaport = new Pasaporte ("SD1500", Brasil, "14/07/2024", "14/07/2045", Cristina, Rio);
 			
-			System.out.println(regPass.selectIdFiltered(CrisPasaport, "S"));
+			System.out.println(regPass.selectIdFiltered("S"));
 			
 	    }catch(SQLException e) {
 	    	

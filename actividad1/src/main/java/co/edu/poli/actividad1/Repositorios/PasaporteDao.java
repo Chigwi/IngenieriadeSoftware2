@@ -145,7 +145,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 		
 	}
 	
-	public List<Pasaporte> selectIdFiltered(Pasaporte pasaporte, String condicion) {
+	public List<Pasaporte> selectIdFiltered(String condicion) {
 	    List<Pasaporte> pasaportes = new ArrayList<>();
 	    String sql = "SELECT * FROM \"Pasaporte\" WHERE \"numeroId\" LIKE ?";
 	    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
