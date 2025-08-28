@@ -138,7 +138,9 @@ public class Cliente {
 			
 			Titular Cristina = new Titular ("107678654","14/07/2001", "Cristina dorado");
 			
-			Pasaporte CrisPasaport = new Pasaporte ("SD1500", Brasil, "14/07/2024", "14/07/2045", Cristina, Rio);
+			Pasaporte CrisPasaport = new Pasaporte ("SD1500", EstadosUnidos, "14/07/2024", "14/07/2045", Cristina, Washington);
+			
+			regPass.Update(CrisPasaport);
 			
 			System.out.println(regPass.selectIdFiltered("S"));
 			
