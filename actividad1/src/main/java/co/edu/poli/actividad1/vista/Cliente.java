@@ -130,7 +130,17 @@ public class Cliente {
 			
 			//System.out.println(regVis.Delete(v4));
 			
+			ArrayList <Ciudad> ciudades1 = new ArrayList <Ciudad>();
 			
+			Ciudad Rio = new Ciudad ("123", "Rio", false );
+			
+			Pais Brasil = new Pais ("5","Brasil","espaniol", ciudades);
+			
+			Titular Cristina = new Titular ("107678654","14/07/2001", "Cristina dorado");
+			
+			Pasaporte CrisPasaport = new Pasaporte ("SD1500", Brasil, "14/07/2024", "14/07/2045", Cristina, Rio);
+			
+			System.out.println(CrisPasaport);
 			
 	    }catch(SQLException e) {
 	    	
