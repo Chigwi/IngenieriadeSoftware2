@@ -50,7 +50,7 @@ public class Cliente {
 			
 			Ciudad medellin = new Ciudad ("0572", "Medellin", false );
 
-			System.out.println(regCiud.select(medellin.getCodigoPostal()));
+			//System.out.println(regCiud.select(medellin.getCodigoPostal()));
 			
 			ciudades.add(medellin);
 			
@@ -78,7 +78,7 @@ public class Cliente {
 			
 			//System.out.println(regPass.insert(AlliePasport));
 			
-			System.out.println(regPass.select("AX400"));
+			//System.out.println(regPass.select("AX400"));
 			
 			//System.out.println(regPass.Update(AlliePasporte));
 			
@@ -104,7 +104,7 @@ public class Cliente {
 			
 			Pasaporte SalomePasport = new Pasaporte ("A2004",EstadosUnidos,"25/08/25", "25/08/35",SalomeDorado,Washington );
 			
-			System.out.println(regPass.select(SalomePasport.getNumeroId()));
+			//System.out.println(regPass.select(SalomePasport.getNumeroId()));
 			
 			//System.out.println(regPass.selectAll());
 			
@@ -116,7 +116,7 @@ public class Cliente {
 			
 			Visa v2 = new Visa ("VI001", EstadosUnidos,"28/08/2025","28/08/2035",AlliePasport);
 			
-			System.out.println(regVis.Update(v2));
+			//System.out.println(regVis.Update(v2));
 			
 			Visa v3 = new Visa ("VI002", EstadosUnidos,"28/08/2025","28/08/2035",SalomePasport);
 			
@@ -132,9 +132,6 @@ public class Cliente {
 			
 			ArrayList <Ciudad> ciudades1 = new ArrayList <Ciudad>();
 			
-			Ciudad Rio = new Ciudad ("123", "Rio", false );
-			
-			Pais Brasil = new Pais ("5","Brasil","espaniol", ciudades);
 			
 			Titular Cristina = new Titular ("107678654","14/07/2001", "Cristina dorado");
 			
@@ -146,6 +143,7 @@ public class Cliente {
 			
 			
 			System.out.println(regPass.selectIdFiltered("A"));
+			
 			
 	    }catch(SQLException e) {
 	    	
