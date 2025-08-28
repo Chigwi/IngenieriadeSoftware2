@@ -145,25 +145,20 @@ public class PasaporteDao implements Dao <Pasaporte>{
 		
 	}
 	
-	public List<Pasaporte> selectIdFiltered(Pasaporte Pasaporte, String condicion){
-		List <Pasaporte> pasaportes = new ArrayList<Pasaporte>();
-		String sql = "SELECT * FROM \"Pasaporte\" WHERE \"numeroId\" LIKE ?";
-		try (PreparedStatement stmt = connection.prepareStatement(sql)){
-			
-			stmt.setString(1, "%" + condicion + "%");
-			
-            ResultSet rs = stmt.executeQuery(sql); {
-            while (rs.next()) {
-               pasaportes.add(mapRStuPasaporte(rs));
-            }
-       }
-       return pasaportes;
-     
-	}catch (SQLException e) {
-		System.out.println("Error de lectura " + e.getMessage());
-   }
-   return null;
-		
+	public List<Pasaporte> selectIdFiltered(Pasaporte pasaporte, String condicion) {
+	    List<Pasaporte> pasaportes = new ArrayList<>();
+	    String sql = "SELECT * FROM \"Pasaporte\" WHERE \"numeroId\" LIKE ?";
+	    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+	        stmt.setString(1, "%" + condicion + "%");
+	        ResultSet rs = stmt.executeQuery();
+	        while (rs.next()) {
+	            pasaportes.add(mapRStuPasaporte(rs));
+	        }
+	        return pasaportes;
+	    } catch (SQLException e) {
+	        System.out.println("Error de lectura " + e.getMessage());
+	    }
+	    return null;
 	}
 	
 	private Pasaporte mapRStuPasaporte(ResultSet rs) throws SQLException{
