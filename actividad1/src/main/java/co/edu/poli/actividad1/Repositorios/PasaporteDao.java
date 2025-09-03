@@ -20,7 +20,7 @@ public class PasaporteDao implements Dao <Pasaporte>{
 	public Connection getConnection() {
 		return connection;
 	}
-
+	//sapopinga
 
 	public void setConnection(Connection connection) {
 		this.connection = connection;
