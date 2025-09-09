@@ -2,6 +2,8 @@ package co.edu.poli.actividad1.Controlador;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -56,21 +58,41 @@ public class ControlPantallaPasaporte {
 
     @FXML
     void DeletePasaporte(ActionEvent event) {
+    	
+    	
+    	Alert a = new Alert (AlertType.INFORMATION);
+    	a.setContentText("alerta pendiente");
+    	a.show();
 
     }
 
     @FXML
     void actualizarPasaporte(ActionEvent event) {
+    
+    	
+    	Alert a = new Alert (AlertType.INFORMATION);
+    	a.setContentText("alerta pendiente");
+    	a.show();
 
     }
 
     @FXML
     void insertarPasaporte(ActionEvent event) {
+    	
+    	Alert a = new Alert (AlertType.INFORMATION);
+    	a.setContentText("alerta pendiente");
+    	a.show();
+
 
     }
 
     @FXML
     void selectPasaporte(ActionEvent event) {
+    	
+    	Alert a = new Alert (AlertType.INFORMATION);
+    	a.setContentText("alerta pendiente");
+    	a.show();
+
 
     }
 
