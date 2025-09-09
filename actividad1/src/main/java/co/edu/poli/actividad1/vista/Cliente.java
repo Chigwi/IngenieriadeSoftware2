@@ -51,10 +51,6 @@ public class Cliente {
 			regVis.setConnection(conn);
 			
 			
-		
-
-			
-			
 			
 			//paises
 			Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
