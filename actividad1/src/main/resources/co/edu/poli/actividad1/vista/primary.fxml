@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.actividad1.Controlador.ContrladorPantallaPasaporte">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.actividad1.Controlador.ControlPantallaPasaporte">
    <children>
       <ComboBox fx:id="selectPais" layoutX="49.0" layoutY="113.0" prefHeight="25.0" prefWidth="173.0" promptText="Pais" />
       <ComboBox fx:id="selectCiudad" layoutX="269.0" layoutY="113.0" prefHeight="25.0" prefWidth="173.0" promptText="Ciudad" />
