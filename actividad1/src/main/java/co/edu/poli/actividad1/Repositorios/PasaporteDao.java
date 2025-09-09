@@ -79,8 +79,6 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		return "";
 	}
 	
-	
-
 	@Override
 	public Pasaporte select(String id) {
 		
@@ -113,12 +111,20 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 
 	@Override
 	public List<Pasaporte> selectAll(){
+		
 		List<Pasaporte> pasaportes = new ArrayList<>();
+		
         String sql = "SELECT * FROM \"Pasaporte\"";
+        
         try (Statement stmt = connection.createStatement()){
+        	
              ResultSet rs = stmt.executeQuery(sql); {
+            	 
              while (rs.next()) {
-                pasaportes.add(mapRStuPasaporte(rs));
+            	 Pasaporte p = mapRsTuPasaporte(rs);
+            	 if(p!=null) {
+            		 pasaportes.add(p);
+            	 }
              }
         }
         return pasaportes;
@@ -228,15 +234,19 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	        stmt.setString(1, "%" + condicion + "%");
 	        ResultSet rs = stmt.executeQuery();
 	        while (rs.next()) {
-	            pasaportes.add(mapRStuPasaporte(rs));
+	        	Pasaporte p = mapRsTuPasaporte(rs);
+	        	if(p!=null) {
+	        		pasaportes.add(p);
+	        	}
+	            
 	        }
 	        return pasaportes;
 	    } catch (SQLException e) {
 	        System.out.println("Error de lectura " + e.getMessage());
 	    }
-	    return null;
+	    return pasaportes;
 	}
-	
+	//busca si el pasaporte es ordinario o diplomatico
 	private boolean existsInTable (String tableName, String id) throws SQLException {
 		
 		String sql = "SELECT 1 FROM \"" + tableName + "\" WHERE \"numeroId\" = ?";
@@ -248,7 +258,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			return rs.next();
 		}
 	}
-	
+	//mapea rs a un pasaporte ordinario
 	private POrdinario mapRStuPasaporteO(ResultSet rs) throws SQLException{
 		
 		TitularDao regtit = new TitularDao();
@@ -272,15 +282,25 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     		
     	selectPais.setCiudades(c);
     	
-    	String sql = "\"SELECT * FROM \\\"POrdinario\\\" WHERE \\\"numeroId\\\" = ?\"";
+    	String sql = "\"SELECT * FROM \"POrdinario\" WHERE \"numeroId\" = ?\"";
     	try (PreparedStatement pstmt = connection.prepareStatement(sql)){
-    		pstmt.setString(1, rs.getString("numeroID"));
-    		ResultSet rs1 = pstmt.executeQuery();
+    		pstmt.setString(1, rs.getString("numeroId"));
     		
-    		return new POrdinario(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("razonViaje"));
+    		try(ResultSet rs1 = pstmt.executeQuery()){
+    			if(rs1.next()) {
+    				return new POrdinario(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"),
+    				rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("razonViaje"));
+    			}
+    			else {
+    				return null;
+    			}
+    		}
+    		
+    		
     	}
     	
 	}
+	//mapea rs a un pasaporte diplomatico
 	private PDiplomatico mapRStuPasaporteD(ResultSet rs) throws SQLException{
 		
 		TitularDao regtit = new TitularDao();
@@ -304,14 +324,38 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     		
     	selectPais.setCiudades(c);
     	
-    	String sql = "\"SELECT * FROM \"PDiplomatico\" WHERE \\\"numeroId\\\" = ?\"";
+    	String sql = "\"SELECT * FROM \"PDiplomatico\" WHERE \"numeroId\" = ?\"";
     	try (PreparedStatement pstmt = connection.prepareStatement(sql)){
-    		pstmt.setString(1, rs.getString("numeroID"));
-    		ResultSet rs1 = pstmt.executeQuery();
+    		pstmt.setString(1, rs.getString("numeroId"));
+    		try(ResultSet rs1 = pstmt.executeQuery()){
+    			if(rs1.next()) {
+    	    		return new PDiplomatico(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), 
+    	    		rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("misionDiplomatica"));
+    			}
+    			else {
+    				return null;
+    			}
+    		}
     		
-    		return new PDiplomatico(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("misionDiplomatica"));
     	}
 		
 	}
+	//junta los metodos de mapeo y retorna el objeto correcto
+	private Pasaporte mapRsTuPasaporte(ResultSet rs) throws SQLException{
+		
+		String numeroId = rs.getString("numeroId");
+		
+		if(existsInTable("POrdinario", numeroId)) {
+			return mapRStuPasaporteO(rs);
+		}
+		else if(existsInTable("PDiplomatico", numeroId)) {
+			return mapRStuPasaporteD(rs);
+		}
+		else {
+			System.out.println("tipo no valido de pasaporte");
+			return null;
+		}
+	}
+	
 	
 }
