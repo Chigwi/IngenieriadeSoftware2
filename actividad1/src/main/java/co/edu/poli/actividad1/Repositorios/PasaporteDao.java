@@ -31,6 +31,8 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	@Override
 	public String insert(Pasaporte t){
 		String sql = "INSERT INTO \"Pasaporte\" (\"numeroId\", \"paisEmisor\", \"fechaEmision\", \"fechaExpiracion\", titular, \"ciudadEmision\") VALUES (?, ?, ?, ?, ?, ?)";
+		String sql1 = "INSERT INTO \"POrdinario\"(\"numeroId\",\"razonViaje\")VALUES (?, ?)";
+		String sql2 = "INSERT INTO \"PDiplomatico\"(\"numeroId\",\"misionDiplomatica\")VALUES (?, ?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, t.getNumeroId());
 			
