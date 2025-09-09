@@ -183,7 +183,9 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	selectPais.setCiudades(c);
     	
-    	Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
-    	return p;
+    	//Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
+    	
+    	//arreglar despues de haber cambiado el crud por las herencias
+    	return null;
 	}
 }
