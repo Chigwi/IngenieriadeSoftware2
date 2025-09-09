@@ -94,9 +94,9 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			 
 	            if (rs.next()) {
 	            	
-	            	Pasaporte p = mapRStuPasaporte(rs);
+	            	//Pasaporte p = mapRStuPasaporte(rs);
 	            	
-	            	return p;
+	            	//return p;
 	            }
 		}catch( SQLException e) {
 			System.out.println("Error de lectura " + e.getMessage());
@@ -230,7 +230,14 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	    return null;
 	}
 	
-	private Pasaporte mapRStuPasaporte(ResultSet rs) throws SQLException{
+	private boolean existsInTable (String tableName, String id) {
+		
+		
+		return true;
+	}
+	
+	private POrdinario mapRStuPasaporteO(ResultSet rs) throws SQLException{
+		
 		TitularDao regtit = new TitularDao();
 		regtit.setConnection(connection);
 		
@@ -244,17 +251,54 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		
     	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
     	
+    	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
+    	
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
     	c.add(selectCiudad);
+    		
+    	selectPais.setCiudades(c);
+    	
+    	String sql = "\"SELECT * FROM \\\"POrdinario\\\" WHERE \\\"numeroId\\\" = ?\"";
+    	try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+    		pstmt.setString(1, rs.getString("numeroID"));
+    		ResultSet rs1 = pstmt.executeQuery();
+    		
+    		return new POrdinario(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("razonViaje"));
+    	}
+    	
+	}
+	private PDiplomatico mapRStuPasaporteD(ResultSet rs) throws SQLException{
+		
+		TitularDao regtit = new TitularDao();
+		regtit.setConnection(connection);
+		
+		CiudadDao regCiu = new CiudadDao();
+		regCiu.setConnection(connection);
+		
+		PaisDao regPais = new PaisDao();
+		regPais.setConnection(connection);
+		
+		Titular selectTitular = regtit.select(rs.getString("Titular"));
+		
+    	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
+    	List <Ciudad> c = new ArrayList<Ciudad>();
+    	
+    	c.add(selectCiudad);
+    		
     	selectPais.setCiudades(c);
     	
-    	//Pasaporte p = new Pasaporte (rs.getString("numeroId"),selectPais,rs.getString("fechaEmision"),rs.getString("fechaExpiracion"),selectTitular,selectCiudad);
-    	
-    	//arreglar despues de haber cambiado el crud por las herencias
-    	return null;
+    	String sql = "\"SELECT * FROM \"PDiplomatico\" WHERE \\\"numeroId\\\" = ?\"";
+    	try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+    		pstmt.setString(1, rs.getString("numeroID"));
+    		ResultSet rs1 = pstmt.executeQuery();
+    		
+    		return new PDiplomatico(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("misionDiplomatica"));
+    	}
+		
 	}
+	
 }
