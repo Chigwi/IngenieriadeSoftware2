@@ -68,9 +68,9 @@ public class Cliente {
 			Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
 			//System.out.println(regtit.select(Allyson.getIdentificacion()));
 			
-			Pasaporte AlliePasport = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, medellin);
+			//Pasaporte AlliePasport = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, medellin);
 			
-			Pasaporte AlliePasporte = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2045", Allyson, medellin);
+			//Pasaporte AlliePasporte = new Pasaporte ("AX400", colombia, "14/08/2025", "14/08/2045", Allyson, medellin);
 			
 			//regPass.Delete(AlliePasport);
 			
@@ -112,29 +112,29 @@ public class Cliente {
 			
 			//System.out.println(regtit.select(SalomeDorado.getIdentificacion()));
 			
-			Pasaporte SalomePasport = new Pasaporte ("A2004",EstadosUnidos,"25/08/25", "25/08/35",SalomeDorado,Washington );
+			//Pasaporte SalomePasport = new Pasaporte ("A2004",EstadosUnidos,"25/08/25", "25/08/35",SalomeDorado,Washington );
 			
 			//System.out.println(regPass.select(SalomePasport.getNumeroId()));
 			
 			//System.out.println(regPass.selectAll());
 			
-			Visa v1 = new Visa ("VI001", EstadosUnidos,"28/08/2025","28/11/2025",AlliePasport);
+			//Visa v1 = new Visa ("VI001", EstadosUnidos,"28/08/2025","28/11/2025",AlliePasport);
 			
 			//System.out.println(regVis.insert(v1));
 			
 			//System.out.println(regVis.select(v1.getIdVisa()));
 			
-			Visa v2 = new Visa ("VI001", EstadosUnidos,"28/08/2025","28/08/2035",AlliePasport);
+			//Visa v2 = new Visa ("VI001", EstadosUnidos,"28/08/2025","28/08/2035",AlliePasport);
 			
 			//System.out.println(regVis.Update(v2));
 			
-			Visa v3 = new Visa ("VI002", EstadosUnidos,"28/08/2025","28/08/2035",SalomePasport);
+			//Visa v3 = new Visa ("VI002", EstadosUnidos,"28/08/2025","28/08/2035",SalomePasport);
 			
 			//System.out.println(regVis.insert(v3));
 			
 			//System.out.println(regVis.selectAll());
 			
-			Visa v4 = new Visa ("VI003", EstadosUnidos,"28/08/2025","28/08/2035",SalomePasport);
+			//Visa v4 = new Visa ("VI003", EstadosUnidos,"28/08/2025","28/08/2035",SalomePasport);
 			
 			//System.out.println(regVis.insert(v4));
 			
@@ -145,11 +145,11 @@ public class Cliente {
 			
 			Titular Cristina = new Titular ("107678654","14/07/2001", "Cristina dorado");
 			
-			Pasaporte CrisPasaport = new Pasaporte ("SD1500", EstadosUnidos, "14/07/2024", "14/07/2045", Cristina, Washington);
+			//Pasaporte CrisPasaport = new Pasaporte ("SD1500", EstadosUnidos, "14/07/2024", "14/07/2045", Cristina, Washington);
 			
 			Titular Sam = new Titular ("10105413","10/20/2005", "Samuel Arce");
 			
-			Pasaporte SamPasaport = new Pasaporte ("AX1500", EstadosUnidos, "14/07/2024", "14/07/2045", Sam, Washington);
+			//Pasaporte SamPasaport = new Pasaporte ("AX1500", EstadosUnidos, "14/07/2024", "14/07/2045", Sam, Washington);
 			
 			
 			//System.out.println(regPass.selectIdFiltered("A"));

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Pasaporte {
+public abstract class Pasaporte {
 
   
 
