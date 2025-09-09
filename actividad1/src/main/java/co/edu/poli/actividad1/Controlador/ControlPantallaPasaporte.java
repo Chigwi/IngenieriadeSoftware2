@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.Pais;
+import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Modelo.Titular;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -203,13 +204,13 @@ public class ControlPantallaPasaporte implements Initializable {
     @FXML
     void DeletePasaporte(ActionEvent event) {
     	
-    	inIdPasaporte.setDisable(true);
-    	inIdPasaporte.setVisible(false);
+    	inIdPasaporte.setDisable(false);
+    	inIdPasaporte.setVisible(true);
     	
-    	bttselect.setDisable(true);
-    	bttselect.setVisible(false);
+    	bttselect.setDisable(false);
+    	bttselect.setVisible(true);
     
-    	
+    	bttselect.setText("Eliminar");
     	
     	Alert a = new Alert (AlertType.INFORMATION);
     	a.setContentText("alerta pendiente");
@@ -223,8 +224,10 @@ public class ControlPantallaPasaporte implements Initializable {
     	inIdPasaporte.setDisable(false);
     	inIdPasaporte.setVisible(true);
     	
-    	bttselect.setDisable(true);
-    	bttselect.setVisible(false);
+    	bttselect.setDisable(false);
+    	bttselect.setVisible(true);
+    	
+    	bttselect.setText("Actualizar");
     
     	
     	Alert a = new Alert (AlertType.INFORMATION);
@@ -266,6 +269,8 @@ public class ControlPantallaPasaporte implements Initializable {
     	
     	bttselect.setDisable(false);
     	bttselect.setVisible(true);
+    	
+    	bttselect.setText("Buscar");
     }
 
     @FXML
@@ -281,7 +286,22 @@ public class ControlPantallaPasaporte implements Initializable {
     	inExtra.setPromptText("ingrese mision de viaje");
 
     }
-
-
+    
+    private String idGen() {
+    	
+    	return "";
+    }
+    
+    private Pasaporte read(String id) {
+    	return null;
+    }
+    
+    private String update(String id, Pasaporte p) {
+    	return null;
+    }
+    
+    private String delete (String id) {
+    	return null;
+    }
 
 }
