@@ -16,7 +16,7 @@
       <ComboBox fx:id="selectCiudad" layoutX="269.0" layoutY="113.0" prefHeight="25.0" prefWidth="173.0" promptText="Ciudad" />
       <ComboBox fx:id="selectUsuarios" layoutX="478.0" layoutY="113.0" prefHeight="25.0" prefWidth="173.0" promptText="Usuarios Registrados" />
       <DatePicker fx:id="selectFecha" layoutX="470.0" layoutY="35.0" promptText="fechaEmision" />
-      <TextArea fx:id="inExtra" layoutX="177.0" layoutY="177.0" prefHeight="107.0" prefWidth="334.0" />
+      <TextArea fx:id="inExtra" layoutX="177.0" layoutY="177.0" prefHeight="107.0" prefWidth="334.0" promptText="seleccione tipo de pasaporte" />
       <Button fx:id="bttShow" layoutX="66.0" layoutY="337.0" mnemonicParsing="false" onAction="#showSelect" text="leer" />
       <Button fx:id="bttselect" disable="true" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" onAction="#selectPasaporte" text="buscar" visible="false" />
       <Button fx:id="bttactualizar" layoutX="426.0" layoutY="337.0" mnemonicParsing="false" onAction="#actualizarPasaporte" text="actualizar" />

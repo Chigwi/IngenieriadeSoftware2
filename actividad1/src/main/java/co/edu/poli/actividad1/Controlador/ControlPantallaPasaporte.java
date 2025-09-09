@@ -126,11 +126,15 @@ public class ControlPantallaPasaporte {
 
     @FXML
     void textDiplomatico(ActionEvent event) {
+    	
+    	inExtra.setPromptText("ingrese mision diplomatica");
 
     }
 
     @FXML
     void textOrdinario(ActionEvent event) {
+    	
+    	inExtra.setPromptText("ingrese mision de viaje");
 
     }
 
