@@ -17,7 +17,7 @@ public class App extends Application {
 
     private static Scene scene;
     
-    
+    //holi
     @Override
     public void start(Stage stage) throws IOException {
     	AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/co/edu/poli/actividad1/vista/primary.fxml"));
