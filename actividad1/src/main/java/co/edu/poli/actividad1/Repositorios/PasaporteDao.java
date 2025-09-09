@@ -93,6 +93,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			 ResultSet rs = pstmt.executeQuery();
 			 
 	            if (rs.next()) {
+	            	
 	            	Pasaporte p = mapRStuPasaporte(rs);
 	            	
 	            	return p;
@@ -123,6 +124,10 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	@Override
 	public String Update(Pasaporte t) {
 		String sql = "UPDATE \"Pasaporte\" SET \"paisEmisor\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, \"titular\" = ?, \"ciudadEmision\" = ? WHERE \"numeroId\" = ?";
+		
+		String sql1 = "UPDATE \"POrdinario\" SET \"razonViaje\" = ? WHERE \"numeroId\" = ? ";
+		
+		String sql2 = "UPDATE \"PDiplomatico\" SET \"misionDiplomatica\" = ? WHERE \"numeroId\" = ? ";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
 			pstmt.setString(1, t.getPaisEmisor().getIdPais());
 			
@@ -137,6 +142,25 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			pstmt.setString(6, t.getNumeroId());
 			
 			pstmt.executeUpdate();
+			
+			if(t instanceof POrdinario) {
+				POrdinario p = (POrdinario) t;
+				try(PreparedStatement pstmt1 = connection.prepareStatement(sql1)){
+					pstmt1.setString(1, p.getRazonViaje() );
+					pstmt1.setString(2, p.getNumeroId());
+				}
+				
+			}
+			else if(t instanceof PDiplomatico) {
+				PDiplomatico p = (PDiplomatico) t;
+				try(PreparedStatement pstmt2 = connection.prepareStatement(sql2)){
+					pstmt2.setString(1, p.getMisionDiplomatica());
+					pstmt2.setString(2, p.getNumeroId());
+				}
+			}
+			else {
+				return "Tipo de pasaporte desconocido";
+			}
 			
 			return "Actualizacion exitosa!";
 			
