@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.PDiplomatico;
+import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Modelo.Titular;
@@ -48,6 +50,24 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			
 			pstmt.executeUpdate();
 			
+			if(t instanceof POrdinario) {
+				POrdinario p = (POrdinario) t;
+				try(PreparedStatement pstmt1 = connection.prepareStatement(sql1)){
+					pstmt1.setString(1, p.getNumeroId());
+					pstmt1.setString(2, p.getRazonViaje());
+				}
+				
+			}
+			else if(t instanceof PDiplomatico) {
+				PDiplomatico p = (PDiplomatico) t;
+				try(PreparedStatement pstmt2 = connection.prepareStatement(sql2)){
+					pstmt2.setString(1, p.getNumeroId());
+					pstmt2.setString(2, p.getMisionDiplomatica());
+				}
+			}
+			else {
+				return "Tipo de pasaporte desconocido";
+			}
 			return "Insercion exitosa!";
 			
 		}catch(SQLException e) {
