@@ -175,10 +175,33 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 
 	@Override
 	public String Delete(Pasaporte t) {
+		
 		String sql = "DELETE FROM \"Pasaporte\" WHERE \"numeroId\" = ?" ;
+		
+		String sql1 = "DELETE FROM \"POrdinario\" WHERE \"numeroId\" = ? ";
+		
+		String sql2 = "DELETE FROM \"PDiplomatico\" WHERE \"numeroId\" = ? ";
+		
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, t.getNumeroId());
             pstmt.executeUpdate();
+            
+            if(t instanceof POrdinario) {
+				POrdinario p = (POrdinario) t;
+				try(PreparedStatement pstmt1 = connection.prepareStatement(sql1)){
+					pstmt1.setString(1, p.getNumeroId());
+				}
+				
+			}
+			else if(t instanceof PDiplomatico) {
+				PDiplomatico p = (PDiplomatico) t;
+				try(PreparedStatement pstmt2 = connection.prepareStatement(sql2)){
+					pstmt2.setString(1, p.getNumeroId());
+				}
+			}
+			else {
+				return "Tipo de pasaporte desconocido";
+			}
             
             return "eliminacion exitosa";
         }catch(SQLException e) {
