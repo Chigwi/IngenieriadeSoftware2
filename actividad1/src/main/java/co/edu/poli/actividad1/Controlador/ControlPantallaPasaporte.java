@@ -1,12 +1,21 @@
 package co.edu.poli.actividad1.Controlador;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Observable;
+import java.util.ResourceBundle;
+
+
 
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -17,8 +26,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class ControlPantallaPasaporte {
+public class ControlPantallaPasaporte implements Initializable {
 	
+	private ArrayList <Pais> totiPais = new ArrayList<Pais>();
 	private ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
 	private ArrayList <Ciudad> ciudadesKorea = new ArrayList <Ciudad>();
 	private ArrayList <Ciudad> ciudadesMexico = new ArrayList <Ciudad>();
@@ -70,6 +80,7 @@ public class ControlPantallaPasaporte {
 	private Titular Cristina = new Titular ("107678654","14/07/2001", "Cristina dorado");
 	
 	private Titular Sam = new Titular ("10105413","10/20/2005", "Samuel Arce");
+	
 
     @FXML
     private Button bttInsertar;
@@ -99,20 +110,96 @@ public class ControlPantallaPasaporte {
     private RadioButton inOrdinario;
 
     @FXML
-    private ComboBox<?> selectCiudad;
+    private ComboBox<String> selectCiudad;
 
     @FXML
     private DatePicker selectFecha;
 
     @FXML
-    private ComboBox<?> selectPais;
+    private ComboBox<String> selectPais;
 
     @FXML
-    private ComboBox<?> selectUsuarios;
+    private ComboBox<String> selectUsuarios;
 
     @FXML
     private ToggleGroup tipoPasaporte;
 
+	//lista observable
+	private ObservableList<String> paises = FXCollections.observableArrayList();
+	
+	private ObservableList<String> ciudad = FXCollections.observableArrayList();
+	
+	private ObservableList<String> titulares = FXCollections.observableArrayList();
+	
+    
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		//llenar totiPais
+		totiPais.add(colombia);
+		totiPais.add(EstadosUnidos);
+		totiPais.add(KoreadelNorte);
+		totiPais.add(Mexico);
+		
+		//ciudades colombia
+		ciudades.add(Bogotá);
+		ciudades.add(medellin);
+		ciudades.add(Tunja);
+		//ciudades estados unidos
+		gringos.add(Washington);
+		gringos.add(Miami);
+		gringos.add(newYork);
+		//ciudades Mexico
+		ciudadesMexico.add(CiudadDeMexico);
+		ciudadesMexico.add(Monterrey);
+		ciudadesMexico.add(Cancun);
+		//ciudades korea
+		ciudadesKorea.add(Pionyang);
+		ciudadesKorea.add(Haeju);
+		ciudadesKorea.add(Sinuiju);
+		
+		//añadir paises
+		paises.add(colombia.getNombre());
+		paises.add(EstadosUnidos.getNombre());
+		paises.add(KoreadelNorte.getNombre());
+		paises.add(Mexico.getNombre());
+		
+		selectPais.setItems(paises);
+		
+		//añadir titulares
+		titulares.add(Allyson.getNombre());
+		titulares.add(Cristina.getNombre());
+		titulares.add(SalomeDorado.getNombre());
+		titulares.add(Sam.getNombre());
+		
+		selectUsuarios.setItems(titulares);
+		
+		selectCiudad.setDisable(true);
+		
+	}
+    
+    @FXML
+    void SelectCiudades(ActionEvent event) {
+    	
+    	if(ciudad.size()>0) {
+    		ciudad.clear();
+    	}
+
+    	String pais = selectPais.getSelectionModel().getSelectedItem();
+    	for (int i = 0; i < totiPais.size(); i++) {
+			if(totiPais.get(i).getNombre().equals(pais)) {
+				int toti = totiPais.get(i).getCiudades().size();
+				Pais p = totiPais.get(i);
+				for (int j = 0; j < toti ; j++) {
+					ciudad.add(p.getCiudades().get(j).getNombre());
+				}
+			}
+		}
+    	selectCiudad.setItems(ciudad);
+    	selectCiudad.setDisable(false);
+    	
+    
+    }
     @FXML
     void DeletePasaporte(ActionEvent event) {
     	
@@ -194,5 +281,7 @@ public class ControlPantallaPasaporte {
     	inExtra.setPromptText("ingrese mision de viaje");
 
     }
+
+
 
 }
