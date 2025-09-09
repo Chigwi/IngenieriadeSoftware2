@@ -94,9 +94,16 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			 
 	            if (rs.next()) {
 	            	
-	            	//Pasaporte p = mapRStuPasaporte(rs);
-	            	
-	            	//return p;
+	            	if(existsInTable("POrdinario", id)) {
+	            		
+	            		return mapRStuPasaporteO(rs);
+	            		
+	            	}
+	            	else if (existsInTable("PDiplomatico", id)) {
+	            		
+	            		return mapRStuPasaporteD(rs);
+	            		
+	            	}
 	            }
 		}catch( SQLException e) {
 			System.out.println("Error de lectura " + e.getMessage());
@@ -230,10 +237,16 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	    return null;
 	}
 	
-	private boolean existsInTable (String tableName, String id) {
+	private boolean existsInTable (String tableName, String id) throws SQLException {
 		
-		
-		return true;
+		String sql = "SELECT 1 FROM \"" + tableName + "\" WHERE \"numeroId\" = ?";
+		try(PreparedStatement pstmt = connection.prepareStatement(sql)){
+			pstmt.setString(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			return rs.next();
+		}
 	}
 	
 	private POrdinario mapRStuPasaporteO(ResultSet rs) throws SQLException{
