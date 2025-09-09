@@ -10,7 +10,7 @@ import co.edu.poli.actividad1.Modelo.Titular;
 
 import java.sql.*;
 
-public class PasaporteDao implements Dao <Pasaporte>{
+public class PasaporteDao implements DaoEx <Pasaporte>{
 
 	private Connection connection;
 	
