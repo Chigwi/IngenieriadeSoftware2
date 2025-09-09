@@ -59,6 +59,13 @@ public class ControlPantallaPasaporte {
     @FXML
     void DeletePasaporte(ActionEvent event) {
     	
+    	inIdPasaporte.setDisable(true);
+    	inIdPasaporte.setVisible(false);
+    	
+    	bttselect.setDisable(true);
+    	bttselect.setVisible(false);
+    
+    	
     	
     	Alert a = new Alert (AlertType.INFORMATION);
     	a.setContentText("alerta pendiente");
@@ -68,6 +75,12 @@ public class ControlPantallaPasaporte {
 
     @FXML
     void actualizarPasaporte(ActionEvent event) {
+    	
+    	inIdPasaporte.setDisable(false);
+    	inIdPasaporte.setVisible(true);
+    	
+    	bttselect.setDisable(true);
+    	bttselect.setVisible(false);
     
     	
     	Alert a = new Alert (AlertType.INFORMATION);
@@ -78,6 +91,12 @@ public class ControlPantallaPasaporte {
 
     @FXML
     void insertarPasaporte(ActionEvent event) {
+    	
+    	inIdPasaporte.setDisable(true);
+    	inIdPasaporte.setVisible(false);
+    	
+    	bttselect.setDisable(true);
+    	bttselect.setVisible(false);
     	
     	Alert a = new Alert (AlertType.INFORMATION);
     	a.setContentText("alerta pendiente");
@@ -98,7 +117,11 @@ public class ControlPantallaPasaporte {
 
     @FXML
     void showSelect(ActionEvent event) {
-
+    	inIdPasaporte.setDisable(false);
+    	inIdPasaporte.setVisible(true);
+    	
+    	bttselect.setDisable(false);
+    	bttselect.setVisible(true);
     }
 
     @FXML
