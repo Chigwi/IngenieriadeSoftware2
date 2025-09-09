@@ -1,4 +1,4 @@
-package co.edu.poli.actividad1.Repositorios;
+package co.edu.poli.actividad1.Servicios;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

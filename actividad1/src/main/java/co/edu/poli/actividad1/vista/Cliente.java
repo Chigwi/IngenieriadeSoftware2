@@ -5,11 +5,11 @@ import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Modelo.Visa;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Repositorios.CiudadDao;
-import co.edu.poli.actividad1.Repositorios.DatabaseConnection;
 import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Repositorios.VisaDao;
+import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
