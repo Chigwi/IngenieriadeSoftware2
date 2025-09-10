@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 
@@ -316,8 +317,22 @@ public class ControlPantallaPasaporte implements Initializable {
     }
     
     private String idGen() {
-    	
-    	return "";
+        Random g = new Random();
+        StringBuilder id = new StringBuilder();
+
+        // Generate 2 uppercase letters (A-Z)
+        for (int i = 0; i < 2; i++) {
+            char letter = (char) ('A' + g.nextInt(26));  // 'A' + 0..25
+            id.append(letter);
+        }
+
+        // Generate 4 digits (0-9)
+        for (int i = 0; i < 4; i++) {
+            char digit = (char) ('0' + g.nextInt(10));  // '0' + 0..9
+            id.append(digit);
+        }
+
+        return id.toString();
     }
     
     private void read(String id) {
