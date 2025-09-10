@@ -199,6 +199,8 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	@Override
 	public String Delete(String id) {
 		
+		Pasaporte t = select(id);
+		
 		String sql = "DELETE FROM \"Pasaporte\" WHERE \"numeroId\" = ?" ;
 		
 		String sql1 = "DELETE FROM \"POrdinario\" WHERE \"numeroId\" = ? ";
@@ -207,21 +209,25 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, id);
-            pstmt.executeUpdate();
             
-            Pasaporte t = select(id);
             
-            if(t instanceof POrdinario) {
+            Pasaporte b = select(id);
+            
+            if(b instanceof POrdinario) {
 				POrdinario p = (POrdinario) t;
 				try(PreparedStatement pstmt1 = connection.prepareStatement(sql1)){
 					pstmt1.setString(1, p.getNumeroId());
+					pstmt1.executeUpdate();
+					pstmt.executeUpdate();
 				}
 				
 			}
-			else if(t instanceof PDiplomatico) {
+			else if(b instanceof PDiplomatico) {
 				PDiplomatico p = (PDiplomatico) t;
 				try(PreparedStatement pstmt2 = connection.prepareStatement(sql2)){
 					pstmt2.setString(1, p.getNumeroId());
+					pstmt2.executeUpdate();
+					pstmt.executeUpdate();
 				}
 			}
 			else {
