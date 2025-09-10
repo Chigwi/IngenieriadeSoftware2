@@ -20,10 +20,10 @@ public class POrdinario extends Pasaporte {
 
 	@Override
 	public String toString() {
-		return "POrdinario [razonViaje=" + razonViaje + ", getNumeroId()=" + getNumeroId() + ", getPaisEmisor()="
-				+ getPaisEmisor() + ", getFechaEmision()=" + getFechaEmision() + ", getFechaExpiracion()="
-				+ getFechaExpiracion() + ", getTitular()=" + getTitular() + ", getCiudadEmision()=" + getCiudadEmision()
-				+ "]";
+		return "POrdinario [razonViaje=" + razonViaje + "\n" + ", NumeroId=" + getNumeroId()+ "\n"
+				+ ", PaisEmisor=" + getPaisEmisor().getNombre()+ "\n" + ", FechaEmision=" + getFechaEmision()+ "\n"
+				+ ", FechaExpiracion=" + getFechaExpiracion()+ "\n" + ", Titular=" + getTitular().getNombre()+ "\n"
+				+ ", CiudadEmision=" + getCiudadEmision().getNombre() + "]";
 	}
 	
 	

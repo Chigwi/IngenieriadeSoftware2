@@ -100,8 +100,8 @@ public abstract class Pasaporte {
 
 	@Override
 	public String toString() {
-		return "Pasaporte [numeroId=" + numeroId + ", paisEmisor=" + paisEmisor + ", fechaEmision=" + fechaEmision
-				+ ", fechaExpiracion=" + fechaExpiracion + ", titular=" + titular + ", ciudadEmision=" + ciudadEmision
+		return "Pasaporte [numeroId=" + numeroId +"\n" + ", paisEmisor=" + paisEmisor.getNombre() + "\n" + ", fechaEmision=" + fechaEmision + "\n"
+				+ ", fechaExpiracion=" + fechaExpiracion + "\n"+ ", titular=" + titular + "\n" + ", ciudadEmision=" + ciudadEmision.getNombre()
 				+ "]";
 	}
     

@@ -20,10 +20,10 @@ public class PDiplomatico extends Pasaporte{
 
 	@Override
 	public String toString() {
-		return "PDiplomatico [misionDiplomatica=" + misionDiplomatica + ", getNumeroId()=" + getNumeroId()
-				+ ", getPaisEmisor()=" + getPaisEmisor() + ", getFechaEmision()=" + getFechaEmision()
-				+ ", getFechaExpiracion()=" + getFechaExpiracion() + ", getTitular()=" + getTitular()
-				+ ", getCiudadEmision()=" + getCiudadEmision() + "]";
+		return "PDiplomatico [misionDiplomatica=" + misionDiplomatica + "\n" + ", NumeroId=" + getNumeroId()+ "\n"
+				+ ", PaisEmisor=" + getPaisEmisor().getNombre()+ "\n" + ", FechaEmision=" + getFechaEmision()+ "\n"
+				+ ", FechaExpiracion=" + getFechaExpiracion()+ "\n" + ", Titular=" + getTitular().getNombre()+ "\n"
+				+ ", CiudadEmision=" + getCiudadEmision().getNombre() + "]";
 	}
 
 	
