@@ -135,8 +135,7 @@
     -fx-cursor: hand;
     
 }
-.
-combo-box .list-cell {
+.combo-box .list-cell {
     -fx-text-fill: #5a7d9e; /* Color del texto */
     -fx-font-size: 14px;
     -fx-padding: 5px;
