@@ -1,0 +1,277 @@
+/* Root container styling */
+.root {
+    -fx-background-color: linear-gradient(to bottom,#c48dd9, #8d60a3 );
+    -fx-font-family: "Helvetica", Arial, sans-serif;
+}
+
+/* Styling for labels */
+.label {
+    -fx-text-fill: #ffffff; /* Slightly lighter navy blue text */
+    -fx-font-size: 16px; /* Slightly larger font */
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0.5, 0, 1); /* Subtle shadow */
+}
+
+/* Styling for text fields */
+.text-field, .password-field {
+    -fx-background-color: #ffffff; /* White background for better contrast */
+    -fx-border-color: #5a7d9e; /* Lighter navy border */
+    -fx-border-radius: 10px; /* Rounded corners */
+    -fx-background-radius: 10px;
+    -fx-padding: 7px;
+    -fx-font-size: 14px; /* Larger font for readability */
+    -fx-font-family: "Helvetica", Arial, sans-serif; /* Updated font family */
+    -fx-text-fill: #3a3a4e; /* Lighter dark gray text */
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: linear-gradient(to right, #5a7d9e, #325a7c); /* Gradient lighter navy border on focus */
+    -fx-background-color: #f4f4f4; /* Subtle light background on focus */
+}
+
+/* Styling for buttons */
+.button {
+    -fx-background-color: #6a4c93; /* Original purple button */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 12px;
+    -fx-font-family: "Helvetica", Arial, sans-serif; /* Updated font family */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-padding: 1px 2px;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 5, 0.5, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #82489b; /* Slightly lighter purple on hover */
+}
+
+.button:pressed {
+    -fx-background-color: #583c6e; /* Darker purple when pressed */
+}
+.radio-button{
+	-fx-background-color: #6a4c93; /* Original purple button */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 10px;
+    -fx-font-family: "Helvetica", Arial, sans-serif; /* Updated font family */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-padding: 1px 2px;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 5, 0.5, 0, 2);
+}
+
+/* Checkbox styling */
+.check-box {
+    -fx-text-fill: #325a7c; /* Lighter dark gray text for checkbox */
+    -fx-font-size: 14px;
+    -fx-font-family: "Helvetica", Arial, sans-serif; /* Updated font family */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-cursor: hand;
+}
+
+.check-box .box {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #6a4c93; /* Same purple as buttons */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 3px;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #6a4c93; /* Same purple as buttons */
+    -fx-border-color: #6a4c93; /* Same purple border when checked */
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #ffffff; /* White checkmark */
+}
+
+.check-box .box:hover {
+    -fx-border-color: #82489b; /* Same hover purple as buttons */
+}
+
+/* Styling for error messages or prompts */
+.error-label {
+    -fx-text-fill: #d9534f; /* Softer brick red text for errors */
+    -fx-font-size: 14px; /* Larger font size */
+    -fx-font-family: "Helvetica", Arial, sans-serif; /* Updated font family */
+    -fx-font-style: italic;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0, 1);
+}
+
+/* Header text */
+.header {
+    -fx-text-fill: #325a7c; /* Slightly lighter navy blue text */
+    -fx-font-size: 28px; /* Larger size for header */
+    -fx-font-family: "Helvetica", Arial, sans-serif; /* Updated font family */
+    -fx-font-weight: bold;
+    -fx-padding: 15px 0;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.7, 0, 2);
+}
+
+/* Styling for VBox */
+.vbox {
+    -fx-background-color: linear-gradient(to bottom, #f4f4f8, #e6e6f0) !important;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-border-color: #5a7d9e;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.combo-box{
+	-fx-background-color: linear-gradient(to bottom, #f4f4f8, #e6e6f0) !important;
+    -fx-padding: 5px;
+    -fx-spacing: 1px;
+    -fx-border-color: #5a7d9e;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+.date-picker{
+	-fx-background-color: linear-gradient(to bottom, #f4f4f8, #e6e6f0) !important;
+    -fx-padding: 5px;
+    -fx-spacing: 1px;
+    -fx-border-color: #5a7d9e;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+/* Buttons inside VBox */
+.vbox .button {
+    -fx-background-color: #6a4c93;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 5, 0.5, 0, 2);
+}
+
+.vbox .button:hover {
+    -fx-background-color: #82489b;
+}
+
+.vbox .button:pressed {
+    -fx-background-color: #583c6e;
+}
+/* Styling for TableView */
+.table-view {
+    -fx-background-color: linear-gradient(to bottom, #f4f4f8, #e6e6f0);
+    -fx-border-color: #5a7d9e;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+}
+
+/* Table Header */
+.table-view .column-header {
+    -fx-background-color: linear-gradient(to bottom, #4a6b8a, #2d4963); /* Darker blue */
+    -fx-border-color: #3a3a4e;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff !important; /* Bright white for better contrast */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 3, 0.5, 0, 1); /* Shadow for legibility */
+}
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff !important; /* Force white text */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 3, 0.5, 0, 1);
+}
+
+
+
+/* Table Rows */
+.table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d3d3e6;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #3a3a4e;
+}
+
+/* Alternating Row Colors */
+.table-row-cell:odd {
+    -fx-background-color: #ececf5;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #6a4c93;
+    -fx-text-fill: white;
+}
+
+/* Table Scrollbar */
+.table-view .scroll-bar {
+    -fx-background-color: #e6e6f0;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: #5a7d9e;
+    -fx-background-radius: 5px;
+}
+
+.table-view .scroll-bar .thumb:hover {
+    -fx-background-color: #325a7c;
+}
+/* 🔹 Title Label (Main Header) */
+#title {
+    -fx-text-fill: #ffffff; /* Bright white for contrast */
+    -fx-font-size: 24px; /* Larger size for emphasis */
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 4, 0.7, 0, 2);
+}
+
+/* 🔹 Grid Labels (Left Side) */
+#user, #favorites, #avoideds, #saveds, #outDives, #outWikis,#outProgDive,#outProgWiki {
+    -fx-text-fill: #f0f0f0; /* Soft white */
+    -fx-font-size: 15px; /* Medium-large text */
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 3, 0.6, 0, 1);
+}
+
+/* 🔹 Grid Values (Right Side) */
+#outUser, #outFavs, #outAvs, #outSaves {
+    -fx-text-fill: #6a4c93; /* Same purple as buttons */
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* 🔹 Progress Bar Labels */
+#outDives, #outWikis {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* 🔹 Add Consistency with TableView */
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff; /* Ensure readable headers */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+/* 🔹 TextArea Styling */
+#outDatos {
+    -fx-background-color: #ffffff; /* White background for contrast */
+    -fx-border-color: #5a7d9e; /* Match TableView border */
+    -fx-border-radius: 10px; /* Rounded corners */
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-font-size: 14px; /* Readable text */
+    -fx-font-family: "Helvetica", Arial, sans-serif;
+    -fx-text-fill: #3a3a4e; /* Darker text for readability */
+}
+
+/* 🔹 TextArea on Focus */
+#outDatos:focused {
+    -fx-border-color: linear-gradient(to right, #5a7d9e, #325a7c); /* Gradient border on focus */
+    -fx-background-color: #f4f4f4; /* Subtle light background */
+}

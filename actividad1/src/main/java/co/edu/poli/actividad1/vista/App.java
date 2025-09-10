@@ -22,6 +22,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
     	AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/co/edu/poli/actividad1/vista/primary.fxml"));
         scene = new Scene(root);
+        String css = this.getClass().getResource("application.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }
