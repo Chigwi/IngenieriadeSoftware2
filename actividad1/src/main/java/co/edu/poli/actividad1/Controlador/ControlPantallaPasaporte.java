@@ -1,6 +1,7 @@
 package co.edu.poli.actividad1.Controlador;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
@@ -15,6 +16,11 @@ import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Modelo.Titular;
+import co.edu.poli.actividad1.Repositorios.CiudadDao;
+import co.edu.poli.actividad1.Repositorios.PaisDao;
+import co.edu.poli.actividad1.Repositorios.PasaporteDao;
+import co.edu.poli.actividad1.Repositorios.TitularDao;
+import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
 import co.edu.poli.actividad1.Servicios.OrdinarioCreator;
 import javafx.collections.FXCollections;
@@ -33,6 +39,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 public class ControlPantallaPasaporte implements Initializable {
+	
+	private Connection con = DatabaseConnection.getInstance().getConnection();
+	
+	private PasaporteDao regPas = new PasaporteDao();
+	
+	private CiudadDao regCiu = new CiudadDao();
+	
+	private PaisDao regPais = new PaisDao();
+	
+	private TitularDao regTit = new TitularDao();
 	
 	private ArrayList <Pais> totiPais = new ArrayList<Pais>();
 	private ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
@@ -147,6 +163,16 @@ public class ControlPantallaPasaporte implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		//conexiones de daos
+		regPas.setConnection(con);
+		
+		regPais.setConnection(con);
+		
+		regCiu.setConnection(con);
+		
+		regTit.setConnection(con);
+		
+		
 		//llenar totiPais
 		totiPais.add(colombia);
 		totiPais.add(EstadosUnidos);
@@ -252,14 +278,30 @@ public class ControlPantallaPasaporte implements Initializable {
     	bttselect.setDisable(true);
     	bttselect.setVisible(false);
     	
-    
+    	if(isEmpty()) {
+    		
+    		
     	if(inDiplomatico.isSelected()) {
+    		PDiplomatico p = dC.createPasaporte();
     		
-    		
-    		
+    		Pais pa = regPais.select(null)
+		
     	}else if(inOrdinario.isSelected()) {
+		
+    		POrdinario p = oC.createPasaporte();
+		
+    	}
+    	
+    	}else {
+Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText("ingrese los datos completos del pasaporte");
+        	
+        	a.showAndWait();
+        	
     		
     	}
+    	
 
     }
 
@@ -372,5 +414,16 @@ public class ControlPantallaPasaporte implements Initializable {
     private void delete (String id) {
 
     }
-
+    private boolean isEmpty () {
+	   if (selectFecha.getValue() != null &&
+				selectPais.getSelectionModel().getSelectedItem() != null &&
+				selectCiudad.getSelectionModel().getSelectedItem()!= null &&
+				selectUsuarios.getSelectionModel().getSelectedItem()!=null &&
+				!inExtra.getText().isBlank()) {
+		   return true;
+		   
+	   }else {
+		   return false;
+	   }
+   }
 }
