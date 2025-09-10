@@ -191,7 +191,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	}
 
 	@Override
-	public String Delete(Pasaporte t) {
+	public String Delete(String id) {
 		
 		String sql = "DELETE FROM \"Pasaporte\" WHERE \"numeroId\" = ?" ;
 		
@@ -200,8 +200,10 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		String sql2 = "DELETE FROM \"PDiplomatico\" WHERE \"numeroId\" = ? ";
 		
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, t.getNumeroId());
+            pstmt.setString(1, id);
             pstmt.executeUpdate();
+            
+            Pasaporte t = select(id);
             
             if(t instanceof POrdinario) {
 				POrdinario p = (POrdinario) t;

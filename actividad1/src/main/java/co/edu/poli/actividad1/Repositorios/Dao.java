@@ -12,6 +12,6 @@ public interface Dao <T> {
 	
 	public String Update (T t);
 	
-	public String Delete (T t);
+	public String Delete (String id);
 	
 }

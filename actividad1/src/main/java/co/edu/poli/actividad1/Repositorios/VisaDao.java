@@ -126,10 +126,10 @@ String sql = "SELECT * FROM \"Visa\" WHERE \"idVisa\" = ?";
 	}
 
 	@Override
-	public String Delete(Visa t) {
+	public String Delete(String id) {
 		String sql = "DELETE FROM \"Visa\" WHERE \"idVisa\" = ?" ;
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, t.getIdVisa());
+            pstmt.setString(1, id);
             pstmt.executeUpdate();
             
             return "eliminacion exitosa";

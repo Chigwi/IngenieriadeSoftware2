@@ -122,10 +122,10 @@ public class TitularDao implements Dao <Titular>{
 	}
 
 	@Override
-	public String Delete(Titular t) {
+	public String Delete(String id) {
 		String sql = "DELETE FROM \"Titular\" WHERE \"identificacion\" = ?" ;
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, t.getIdentificacion());
+            pstmt.setString(1, id);
             pstmt.executeUpdate();
             
             return "eliminacion exitosa";

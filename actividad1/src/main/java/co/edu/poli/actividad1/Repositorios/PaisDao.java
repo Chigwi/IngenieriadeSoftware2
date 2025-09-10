@@ -126,10 +126,10 @@ public class PaisDao implements Dao <Pais> {
 	}
 
 	@Override
-	public String Delete(Pais t) {
+	public String Delete(String id) {
 		String sql = "DELETE FROM \"Pais\" WHERE \"idPais\" = ?" ;
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, t.getIdPais());
+            pstmt.setString(1, id);
             pstmt.executeUpdate();
             
             return "eliminacion exitosa";

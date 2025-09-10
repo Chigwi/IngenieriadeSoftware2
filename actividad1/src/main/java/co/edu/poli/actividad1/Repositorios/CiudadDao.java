@@ -128,10 +128,10 @@ String sql = "SELECT * FROM \"Ciudad\" WHERE \"codigoPostal\" = ?";
 	}
 
 	@Override
-	public String Delete(Ciudad t) {
+	public String Delete(String id) {
 		String sql = "DELETE FROM \"Ciudad\" WHERE \"codigoPostal\" = ?" ;
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, t.getCodigoPostal());
+            pstmt.setString(1, id);
             pstmt.executeUpdate();
             
             return "eliminacion exitosa";
