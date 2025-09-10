@@ -294,46 +294,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	if(inDiplomatico.isSelected()) {
     		PDiplomatico p = dC.createPasaporte();
     		
-    		String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
-    		
-    		Pais pa = new Pais(null, null, null, null);
-    		
-    		for (int i = 0; i < totiPais.size(); i++) {
-				if (totiPais.get(i).getNombre().equals(nPais)) {
-					pa = totiPais.get(i);
-				}
-			}
-    		String nCiu = selectCiudad.getSelectionModel().getSelectedItem().toString();
-    		
-    		Ciudad ci = new Ciudad(null, null, false, null);
-    		
-    		for (int i = 0; i < pa.getCiudades().size(); i++) {
-				if (pa.getCiudades().get(i).equals(nCiu)) {
-					ci = pa.getCiudades().get(i);
-				}
-			}
-    		String nTit = selectUsuarios.getSelectionModel().getSelectedItem().toString();
-    		
-    		Titular ti = new Titular(null, null, null);
-    		
-    		for (int i = 0; i < totiTit.size(); i++) {
-				if(totiTit.get(i).getNombre().equals(nTit)) {
-					ti = totiTit.get(i);
-				}
-			}
-    		LocalDate fecha = selectFecha.getValue();
-    		
-    		String fechae = "01/01/2035";
-    		
-    		String id = "";
-    		
-    		p.setCiudadEmision(ci);
-    		p.setFechaEmision(fecha.toString());
-    		p.setFechaExpiracion(fechae);
-    		p.setPaisEmisor(pa);
-    		p.setNumeroId(idGen(id));
-    		p.setMisionDiplomatica(inExtra.getText());
-    		p.setTitular(ti);
+    		p = llenarDiplomatico(p);
     		
     		
     		System.out.println(p.getNumeroId());
@@ -349,46 +310,9 @@ public class ControlPantallaPasaporte implements Initializable {
     	}else if(inOrdinario.isSelected()) {
 		
     		POrdinario p = oC.createPasaporte();
-    		String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
     		
-    		Pais pa = new Pais(null, null, null, null);
+    		p = llenarOrdinario(p);
     		
-    		for (int i = 0; i < totiPais.size(); i++) {
-				if (totiPais.get(i).getNombre().equals(nPais)) {
-					pa = totiPais.get(i);
-				}
-			}
-    		String nCiu = selectCiudad.getSelectionModel().getSelectedItem().toString();
-    		
-    		Ciudad ci = new Ciudad(null, null, false, null);
-    		
-    		for (int i = 0; i < pa.getCiudades().size(); i++) {
-				if (pa.getCiudades().get(i).equals(nCiu)) {
-					ci = pa.getCiudades().get(i);
-				}
-			}
-    		String nTit = selectUsuarios.getSelectionModel().getSelectedItem().toString();
-    		
-    		Titular ti = new Titular(null, null, null);
-    		
-    		for (int i = 0; i < totiTit.size(); i++) {
-				if(totiTit.get(i).getNombre().equals(nTit)) {
-					ti = totiTit.get(i);
-				}
-			}
-    		LocalDate fecha = selectFecha.getValue();
-    		
-    		String fechae = "01/01/2035";
-    		
-    		String id = "";
-    		
-    		p.setCiudadEmision(ci);
-    		p.setFechaEmision(fecha.toString());
-    		p.setFechaExpiracion(fechae);
-    		p.setPaisEmisor(pa);
-    		p.setNumeroId(idGen(id));
-    		p.setRazonViaje(inExtra.getText());
-    		p.setTitular(ti);
     		System.out.println(regPas.insert(p));
     		System.out.println(p.getNumeroId());
 
@@ -401,7 +325,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	}
     	
     	}else {
-Alert a = new Alert (AlertType.INFORMATION);
+    		Alert a = new Alert (AlertType.INFORMATION);
     		
         	a.setContentText("ingrese los datos completos del pasaporte");
         	
@@ -439,11 +363,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     			
         		update(inIdPasaporte.getText(), p);
         		
-        		Alert a = new Alert (AlertType.INFORMATION);
         		
-            	a.setContentText("actualizatura");
-            	
-            	a.show();
             	
     		}else if (inOrdinario.isSelected()) {
 
@@ -451,11 +371,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     			
         		update(inIdPasaporte.getText(), p);
         		
-        		Alert a = new Alert (AlertType.INFORMATION);
         		
-            	a.setContentText("actualizatura");
-            	
-            	a.show();
             	
     		}else {
     			Alert a = new Alert (AlertType.INFORMATION);
@@ -533,10 +449,17 @@ Alert a = new Alert (AlertType.INFORMATION);
     	if (!inIdPasaporte.getText().equals(null)) {
     		if (isEmpty()) {
     			if (inDiplomatico.isSelected()) {
-    				llenarDiplomatico((PDiplomatico)p);
+    				p = llenarDiplomatico((PDiplomatico)p);
+    				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
     					System.out.println(regPas.Update(p));
+    					
+    					Alert a = new Alert(AlertType.INFORMATION);
+    	        		
+    	        		a.setContentText("Actualizacion exitosa");
+    	            	
+    	            	a.showAndWait();
     				}
     				else {
     					Alert a = new Alert(AlertType.INFORMATION);
@@ -547,10 +470,19 @@ Alert a = new Alert (AlertType.INFORMATION);
     				}
     			}
     			else {
-    				llenarOrdinario((POrdinario)p);
+    				
+    				p = llenarOrdinario((POrdinario)p);
+    				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
+    					System.out.println(p);
     					System.out.println(regPas.Update(p));
+    					
+    					Alert a = new Alert(AlertType.INFORMATION);
+    	        		
+    	        		a.setContentText("Actualizacion exitosa");
+    	            	
+    	            	a.showAndWait();
     				}
     				else {
     					Alert a = new Alert(AlertType.INFORMATION);
@@ -615,7 +547,7 @@ Alert a = new Alert (AlertType.INFORMATION);
 		Ciudad ci = new Ciudad(null, null, false, null);
 		
 		for (int i = 0; i < pa.getCiudades().size(); i++) {
-			if (pa.getCiudades().get(i).equals(nCiu)) {
+			if (pa.getCiudades().get(i).getNombre().equals(nCiu)) {
 				ci = pa.getCiudades().get(i);
 			}
 		}
@@ -660,7 +592,7 @@ Alert a = new Alert (AlertType.INFORMATION);
 		Ciudad ci = new Ciudad(null, null, false, null);
 		
 		for (int i = 0; i < pa.getCiudades().size(); i++) {
-			if (pa.getCiudades().get(i).equals(nCiu)) {
+			if (pa.getCiudades().get(i).getNombre().equals(nCiu)) {
 				ci = pa.getCiudades().get(i);
 			}
 		}

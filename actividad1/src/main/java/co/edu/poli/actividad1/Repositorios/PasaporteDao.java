@@ -171,6 +171,8 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 				try(PreparedStatement pstmt1 = connection.prepareStatement(sql1)){
 					pstmt1.setString(1, p.getRazonViaje() );
 					pstmt1.setString(2, p.getNumeroId());
+					pstmt1.executeUpdate();
+					System.out.println(pstmt1);
 				}
 				
 			}
@@ -179,6 +181,8 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 				try(PreparedStatement pstmt2 = connection.prepareStatement(sql2)){
 					pstmt2.setString(1, p.getMisionDiplomatica());
 					pstmt2.setString(2, p.getNumeroId());
+					pstmt2.executeUpdate();
+					System.out.println(pstmt2);
 				}
 			}
 			else {
