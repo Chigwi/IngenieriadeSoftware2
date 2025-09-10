@@ -2,6 +2,7 @@ package co.edu.poli.actividad1.Controlador;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -297,10 +298,9 @@ public class ControlPantallaPasaporte implements Initializable {
     		PDiplomatico p = dC.createPasaporte();
     		
     		p = llenarDiplomatico(p);
-    		
-    		
-    		System.out.println(p.getNumeroId());
+
     		regPas.insert(p);
+    		System.out.println(p.getNumeroId());
 
     		Alert a = new Alert (AlertType.INFORMATION);
     		
@@ -315,7 +315,7 @@ public class ControlPantallaPasaporte implements Initializable {
     		
     		p = llenarOrdinario(p);
     		
-    		System.out.println(regPas.insert(p));
+    		regPas.insert(p);
     		System.out.println(p.getNumeroId());
 
     		Alert a = new Alert (AlertType.INFORMATION);
@@ -341,47 +341,51 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void selectPasaporte(ActionEvent event) {
+    	String funcion ="";
+    	try {
+    		if(bttselect.getText().equals("Buscar")) {
+    			funcion = "Busqueda";
+        		read(inIdPasaporte.getText());
+        		
+        	}
+        	else if(bttselect.getText().equals("Eliminar")) {
+        		funcion = "Eliminacion";
+        		
+        		delete(inIdPasaporte.getText());
+        		
+        	}
+        	else if(bttselect.getText().equals("Actualizar")) {
+        		funcion = "Actualizacion";
+        		if(inDiplomatico.isSelected() == true) {
+        			
+        			PDiplomatico p = dC.createPasaporte();
+        			
+            		update(inIdPasaporte.getText(), p);
+            		
+            		
+                	
+        		}else if (inOrdinario.isSelected()) {
+
+        			POrdinario p = oC.createPasaporte();
+        			
+            		update(inIdPasaporte.getText(), p);
+            		
+            		
+                	
+        		}else {
+        			Alert a = new Alert (AlertType.INFORMATION);
+                	a.setContentText("seleccione tipo de pasaporte");
+                	a.show();
+        		}
+
+        	}
+    	}catch(Exception e) {
+    		Alert a = new Alert (AlertType.INFORMATION);
+        	a.setContentText("Error de " + funcion + e.getMessage());
+        	a.show();
+    		
+    	}
     	
-    	if(bttselect.getText().equals("Buscar")) {
-    		read(inIdPasaporte.getText());
-    		Alert a = new Alert (AlertType.INFORMATION);
-        	a.setContentText("lectura");
-        	a.show();
-    	}
-    	else if(bttselect.getText().equals("Eliminar")) {
-    		
-    		delete(inIdPasaporte.getText());
-    		
-    		Alert a = new Alert (AlertType.INFORMATION);
-    		
-        	a.setContentText("eliminacion exitosa!");
-        	
-        	a.show();
-    	}
-    	else if(bttselect.getText().equals("Actualizar")) {
-    		if(inDiplomatico.isSelected() == true) {
-    			
-    			PDiplomatico p = dC.createPasaporte();
-    			
-        		update(inIdPasaporte.getText(), p);
-        		
-        		
-            	
-    		}else if (inOrdinario.isSelected()) {
-
-    			POrdinario p = oC.createPasaporte();
-    			
-        		update(inIdPasaporte.getText(), p);
-        		
-        		
-            	
-    		}else {
-    			Alert a = new Alert (AlertType.INFORMATION);
-            	a.setContentText("seleccione tipo de pasaporte");
-            	a.show();
-    		}
-
-    	}
 
     }
 
@@ -395,8 +399,6 @@ public class ControlPantallaPasaporte implements Initializable {
     	
     	bttselect.setText("Buscar");
     	
-    	System.out.println(regPas.select("EE1650"));
-    	System.out.println(regPas.select("JZ1070"));
     	
 
     }
@@ -446,19 +448,29 @@ public class ControlPantallaPasaporte implements Initializable {
         }
     }
     
-    private void read(String id) {
+    private void read(String id) throws SQLException, Exception {
     	
-    	Pasaporte p = regPas.select(id);
+    	if(inIdPasaporte.getText().equals("")) {
+    		Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText("por favor ingrese un identificador a buscar.");
+        	
+        	a.showAndWait();
+    	}else {
+    		Pasaporte p = regPas.select(id);
+        	
+        	Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText(p.toString());
+        	
+        	a.showAndWait();
+    	}
     	
-    	Alert a = new Alert(AlertType.INFORMATION);
-		
-		a.setContentText(p.toString());
     	
-    	a.showAndWait();
 
     }
     
-    private void update(String id, Pasaporte p) {
+    private void update(String id, Pasaporte p) throws SQLException {
     	if (!inIdPasaporte.getText().equals(null)) {
     		if (isEmpty()) {
     			if (inDiplomatico.isSelected()) {
@@ -466,7 +478,7 @@ public class ControlPantallaPasaporte implements Initializable {
     				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
-    					System.out.println(regPas.Update(p));
+    					regPas.Update(p);
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
@@ -488,8 +500,7 @@ public class ControlPantallaPasaporte implements Initializable {
     				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
-    					System.out.println(p);
-    					System.out.println(regPas.Update(p));
+    					regPas.Update(p);
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
@@ -524,13 +535,23 @@ public class ControlPantallaPasaporte implements Initializable {
     	
     }
     
-    private void delete (String id) {
+    private void delete (String id) throws SQLException {
+    	if(inIdPasaporte.getText().equals("")) {
+    		Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText("por favor ingrese un identificador a eliminar.");
+        	
+        	a.showAndWait();
+    	}else {
+    		regPas.Delete(id);
+    		Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText("eliminacion exitosa!");
+        	
+        	a.show();
+    	}
     	
- 
-    	System.out.println(regPas.Delete(id));
     	
-    	
-
     }
     private boolean isEmpty () {
 	   if (selectFecha.getValue() != null &&

@@ -9,6 +9,8 @@ import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Modelo.Titular;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import java.sql.*;
 
@@ -53,7 +55,6 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			if(t instanceof POrdinario) {
 				POrdinario p = (POrdinario) t;
 				try(PreparedStatement pstmt1 = connection.prepareStatement(sql1)){
-					System.out.println("spp");
 					pstmt1.setString(1, p.getNumeroId());
 					pstmt1.setString(2, p.getRazonViaje());
 					pstmt1.executeUpdate();
@@ -75,6 +76,11 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			return "Insercion exitosa!";
 			
 		}catch(SQLException e) {
+			Alert a = new Alert (AlertType.INFORMATION);
+			
+	    	a.setContentText("Error de insercion " + e.getMessage());
+	    	
+	    	a.showAndWait();
 			
 			System.out.println("Error de insercion " + e.getMessage());
 			e.printStackTrace();
@@ -114,6 +120,11 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	            	}
 	            }
 		}catch( SQLException e) {
+			Alert a = new Alert (AlertType.INFORMATION);
+			
+	    	a.setContentText("Error de lectura " + e.getMessage());
+	    	
+	    	a.showAndWait();
 			System.out.println("Error de lectura " + e.getMessage());
 		}
 		return null;
@@ -140,6 +151,12 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
         return pasaportes;
       
 	}catch (SQLException e) {
+		Alert a = new Alert (AlertType.INFORMATION);
+		
+    	a.setContentText("Error de lectura " + e.getMessage());
+    	
+    	a.showAndWait();
+		
 		System.out.println("Error de lectura " + e.getMessage());
     }
     return null;
@@ -172,7 +189,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 					pstmt1.setString(1, p.getRazonViaje() );
 					pstmt1.setString(2, p.getNumeroId());
 					pstmt1.executeUpdate();
-					System.out.println(pstmt1);
+					
 				}
 				
 			}
@@ -182,7 +199,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 					pstmt2.setString(1, p.getMisionDiplomatica());
 					pstmt2.setString(2, p.getNumeroId());
 					pstmt2.executeUpdate();
-					System.out.println(pstmt2);
+					
 				}
 			}
 			else {
@@ -192,7 +209,11 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			return "Actualizacion exitosa!";
 			
 		}catch(SQLException e) {
-			
+			Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText("Error de actualizacion " + e.getMessage());
+        	
+        	a.showAndWait();
 			System.out.println("Error de actualizacion " + e.getMessage());
 			e.printStackTrace();
 			
@@ -240,6 +261,13 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
             
             return "eliminacion exitosa";
         }catch(SQLException e) {
+        	
+        	Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText("Error de eliminacion " + e.getMessage());
+        	
+        	a.showAndWait();
+	        
 			
 			System.out.println("Error de eliminacion " + e.getMessage());
 			e.printStackTrace();
@@ -264,6 +292,11 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	        }
 	        return pasaportes;
 	    } catch (SQLException e) {
+	    	Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText("Error de lectura " + e.getMessage());
+        	
+        	a.showAndWait();
 	        System.out.println("Error de lectura " + e.getMessage());
 	    }
 	    return pasaportes;
@@ -295,7 +328,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		Titular selectTitular = regtit.select(rs.getString("Titular"));
 		
     	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
-    	System.out.println(regCiu.select(selectCiudad.getCodigoPostal()));
+    	
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
@@ -339,7 +372,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		
 
     	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
-    	System.out.println(regCiu.select(selectCiudad.getCodigoPostal()));
+    	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
 
     	List <Ciudad> c = new ArrayList<Ciudad>();
