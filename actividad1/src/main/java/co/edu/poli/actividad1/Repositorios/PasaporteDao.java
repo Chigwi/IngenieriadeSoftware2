@@ -92,16 +92,22 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			
 			pstmt.setString(1, id);
 			
+			
+			
 			 ResultSet rs = pstmt.executeQuery();
 			 
 	            if (rs.next()) {
 	            	
 	            	if(existsInTable("POrdinario", id)) {
 	            		
+	            		
+	            		
 	            		return mapRStuPasaporteO(rs);
 	            		
 	            	}
 	            	else if (existsInTable("PDiplomatico", id)) {
+	            		
+	            		
 	            		
 	            		return mapRStuPasaporteD(rs);
 	            		
@@ -288,7 +294,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     		
     	selectPais.setCiudades(c);
     	
-    	String sql = "\"SELECT * FROM \"POrdinario\" WHERE \"numeroId\" = ?\"";
+    	String sql = "SELECT * FROM \"POrdinario\" WHERE \"numeroId\" = ?";
     	try (PreparedStatement pstmt = connection.prepareStatement(sql)){
     		pstmt.setString(1, rs.getString("numeroId"));
     		
@@ -308,7 +314,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	}
 	//mapea rs a un pasaporte diplomatico
 	private PDiplomatico mapRStuPasaporteD(ResultSet rs) throws SQLException{
-		
+	
 		TitularDao regtit = new TitularDao();
 		regtit.setConnection(connection);
 		
@@ -319,20 +325,23 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		regPais.setConnection(connection);
 		
 		Titular selectTitular = regtit.select(rs.getString("Titular"));
-		
+
     	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
-    	
+
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
     	c.add(selectCiudad);
     		
     	selectPais.setCiudades(c);
-    	
-    	String sql = "\"SELECT * FROM \"PDiplomatico\" WHERE \"numeroId\" = ?\"";
+    				
+    	String sql = "SELECT * FROM \"PDiplomatico\" WHERE \"numeroId\" = ?";
+    
     	try (PreparedStatement pstmt = connection.prepareStatement(sql)){
+    	
     		pstmt.setString(1, rs.getString("numeroId"));
+
     		try(ResultSet rs1 = pstmt.executeQuery()){
     			if(rs1.next()) {
     	    		return new PDiplomatico(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), 

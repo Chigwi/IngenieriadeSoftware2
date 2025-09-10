@@ -473,6 +473,9 @@ Alert a = new Alert (AlertType.INFORMATION);
     	bttselect.setVisible(true);
     	
     	bttselect.setText("Buscar");
+    	
+    	System.out.println(regPas.select("EE1650"));
+    	System.out.println(regPas.select("JZ1070"));
 
     }
 
