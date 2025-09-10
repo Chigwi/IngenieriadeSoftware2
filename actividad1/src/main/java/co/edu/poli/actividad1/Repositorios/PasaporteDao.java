@@ -53,8 +53,11 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			if(t instanceof POrdinario) {
 				POrdinario p = (POrdinario) t;
 				try(PreparedStatement pstmt1 = connection.prepareStatement(sql1)){
+					System.out.println("spp");
 					pstmt1.setString(1, p.getNumeroId());
 					pstmt1.setString(2, p.getRazonViaje());
+					pstmt1.executeUpdate();
+
 				}
 				
 			}
@@ -63,6 +66,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 				try(PreparedStatement pstmt2 = connection.prepareStatement(sql2)){
 					pstmt2.setString(1, p.getNumeroId());
 					pstmt2.setString(2, p.getMisionDiplomatica());
+					pstmt2.executeUpdate();
 				}
 			}
 			else {

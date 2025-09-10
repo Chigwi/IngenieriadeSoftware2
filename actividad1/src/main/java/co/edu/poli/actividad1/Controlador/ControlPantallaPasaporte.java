@@ -322,13 +322,17 @@ public class ControlPantallaPasaporte implements Initializable {
     		
     		String fechae = "01/01/2035";
     		
+    		String id = "";
+    		
     		p.setCiudadEmision(ci);
     		p.setFechaEmision(fecha.toString());
     		p.setFechaExpiracion(fechae);
     		p.setPaisEmisor(pa);
-    		p.setNumeroId(idGen());
+    		p.setNumeroId(idGen(id));
     		p.setMisionDiplomatica(inExtra.getText());
     		p.setTitular(ti);
+    		
+    		regPas.insert(p);
 
     		Alert a = new Alert (AlertType.INFORMATION);
     		
@@ -340,7 +344,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	}else if(inOrdinario.isSelected()) {
 		
     		POrdinario p = oC.createPasaporte();
-String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
+    		String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
     		
     		Pais pa = new Pais(null, null, null, null);
     		
@@ -371,13 +375,16 @@ String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
     		
     		String fechae = "01/01/2035";
     		
+    		String id = "";
+    		
     		p.setCiudadEmision(ci);
     		p.setFechaEmision(fecha.toString());
     		p.setFechaExpiracion(fechae);
     		p.setPaisEmisor(pa);
-    		p.setNumeroId(idGen());
+    		p.setNumeroId(idGen(id));
     		p.setRazonViaje(inExtra.getText());
     		p.setTitular(ti);
+    		System.out.println(regPas.insert(p));
 
     		Alert a = new Alert (AlertType.INFORMATION);
     		
@@ -463,6 +470,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     	bttselect.setVisible(true);
     	
     	bttselect.setText("Buscar");
+
     }
 
     @FXML
@@ -479,23 +487,26 @@ Alert a = new Alert (AlertType.INFORMATION);
 
     }
     
-    private String idGen() {
+    private String idGen(String id) {
         Random g = new Random();
-        StringBuilder id = new StringBuilder();
+        StringBuilder Nid = new StringBuilder();
+        if(regPas.select(id)==null) {
+        	// Generate 2 uppercase letters (A-Z)
+            for (int i = 0; i < 2; i++) {
+                char letter = (char) ('A' + g.nextInt(26));  // 'A' + 0..25
+                Nid.append(letter);
+            }
 
-        // Generate 2 uppercase letters (A-Z)
-        for (int i = 0; i < 2; i++) {
-            char letter = (char) ('A' + g.nextInt(26));  // 'A' + 0..25
-            id.append(letter);
+            // Generate 4 digits (0-9)
+            for (int i = 0; i < 4; i++) {
+                char digit = (char) ('0' + g.nextInt(10));  // '0' + 0..9
+                Nid.append(digit);
+            }
+        	return Nid.toString();
+        	
+        }else {
+        	return idGen(Nid.toString());
         }
-
-        // Generate 4 digits (0-9)
-        for (int i = 0; i < 4; i++) {
-            char digit = (char) ('0' + g.nextInt(10));  // '0' + 0..9
-            id.append(digit);
-        }
-
-        return id.toString();
     }
     
     private void read(String id) {
