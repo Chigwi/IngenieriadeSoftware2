@@ -518,6 +518,10 @@ Alert a = new Alert (AlertType.INFORMATION);
     }
     
     private void delete (String id) {
+    	//regPas.Delete(id);
+    	
+    	
+    	
 
     }
     private boolean isEmpty () {
