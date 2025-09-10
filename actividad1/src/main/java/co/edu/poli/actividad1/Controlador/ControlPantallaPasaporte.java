@@ -137,6 +137,12 @@ public class ControlPantallaPasaporte implements Initializable {
 	
 	private ObservableList<String> titulares = FXCollections.observableArrayList();
 	
+	private DiplomaticoCreator dC = new DiplomaticoCreator();
+	
+	private OrdinarioCreator oC = new OrdinarioCreator();
+	
+	
+	
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -247,7 +253,13 @@ public class ControlPantallaPasaporte implements Initializable {
     	bttselect.setVisible(false);
     	
     
-
+    	if(inDiplomatico.isSelected()) {
+    		
+    		
+    		
+    	}else if(inOrdinario.isSelected()) {
+    		
+    	}
 
     }
 
@@ -261,26 +273,40 @@ public class ControlPantallaPasaporte implements Initializable {
         	a.show();
     	}
     	else if(bttselect.getText().equals("Eliminar")) {
+    		
     		delete(inIdPasaporte.getText());
+    		
     		Alert a = new Alert (AlertType.INFORMATION);
+    		
         	a.setContentText("eliminura");
+        	
         	a.show();
     	}
     	else if(bttselect.getText().equals("Actualizar")) {
     		if(inDiplomatico.isSelected() == true) {
-    			DiplomaticoCreator r = new DiplomaticoCreator();
-    			PDiplomatico p = r.createPasaporte();
+    			
+    			PDiplomatico p = dC.createPasaporte();
+    			
         		update(inIdPasaporte.getText(), p);
+        		
         		Alert a = new Alert (AlertType.INFORMATION);
+        		
             	a.setContentText("actualizatura");
+            	
             	a.show();
+            	
     		}else if (inOrdinario.isSelected()) {
-    			OrdinarioCreator r = new OrdinarioCreator();
-    			POrdinario p = r.createPasaporte();
+
+    			POrdinario p = oC.createPasaporte();
+    			
         		update(inIdPasaporte.getText(), p);
+        		
         		Alert a = new Alert (AlertType.INFORMATION);
+        		
             	a.setContentText("actualizatura");
+            	
             	a.show();
+            	
     		}else {
     			Alert a = new Alert (AlertType.INFORMATION);
             	a.setContentText("seleccione tipo de pasaporte");
