@@ -9,9 +9,13 @@ import java.util.ResourceBundle;
 
 
 import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.PDiplomatico;
+import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Modelo.Titular;
+import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
+import co.edu.poli.actividad1.Servicios.OrdinarioCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -212,9 +216,7 @@ public class ControlPantallaPasaporte implements Initializable {
     
     	bttselect.setText("Eliminar");
     	
-    	Alert a = new Alert (AlertType.INFORMATION);
-    	a.setContentText("alerta pendiente");
-    	a.show();
+
 
     }
 
@@ -230,9 +232,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	bttselect.setText("Actualizar");
     
     	
-    	Alert a = new Alert (AlertType.INFORMATION);
-    	a.setContentText("alerta pendiente");
-    	a.show();
+
 
     }
 
@@ -245,9 +245,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	bttselect.setDisable(true);
     	bttselect.setVisible(false);
     	
-    	Alert a = new Alert (AlertType.INFORMATION);
-    	a.setContentText("alerta pendiente");
-    	a.show();
+    
 
 
     }
@@ -255,10 +253,40 @@ public class ControlPantallaPasaporte implements Initializable {
     @FXML
     void selectPasaporte(ActionEvent event) {
     	
-    	Alert a = new Alert (AlertType.INFORMATION);
-    	a.setContentText("alerta pendiente");
-    	a.show();
+    	if(bttselect.getText().equals("Buscar")) {
+    		read(inIdPasaporte.getText());
+    		Alert a = new Alert (AlertType.INFORMATION);
+        	a.setContentText("lectura");
+        	a.show();
+    	}
+    	else if(bttselect.getText().equals("Eliminar")) {
+    		delete(inIdPasaporte.getText());
+    		Alert a = new Alert (AlertType.INFORMATION);
+        	a.setContentText("eliminura");
+        	a.show();
+    	}
+    	else if(bttselect.getText().equals("Actualizar")) {
+    		if(inDiplomatico.isSelected() == true) {
+    			DiplomaticoCreator r = new DiplomaticoCreator();
+    			PDiplomatico p = r.createPasaporte();
+        		update(inIdPasaporte.getText(), p);
+        		Alert a = new Alert (AlertType.INFORMATION);
+            	a.setContentText("actualizatura");
+            	a.show();
+    		}else if (inOrdinario.isSelected()) {
+    			OrdinarioCreator r = new OrdinarioCreator();
+    			POrdinario p = r.createPasaporte();
+        		update(inIdPasaporte.getText(), p);
+        		Alert a = new Alert (AlertType.INFORMATION);
+            	a.setContentText("actualizatura");
+            	a.show();
+    		}else {
+    			Alert a = new Alert (AlertType.INFORMATION);
+            	a.setContentText("seleccione tipo de pasaporte");
+            	a.show();
+    		}
 
+    	}
 
     }
 
@@ -292,16 +320,16 @@ public class ControlPantallaPasaporte implements Initializable {
     	return "";
     }
     
-    private Pasaporte read(String id) {
-    	return null;
+    private void read(String id) {
+
     }
     
-    private String update(String id, Pasaporte p) {
-    	return null;
+    private void update(String id, Pasaporte p) {
+
     }
     
-    private String delete (String id) {
-    	return null;
+    private void delete (String id) {
+
     }
 
 }

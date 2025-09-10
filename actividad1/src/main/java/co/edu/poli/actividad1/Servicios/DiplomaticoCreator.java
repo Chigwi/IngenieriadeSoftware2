@@ -3,10 +3,10 @@ package co.edu.poli.actividad1.Servicios;
 import co.edu.poli.actividad1.Modelo.PDiplomatico;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 
-public class DiplomaticoCreator implements PCreator<Pasaporte>{
+public class DiplomaticoCreator implements PCreator<PDiplomatico>{
 
 	@Override
-	public Pasaporte createPasaporte() {
+	public PDiplomatico createPasaporte() {
 		
 		PDiplomatico p = new PDiplomatico(null, null, null, null, null, null, null);
 		
