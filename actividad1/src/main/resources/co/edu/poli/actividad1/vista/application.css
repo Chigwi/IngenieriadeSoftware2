@@ -133,7 +133,26 @@
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-cursor: hand;
+    
 }
+.
+combo-box .list-cell {
+    -fx-text-fill: #5a7d9e; /* Color del texto */
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .combo-box-popup .list-view {
+    -fx-background-color: #e6e6f0;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
 .date-picker{
 	-fx-background-color: linear-gradient(to bottom, #f4f4f8, #e6e6f0) !important;
     -fx-padding: 5px;
@@ -144,6 +163,28 @@
     -fx-background-radius: 10px;
     -fx-cursor: hand;
 }
+
+.date-picker .text-field {
+    -fx-text-fill: #5a7d9e;
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.date-picker .date-cell {
+    -fx-text-fill: #5a7d9e;
+    -fx-background-color: #f4f4f8;
+}
+
+.date-picker .calendar-popup {
+    -fx-background-color: #e6e6f0;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
 /* Buttons inside VBox */
 .vbox .button {
     -fx-background-color: #6a4c93;
