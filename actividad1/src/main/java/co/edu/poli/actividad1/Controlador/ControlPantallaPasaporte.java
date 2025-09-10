@@ -272,7 +272,6 @@ public class ControlPantallaPasaporte implements Initializable {
     	
     	bttselect.setText("Actualizar");
     
-    	
 
 
     }
@@ -321,11 +320,70 @@ public class ControlPantallaPasaporte implements Initializable {
 			}
     		LocalDate fecha = selectFecha.getValue();
     		
+    		String fechae = "01/01/2035";
     		
-		
+    		p.setCiudadEmision(ci);
+    		p.setFechaEmision(fecha.toString());
+    		p.setFechaExpiracion(fechae);
+    		p.setPaisEmisor(pa);
+    		p.setNumeroId(idGen());
+    		p.setMisionDiplomatica(inExtra.getText());
+    		p.setTitular(ti);
+
+    		Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText(p.toString());
+        	
+        	a.showAndWait();
+        
+        	
     	}else if(inOrdinario.isSelected()) {
 		
     		POrdinario p = oC.createPasaporte();
+String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
+    		
+    		Pais pa = new Pais(null, null, null, null);
+    		
+    		for (int i = 0; i < totiPais.size(); i++) {
+				if (totiPais.get(i).getNombre().equals(nPais)) {
+					pa = totiPais.get(i);
+				}
+			}
+    		String nCiu = selectCiudad.getSelectionModel().getSelectedItem().toString();
+    		
+    		Ciudad ci = new Ciudad(null, null, false, null);
+    		
+    		for (int i = 0; i < pa.getCiudades().size(); i++) {
+				if (pa.getCiudades().get(i).equals(nCiu)) {
+					ci = pa.getCiudades().get(i);
+				}
+			}
+    		String nTit = selectUsuarios.getSelectionModel().getSelectedItem().toString();
+    		
+    		Titular ti = new Titular(null, null, null);
+    		
+    		for (int i = 0; i < totiTit.size(); i++) {
+				if(totiTit.get(i).getNombre().equals(nTit)) {
+					ti = totiTit.get(i);
+				}
+			}
+    		LocalDate fecha = selectFecha.getValue();
+    		
+    		String fechae = "01/01/2035";
+    		
+    		p.setCiudadEmision(ci);
+    		p.setFechaEmision(fecha.toString());
+    		p.setFechaExpiracion(fechae);
+    		p.setPaisEmisor(pa);
+    		p.setNumeroId(idGen());
+    		p.setRazonViaje(inExtra.getText());
+    		p.setTitular(ti);
+
+    		Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText(p.toString());
+        	
+        	a.showAndWait();
 		
     	}
     	
