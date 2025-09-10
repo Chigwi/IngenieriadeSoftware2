@@ -168,6 +168,8 @@ public class ControlPantallaPasaporte implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		
+		
 		//conexiones de daos
 		regPas.setConnection(con);
 		
@@ -395,6 +397,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	
     	System.out.println(regPas.select("EE1650"));
     	System.out.println(regPas.select("JZ1070"));
+    	
 
     }
 
@@ -411,10 +414,12 @@ public class ControlPantallaPasaporte implements Initializable {
     	inExtra.setPromptText("ingrese mision de viaje");
 
     }
-    
+   
 
     @FXML
     void selectAll(ActionEvent event) {
+    	
+    	inExtra.setText(regPas.selectAll().toString());
 
     }
     
@@ -442,6 +447,14 @@ public class ControlPantallaPasaporte implements Initializable {
     }
     
     private void read(String id) {
+    	
+    	Pasaporte p = regPas.select(id);
+    	
+    	Alert a = new Alert(AlertType.INFORMATION);
+		
+		a.setContentText(p.toString());
+    	
+    	a.showAndWait();
 
     }
     

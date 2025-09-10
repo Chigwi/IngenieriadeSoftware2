@@ -295,6 +295,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		Titular selectTitular = regtit.select(rs.getString("Titular"));
 		
     	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
+    	System.out.println(regCiu.select(selectCiudad.getCodigoPostal()));
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
@@ -335,9 +336,10 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 		regPais.setConnection(connection);
 		
 		Titular selectTitular = regtit.select(rs.getString("Titular"));
+		
 
     	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
-    	
+    	System.out.println(regCiu.select(selectCiudad.getCodigoPostal()));
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
 
     	List <Ciudad> c = new ArrayList<Ciudad>();
