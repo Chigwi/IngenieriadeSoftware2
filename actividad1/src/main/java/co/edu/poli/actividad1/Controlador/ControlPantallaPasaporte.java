@@ -332,6 +332,8 @@ public class ControlPantallaPasaporte implements Initializable {
     		p.setMisionDiplomatica(inExtra.getText());
     		p.setTitular(ti);
     		
+    		
+    		System.out.println(p.getNumeroId());
     		regPas.insert(p);
 
     		Alert a = new Alert (AlertType.INFORMATION);
@@ -385,6 +387,7 @@ public class ControlPantallaPasaporte implements Initializable {
     		p.setRazonViaje(inExtra.getText());
     		p.setTitular(ti);
     		System.out.println(regPas.insert(p));
+    		System.out.println(p.getNumeroId());
 
     		Alert a = new Alert (AlertType.INFORMATION);
     		
@@ -422,7 +425,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     		
     		Alert a = new Alert (AlertType.INFORMATION);
     		
-        	a.setContentText("eliminura");
+        	a.setContentText("eliminacion exitosa!");
         	
         	a.show();
     	}
@@ -518,8 +521,9 @@ Alert a = new Alert (AlertType.INFORMATION);
     }
     
     private void delete (String id) {
-    	//regPas.Delete(id);
     	
+    	
+    	System.out.println(regPas.Delete(id));
     	
     	
 
