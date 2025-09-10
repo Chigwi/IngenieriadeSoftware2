@@ -2,6 +2,7 @@ package co.edu.poli.actividad1.Controlador;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
@@ -51,6 +52,7 @@ public class ControlPantallaPasaporte implements Initializable {
 	private TitularDao regTit = new TitularDao();
 	
 	private ArrayList <Pais> totiPais = new ArrayList<Pais>();
+	private ArrayList <Titular> totiTit = new ArrayList<Titular>();
 	private ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
 	private ArrayList <Ciudad> ciudadesKorea = new ArrayList <Ciudad>();
 	private ArrayList <Ciudad> ciudadesMexico = new ArrayList <Ciudad>();
@@ -179,6 +181,12 @@ public class ControlPantallaPasaporte implements Initializable {
 		totiPais.add(KoreadelNorte);
 		totiPais.add(Mexico);
 		
+		//llenar totitit
+		totiTit.add(SalomeDorado);
+		totiTit.add(Allyson);
+		totiTit.add(Cristina);
+		totiTit.add(Sam);
+		
 		//ciudades colombia
 		ciudades.add(Bogotá);
 		ciudades.add(medellin);
@@ -284,7 +292,36 @@ public class ControlPantallaPasaporte implements Initializable {
     	if(inDiplomatico.isSelected()) {
     		PDiplomatico p = dC.createPasaporte();
     		
-    		Pais pa = regPais.select(null)
+    		String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
+    		
+    		Pais pa = new Pais(null, null, null, null);
+    		
+    		for (int i = 0; i < totiPais.size(); i++) {
+				if (totiPais.get(i).getNombre().equals(nPais)) {
+					pa = totiPais.get(i);
+				}
+			}
+    		String nCiu = selectCiudad.getSelectionModel().getSelectedItem().toString();
+    		
+    		Ciudad ci = new Ciudad(null, null, false, null);
+    		
+    		for (int i = 0; i < pa.getCiudades().size(); i++) {
+				if (pa.getCiudades().get(i).equals(nCiu)) {
+					ci = pa.getCiudades().get(i);
+				}
+			}
+    		String nTit = selectUsuarios.getSelectionModel().getSelectedItem().toString();
+    		
+    		Titular ti = new Titular(null, null, null);
+    		
+    		for (int i = 0; i < totiTit.size(); i++) {
+				if(totiTit.get(i).getNombre().equals(nTit)) {
+					ti = totiTit.get(i);
+				}
+			}
+    		LocalDate fecha = selectFecha.getValue();
+    		
+    		
 		
     	}else if(inOrdinario.isSelected()) {
 		
