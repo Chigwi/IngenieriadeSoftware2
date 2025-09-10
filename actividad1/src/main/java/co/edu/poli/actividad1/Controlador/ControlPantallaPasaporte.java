@@ -147,6 +147,9 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     private ToggleGroup tipoPasaporte;
+    
+    @FXML
+    private Button bttSelectAll;
 
 	//lista observable
 	private ObservableList<String> paises = FXCollections.observableArrayList();
@@ -492,6 +495,13 @@ Alert a = new Alert (AlertType.INFORMATION);
     	inExtra.setPromptText("ingrese mision de viaje");
 
     }
+    
+
+    @FXML
+    void selectAll(ActionEvent event) {
+
+    }
+    
     
     private String idGen(String id) {
         Random g = new Random();
