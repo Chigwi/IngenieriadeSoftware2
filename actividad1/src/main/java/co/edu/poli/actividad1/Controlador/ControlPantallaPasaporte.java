@@ -522,7 +522,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     
     private void delete (String id) {
     	
-    	
+ 
     	System.out.println(regPas.Delete(id));
     	
     	
