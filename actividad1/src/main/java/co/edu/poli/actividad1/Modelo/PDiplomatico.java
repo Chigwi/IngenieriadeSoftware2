@@ -25,7 +25,7 @@ public class PDiplomatico extends Pasaporte{
 				+ ", FechaExpiracion=" + getFechaExpiracion()+ "\n" + ", Titular=" + getTitular().getNombre()+ "\n"
 				+ ", CiudadEmision=" + getCiudadEmision().getNombre() + "]";
 	}
-
+//holi
 	
 	
 }
