@@ -42,70 +42,27 @@ import javafx.scene.control.ToggleGroup;
 
 public class ControlPantallaPasaporte implements Initializable {
 	
-	private Connection con = DatabaseConnection.getInstance().getConnection();
+	private Connection con;
 	
-	private PasaporteDao regPas = new PasaporteDao();
+	private PasaporteDao regPas;
 	
-	private CiudadDao regCiu = new CiudadDao();
+	private CiudadDao regCiu;
 	
-	private PaisDao regPais = new PaisDao();
+	private PaisDao regPais;
 	
-	private TitularDao regTit = new TitularDao();
+	private TitularDao regTit;
 	
-	private ArrayList <Pais> totiPais = new ArrayList<Pais>();
-	private ArrayList <Titular> totiTit = new ArrayList<Titular>();
-	private ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
-	private ArrayList <Ciudad> ciudadesKorea = new ArrayList <Ciudad>();
-	private ArrayList <Ciudad> ciudadesMexico = new ArrayList <Ciudad>();
-	private ArrayList <Ciudad> gringos = new ArrayList <Ciudad>();
+	private ArrayList <Pais> totiPais;
 	
-	//paises
-	private Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
+	private ArrayList <Titular> totiTit;
 	
-	private Pais KoreadelNorte = new Pais ("148","Korea del Norte","koreano", ciudadesKorea);
+	private ArrayList <Ciudad> ciudades;
 	
-	private Pais Mexico = new Pais ("49","Mexico","Espannol", ciudadesMexico);
+	private ArrayList <Ciudad> ciudadesKorea;
 	
-	private Pais EstadosUnidos = new Pais ("104", "EstadosUnidos", "ingles",gringos);
+	private ArrayList <Ciudad> ciudadesMexico;
 	
-	//estados unidos
-	private Ciudad Washington = new Ciudad ("0001", "washington", true,"104");
-	
-	private Ciudad Miami = new Ciudad ("0002", "Miami", false, "104");
-	
-	private Ciudad newYork = new Ciudad ("0003", "New York", false, "104");
-	
-	//mexico
-	private Ciudad CiudadDeMexico = new Ciudad ("0521", "Ciudad De mexico", true,"49");
-	
-	private Ciudad Cancun = new Ciudad ("0522", "Cancun", false,"49");
-	
-	private Ciudad Monterrey = new Ciudad ("0523", "Monterrey", false,"49");
-	
-	//colombia
-	private Ciudad Tunja = new Ciudad("0573", "Tunja", false, "1");
-	
-	private Ciudad medellin = new Ciudad ("0572", "Medellin", false , "1");
-	
-	private Ciudad Bogotá = new Ciudad("0571", "Bogotá", true, "1");
-	
-	//korea del norte
-	
-	private Ciudad Pionyang = new Ciudad ("8501", "Pionyang", true,"148");
-	
-	private Ciudad Sinuiju = new Ciudad ("8502", "Sinuiju", false,"148");
-	
-	private Ciudad Haeju = new Ciudad ("8503", "Haeju", false,"148");
-	
-	//titulares
-	private Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
-	
-	private Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
-	
-	private Titular Cristina = new Titular ("107678654","14/07/2001", "Cristina dorado");
-	
-	private Titular Sam = new Titular ("10105413","10/20/2005", "Samuel Arce");
-	
+	private ArrayList <Ciudad> gringos;
 
     @FXML
     private Button bttInsertar;
@@ -153,17 +110,17 @@ public class ControlPantallaPasaporte implements Initializable {
     private Button bttSelectAll;
 
 	//lista observable
-	private ObservableList<String> paises = FXCollections.observableArrayList();
+	private ObservableList<String> paises;
 	
-	private ObservableList<String> ciudad = FXCollections.observableArrayList();
+	private ObservableList<String> ciudad;
 	
-	private ObservableList<String> titulares = FXCollections.observableArrayList();
+	private ObservableList<String> titulares;
 	
-	private DiplomaticoCreator dC = new DiplomaticoCreator();
+	private DiplomaticoCreator dC;
 	
-	private OrdinarioCreator oC = new OrdinarioCreator();
+	private OrdinarioCreator oC;
 	
-	private boolean textEmpty = true; 
+	private boolean textEmpty;
 	
 	
 	
@@ -171,9 +128,86 @@ public class ControlPantallaPasaporte implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		//estado del metodo selectAll
+		
+		textEmpty = true;
+		
+		//fabricas
+		
+		dC = new DiplomaticoCreator();
+		
+		oC = new OrdinarioCreator();
+		
+		//lista observable
+		
+		paises  = FXCollections.observableArrayList();
+		
+		ciudad = FXCollections.observableArrayList();
+		
+		titulares  = FXCollections.observableArrayList();
+		
+		//quema de objetos
+		
+		//paises
+		Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
+		
+		Pais KoreadelNorte = new Pais ("148","Korea del Norte","koreano", ciudadesKorea);
+		
+		Pais Mexico = new Pais ("49","Mexico","Espannol", ciudadesMexico);
+		
+		Pais EstadosUnidos = new Pais ("104", "EstadosUnidos", "ingles",gringos);
+		
+		//estados unidos
+		Ciudad Washington = new Ciudad ("0001", "washington", true,"104");
+		
+		Ciudad Miami = new Ciudad ("0002", "Miami", false, "104");
+		
+		Ciudad newYork = new Ciudad ("0003", "New York", false, "104");
+		
+		//mexico
+		Ciudad CiudadDeMexico = new Ciudad ("0521", "Ciudad De mexico", true,"49");
+		
+		Ciudad Cancun = new Ciudad ("0522", "Cancun", false,"49");
+		
+		Ciudad Monterrey = new Ciudad ("0523", "Monterrey", false,"49");
+		
+		//colombia
+		Ciudad Tunja = new Ciudad("0573", "Tunja", false, "1");
+		
+		Ciudad medellin = new Ciudad ("0572", "Medellin", false , "1");
+		
+		Ciudad Bogotá = new Ciudad("0571", "Bogotá", true, "1");
+		
+		//korea del norte
+		
+		Ciudad Pionyang = new Ciudad ("8501", "Pionyang", true,"148");
+		
+		Ciudad Sinuiju = new Ciudad ("8502", "Sinuiju", false,"148");
+		
+		Ciudad Haeju = new Ciudad ("8503", "Haeju", false,"148");
+		
+		//titulares
+		Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+		
+		Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
+		
+		Titular Cristina = new Titular ("107678654","14/07/2001", "Cristina dorado");
+		
+		Titular Sam = new Titular ("10105413","10/20/2005", "Samuel Arce");
+		
 		
 		
 		//conexiones de daos
+		con =  DatabaseConnection.getInstance().getConnection();
+		
+		regPas = new PasaporteDao();
+		
+		regPais  = new PaisDao();
+		
+		regCiu  = new CiudadDao();
+		
+		regTit  = new TitularDao();
+		
 		regPas.setConnection(con);
 		
 		regPais.setConnection(con);
@@ -184,30 +218,36 @@ public class ControlPantallaPasaporte implements Initializable {
 		
 		
 		//llenar totiPais
+		totiPais = new ArrayList<Pais>();
 		totiPais.add(colombia);
 		totiPais.add(EstadosUnidos);
 		totiPais.add(KoreadelNorte);
 		totiPais.add(Mexico);
 		
 		//llenar totitit
+		totiTit = new ArrayList<Titular>();
 		totiTit.add(SalomeDorado);
 		totiTit.add(Allyson);
 		totiTit.add(Cristina);
 		totiTit.add(Sam);
 		
 		//ciudades colombia
+		ciudades = new ArrayList <Ciudad>();
 		ciudades.add(Bogotá);
 		ciudades.add(medellin);
 		ciudades.add(Tunja);
 		//ciudades estados unidos
+		gringos  = new ArrayList <Ciudad>();
 		gringos.add(Washington);
 		gringos.add(Miami);
 		gringos.add(newYork);
 		//ciudades Mexico
+		ciudadesMexico  = new ArrayList <Ciudad>();
 		ciudadesMexico.add(CiudadDeMexico);
 		ciudadesMexico.add(Monterrey);
 		ciudadesMexico.add(Cancun);
 		//ciudades korea
+		ciudadesKorea  = new ArrayList <Ciudad>();
 		ciudadesKorea.add(Pionyang);
 		ciudadesKorea.add(Haeju);
 		ciudadesKorea.add(Sinuiju);
