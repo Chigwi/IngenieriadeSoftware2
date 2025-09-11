@@ -1,7 +1,7 @@
 package co.edu.poli.actividad1.Servicios;
 
-public interface PCreator <T>{
+public interface PCreator <Pasaporte>{
 	
-	public T createPasaporte ();
+	public Pasaporte createPasaporte ();
 
 }
