@@ -52,17 +52,17 @@ public class ControlPantallaPasaporte implements Initializable {
 	
 	private TitularDao regTit;
 	
-	private ArrayList <Pais> totiPais;
+	private ArrayList <Pais> totiPais = new ArrayList<Pais>();
 	
-	private ArrayList <Titular> totiTit;
+	private ArrayList <Titular> totiTit = new ArrayList<Titular>();
 	
-	private ArrayList <Ciudad> ciudades;
+	private ArrayList <Ciudad> ciudades = new ArrayList<Ciudad>();
 	
-	private ArrayList <Ciudad> ciudadesKorea;
+	private ArrayList <Ciudad> ciudadesKorea = new ArrayList<Ciudad>();
 	
-	private ArrayList <Ciudad> ciudadesMexico;
+	private ArrayList <Ciudad> ciudadesMexico= new ArrayList<Ciudad>();
 	
-	private ArrayList <Ciudad> gringos;
+	private ArrayList <Ciudad> gringos= new ArrayList<Ciudad>();
 
     @FXML
     private Button bttInsertar;
@@ -218,36 +218,36 @@ public class ControlPantallaPasaporte implements Initializable {
 		
 		
 		//llenar totiPais
-		totiPais = new ArrayList<Pais>();
+
 		totiPais.add(colombia);
 		totiPais.add(EstadosUnidos);
 		totiPais.add(KoreadelNorte);
 		totiPais.add(Mexico);
 		
 		//llenar totitit
-		totiTit = new ArrayList<Titular>();
+
 		totiTit.add(SalomeDorado);
 		totiTit.add(Allyson);
 		totiTit.add(Cristina);
 		totiTit.add(Sam);
 		
 		//ciudades colombia
-		ciudades = new ArrayList <Ciudad>();
+
 		ciudades.add(Bogotá);
 		ciudades.add(medellin);
 		ciudades.add(Tunja);
 		//ciudades estados unidos
-		gringos  = new ArrayList <Ciudad>();
+
 		gringos.add(Washington);
 		gringos.add(Miami);
 		gringos.add(newYork);
 		//ciudades Mexico
-		ciudadesMexico  = new ArrayList <Ciudad>();
+
 		ciudadesMexico.add(CiudadDeMexico);
 		ciudadesMexico.add(Monterrey);
 		ciudadesMexico.add(Cancun);
 		//ciudades korea
-		ciudadesKorea  = new ArrayList <Ciudad>();
+
 		ciudadesKorea.add(Pionyang);
 		ciudadesKorea.add(Haeju);
 		ciudadesKorea.add(Sinuiju);
@@ -334,6 +334,14 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void insertarPasaporte(ActionEvent event) {
+    	
+    	if(!inDiplomatico.isSelected() && !inOrdinario.isSelected()) {
+Alert a = new Alert (AlertType.INFORMATION);
+    		
+        	a.setContentText("Seleccione un tipo de pasaporte a insertar");
+        	
+        	a.showAndWait();
+    	}
     	
     	if(textEmpty == false) {
     		inExtra.clear();
