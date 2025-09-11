@@ -163,6 +163,8 @@ public class ControlPantallaPasaporte implements Initializable {
 	
 	private OrdinarioCreator oC = new OrdinarioCreator();
 	
+	private boolean textEmpty = true; 
+	
 	
 	
     
@@ -255,6 +257,10 @@ public class ControlPantallaPasaporte implements Initializable {
     @FXML
     void DeletePasaporte(ActionEvent event) {
     	
+    	if(textEmpty == false) {
+    		inExtra.clear();
+    	}
+    	
     	inIdPasaporte.setDisable(false);
     	inIdPasaporte.setVisible(true);
     	
@@ -270,6 +276,10 @@ public class ControlPantallaPasaporte implements Initializable {
     @FXML
     void actualizarPasaporte(ActionEvent event) {
     	
+    	if(textEmpty == false) {
+    		inExtra.clear();
+    	}
+    	
     	inIdPasaporte.setDisable(false);
     	inIdPasaporte.setVisible(true);
     	
@@ -284,6 +294,10 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void insertarPasaporte(ActionEvent event) {
+    	
+    	if(textEmpty == false) {
+    		inExtra.clear();
+    	}
     	
     	inIdPasaporte.setDisable(true);
     	inIdPasaporte.setVisible(false);
@@ -341,6 +355,7 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void selectPasaporte(ActionEvent event) {
+    	
     	String funcion ="";
     	try {
     		if(bttselect.getText().equals("Buscar")) {
@@ -420,6 +435,8 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void selectAll(ActionEvent event) {
+    	
+    	textEmpty = false;
     	
     	inExtra.setText(regPas.selectAll().toString());
 
