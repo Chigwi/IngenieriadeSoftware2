@@ -149,6 +149,8 @@ public class Cliente {
 			
 			//regCiud.insert(Tunja);
 			
+			//estado del sapopingeo
+			
 			
 	    }catch(SQLException e) {
 	    	
