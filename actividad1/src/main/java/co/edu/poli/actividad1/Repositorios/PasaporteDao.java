@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
 import co.edu.poli.actividad1.Modelo.PDiplomatico;
 import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
@@ -169,7 +170,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	}
 	@Override
 	public String Update(Pasaporte t) {
-		String sql = "UPDATE \"Pasaporte\" SET \"paisEmisor\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, \"titular\" = ?, \"ciudadEmision\" = ? WHERE \"numeroId\" = ?";
+		String sql = "UPDATE \"Pasaporte\" SET \"paisEmisor\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, \"titular\" = ?, \"ciudadEmision\", \"Es\" = ? WHERE \"numeroId\" = ?";
 		
 		String sql1 = "UPDATE \"POrdinario\" SET \"razonViaje\" = ? WHERE \"numeroId\" = ? ";
 		
@@ -185,7 +186,9 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			
 			pstmt.setString(5, t.getCiudadEmision().getCodigoPostal());
 			
-			pstmt.setString(6, t.getNumeroId());
+			pstmt.setString(6, t.getEs().getIdL());
+			
+			pstmt.setString(7, t.getNumeroId());
 			
 			pstmt.executeUpdate();
 			
@@ -338,6 +341,8 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
+    	ElementoSeguridad es = new ElementoSeguridad(rs.getString("Es"), null, null);
+    	
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
     	c.add(selectCiudad);
@@ -351,7 +356,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     		try(ResultSet rs1 = pstmt.executeQuery()){
     			if(rs1.next()) {
     				return new POrdinario(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"),
-    				rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("razonViaje"));
+    				rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("razonViaje"),es);
     			}
     			else {
     				return null;
@@ -380,6 +385,8 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	Ciudad selectCiudad = regCiu.select(rs.getString("ciudadEmision"));
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
+    	
+    	ElementoSeguridad es = new ElementoSeguridad(rs.getString("Es"), null, null);
 
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
@@ -396,7 +403,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     		try(ResultSet rs1 = pstmt.executeQuery()){
     			if(rs1.next()) {
     	    		return new PDiplomatico(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), 
-    	    		rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("misionDiplomatica"),null);
+    	    		rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("misionDiplomatica"),es);
     			}
     			else {
     				return null;
