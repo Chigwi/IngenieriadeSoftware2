@@ -1,5 +1,7 @@
 package co.edu.poli.actividad1.vista;
 import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
+import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Modelo.Visa;
@@ -15,10 +17,44 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Cliente {
 
-	public static void main(String[] args) {
+	private static PasaporteDao regPass;
+	
+	
+	private static String idGen(String id) {
+		regPass = new PasaporteDao();
+	 	DatabaseConnection db1 = DatabaseConnection.getInstance();
+	 	try(Connection conn = db1.getConnection()){
+	 		regPass.setConnection(conn);
+	        Random g = new Random();
+	        StringBuilder Nid = new StringBuilder();
+	        if(regPass.select(id)==null) {
+	        	// Generate 2 uppercase letters (A-Z)
+	            for (int i = 0; i < 2; i++) {
+	                char letter = (char) ('A' + g.nextInt(26));  // 'A' + 0..25
+	                Nid.append(letter);
+	            }
+
+	            // Generate 4 digits (0-9)
+	            for (int i = 0; i < 4; i++) {
+	                char digit = (char) ('0' + g.nextInt(10));  // '0' + 0..9
+	                Nid.append(digit);
+	            }
+	        	return Nid.toString();
+	        	
+	        }else {
+	        	return idGen(Nid.toString());
+	        }
+	 	}catch(SQLException e) {
+	 		return "";
+	 	}
+	 	
+    }
+	
+	public static void main(String[] args) throws Exception {
 		
 		DatabaseConnection db1 = DatabaseConnection.getInstance();
 		
@@ -100,7 +136,7 @@ public class Cliente {
 			
 			Ciudad Haeju = new Ciudad ("8503", "Haeju", false,"148");
 			
-			regCiud.insert(Haeju);
+
 			
 		
 			
@@ -150,7 +186,26 @@ public class Cliente {
 			//regCiud.insert(Tunja);
 			
 			//estado del arte
+			String RazonV = "Abrazar a kim";
 			
+			ElementoSeguridad el1 = new ElementoSeguridad("El1","alta seguridad","persona de alto riesgo");
+			String id = idGen("");
+			POrdinario test = new POrdinario.Builder().agregarNumeroId(id)
+					.agregarPaisEmisor(KoreadelNorte)
+					.agregarFechaEmision("16-09-2025")
+					.agregarFecharExpiracion("16-09-2035")
+					.agregarTitular(Sam)
+					.agregarCiudadEmision(Pionyang)
+					.agregarRazonViaje(RazonV)
+					.agregarElementoSeguridad(el1)
+					.build();
+			System.out.println(test);
+			
+			Titular clonSalo = SalomeDorado.clone();
+			System.out.println(SalomeDorado);
+			System.out.println(clonSalo);
+			
+					
 			
 	    }catch(SQLException e) {
 	    	
@@ -159,6 +214,6 @@ public class Cliente {
 		
 		
 	}
-	
+	 
 
 }
