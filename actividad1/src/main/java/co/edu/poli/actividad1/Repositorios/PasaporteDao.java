@@ -396,7 +396,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     		try(ResultSet rs1 = pstmt.executeQuery()){
     			if(rs1.next()) {
     	    		return new PDiplomatico(rs.getString("numeroId"), selectPais, rs.getString("fechaEmision"), 
-    	    		rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("misionDiplomatica"));
+    	    		rs.getString("fechaExpiracion"), selectTitular, selectCiudad, rs1.getString("misionDiplomatica"),null);
     			}
     			else {
     				return null;
