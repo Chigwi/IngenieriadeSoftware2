@@ -5,8 +5,8 @@ public class PDiplomatico extends Pasaporte{
 	private String misionDiplomatica;
 
 	public PDiplomatico(String numeroId, Pais paisEmisor, String fechaEmision, String fechaExpiracion, Titular titular,
-			Ciudad ciudadEmision, String misionDiplomatica) {
-		super(numeroId, paisEmisor, fechaEmision, fechaExpiracion, titular, ciudadEmision);
+			Ciudad ciudadEmision, String misionDiplomatica, ElementoSeguridad es) {
+		super(numeroId, paisEmisor, fechaEmision, fechaExpiracion, titular, ciudadEmision, es);
 		this.misionDiplomatica = misionDiplomatica;
 	}
 
