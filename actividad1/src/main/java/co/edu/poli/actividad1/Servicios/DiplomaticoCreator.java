@@ -8,7 +8,7 @@ public class DiplomaticoCreator implements PCreator<PDiplomatico>{
 	@Override
 	public PDiplomatico createPasaporte() {
 		
-		PDiplomatico p = new PDiplomatico(null, null, null, null, null, null, null);
+		PDiplomatico p = new PDiplomatico(null, null, null, null, null, null, null,null);
 		
 		return p;
 	}

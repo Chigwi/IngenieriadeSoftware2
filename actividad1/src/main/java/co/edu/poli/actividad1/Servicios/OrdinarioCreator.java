@@ -8,7 +8,7 @@ public class OrdinarioCreator implements PCreator<POrdinario> {
 	@Override
 	public POrdinario createPasaporte() {
 		
-		POrdinario p = new POrdinario(null, null, null, null, null, null, null);
+		POrdinario p = new POrdinario(null, null, null, null, null, null, null,null);
 		
 		return p;
 	}

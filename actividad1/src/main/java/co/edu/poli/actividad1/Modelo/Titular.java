@@ -3,7 +3,7 @@ package co.edu.poli.actividad1.Modelo;
 /**
  * 
  */
-public class Titular implements Cloneable{
+public class Titular{
     /**
      * 
      */
@@ -56,17 +56,6 @@ public class Titular implements Cloneable{
 				+ nombre + "]";
 	}
 	
-	public Titular clone() {
-		
-		
-			Titular clone = new Titular( this.identificacion,this.fechaNacimiento, this.nombre);
-			return clone;
-			
-			
-	
-		}
-		
-		
 	}
 
 

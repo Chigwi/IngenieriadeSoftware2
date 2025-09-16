@@ -5,8 +5,8 @@ public class POrdinario extends Pasaporte {
 	private String razonViaje;
 
 	public POrdinario(String numeroId, Pais paisEmisor, String fechaEmision, String fechaExpiracion, Titular titular,
-			Ciudad ciudadEmision, String razonViaje) {
-		super(numeroId, paisEmisor, fechaEmision, fechaExpiracion, titular, ciudadEmision);
+			Ciudad ciudadEmision, String razonViaje, ElementoSeguridad es) {
+		super(numeroId, paisEmisor, fechaEmision, fechaExpiracion, titular, ciudadEmision, es);
 		this.razonViaje = razonViaje;
 	}
 
