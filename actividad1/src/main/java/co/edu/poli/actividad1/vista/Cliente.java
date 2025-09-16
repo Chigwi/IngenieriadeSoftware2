@@ -25,13 +25,8 @@ public class Cliente {
 	
 	
 	private static String idGen(String id) {
-		regPass = new PasaporteDao();
-	 	DatabaseConnection db1 = DatabaseConnection.getInstance();
-	 	try(Connection conn = db1.getConnection()){
-	 		regPass.setConnection(conn);
 	        Random g = new Random();
 	        StringBuilder Nid = new StringBuilder();
-	        if(regPass.select(id)==null) {
 	        	// Generate 2 uppercase letters (A-Z)
 	            for (int i = 0; i < 2; i++) {
 	                char letter = (char) ('A' + g.nextInt(26));  // 'A' + 0..25
@@ -43,15 +38,7 @@ public class Cliente {
 	                char digit = (char) ('0' + g.nextInt(10));  // '0' + 0..9
 	                Nid.append(digit);
 	            }
-	        	return Nid.toString();
-	        	
-	        }else {
-	        	return idGen(Nid.toString());
-	        }
-	 	}catch(SQLException e) {
-	 		return "";
-	 	}
-	 	
+	        	return Nid.toString(); 	
     }
 	
 	public static void main(String[] args) throws Exception {
@@ -203,13 +190,13 @@ public class Cliente {
 			
 			Titular clonSalo = SalomeDorado.clone();
 			
-			System.out.println("Datos original" + SalomeDorado.printable());
+			System.out.println("Datos original: " + SalomeDorado.printable());
 			
-			System.out.println("Datos clon" + clonSalo.printable());
+			System.out.println("Datos clon: " + clonSalo.printable());
 			
-			System.out.println("Direccion memoria original" + SalomeDorado);
+			System.out.println("Direccion memoria original: " + SalomeDorado);
 			
-			System.out.println("Direccion memoria clon " + clonSalo);
+			System.out.println("Direccion memoria clon: " + clonSalo);
 			
 			
 			
