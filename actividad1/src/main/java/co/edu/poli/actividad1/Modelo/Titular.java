@@ -50,8 +50,13 @@ public class Titular implements Cloneable{
 		this.identificacion = identificacion;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
+		return "Titular [identificacion=" + identificacion + ", fechaNacimiento=" + fechaNacimiento + ", nombre="
+				+ nombre + "]";
+	}*/
+	
+	public String printable() {
 		return "Titular [identificacion=" + identificacion + ", fechaNacimiento=" + fechaNacimiento + ", nombre="
 				+ nombre + "]";
 	}

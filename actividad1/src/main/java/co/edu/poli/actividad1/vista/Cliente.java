@@ -199,11 +199,19 @@ public class Cliente {
 					.agregarRazonViaje(RazonV)
 					.agregarElementoSeguridad(el1)
 					.build();
-			System.out.println(test);
+			System.out.println("el builder nos da de resultado : "+ test);
 			
 			Titular clonSalo = SalomeDorado.clone();
-			System.out.println(SalomeDorado);
-			System.out.println(clonSalo);
+			
+			System.out.println("Datos original" + SalomeDorado.printable());
+			
+			System.out.println("Datos clon" + clonSalo.printable());
+			
+			System.out.println("Direccion memoria original" + SalomeDorado);
+			
+			System.out.println("Direccion memoria clon " + clonSalo);
+			
+			
 			
 					
 			
