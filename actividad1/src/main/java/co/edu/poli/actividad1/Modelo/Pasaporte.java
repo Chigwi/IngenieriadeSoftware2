@@ -38,9 +38,12 @@ public abstract class Pasaporte {
      * 
      */
     private Ciudad ciudadEmision;
+    
+    private ElementoSeguridad es;
 
+	
 	public Pasaporte(String numeroId, Pais paisEmisor, String fechaEmision, String fechaExpiracion, Titular titular,
-			Ciudad ciudadEmision) {
+			Ciudad ciudadEmision, ElementoSeguridad es) {
 		super();
 		this.numeroId = numeroId;
 		this.paisEmisor = paisEmisor;
@@ -48,6 +51,7 @@ public abstract class Pasaporte {
 		this.fechaExpiracion = fechaExpiracion;
 		this.titular = titular;
 		this.ciudadEmision = ciudadEmision;
+		this.es = es;
 	}
 
 	public String getNumeroId() {
@@ -97,13 +101,24 @@ public abstract class Pasaporte {
 	public void setCiudadEmision(Ciudad ciudadEmision) {
 		this.ciudadEmision = ciudadEmision;
 	}
+	
+
+	public ElementoSeguridad getEs() {
+		return es;
+	}
+
+	public void setEs(ElementoSeguridad es) {
+		this.es = es;
+	}
 
 	@Override
 	public String toString() {
-		return "Pasaporte [numeroId=" + numeroId +"\n" + ", paisEmisor=" + paisEmisor.getNombre() + "\n" + ", fechaEmision=" + fechaEmision + "\n"
-				+ ", fechaExpiracion=" + fechaExpiracion + "\n"+ ", titular=" + titular + "\n" + ", ciudadEmision=" + ciudadEmision.getNombre()
-				+ "]";
+		return "Pasaporte [numeroId=" + numeroId + ", paisEmisor=" + paisEmisor + ", fechaEmision=" + fechaEmision
+				+ ", fechaExpiracion=" + fechaExpiracion + ", titular=" + titular + ", ciudadEmision=" + ciudadEmision
+				+ ", es=" + es + "]";
 	}
+
+
     
     
 
