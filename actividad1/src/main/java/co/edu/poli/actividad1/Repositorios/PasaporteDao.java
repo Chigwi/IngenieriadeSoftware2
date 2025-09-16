@@ -34,7 +34,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 
 	@Override
 	public String insert(Pasaporte t){
-		String sql = "INSERT INTO \"Pasaporte\" (\"numeroId\", \"paisEmisor\", \"fechaEmision\", \"fechaExpiracion\", titular, \"ciudadEmision\") VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO \"Pasaporte\" (\"numeroId\", \"paisEmisor\", \"fechaEmision\", \"fechaExpiracion\", titular, \"ciudadEmision\",\"Es\") VALUES (?, ?, ?, ?, ?, ?,?)";
 		String sql1 = "INSERT INTO \"POrdinario\"(\"numeroId\",\"razonViaje\")VALUES (?, ?)";
 		String sql2 = "INSERT INTO \"PDiplomatico\"(\"numeroId\",\"misionDiplomatica\")VALUES (?, ?)";
 		try (PreparedStatement pstmt = connection.prepareStatement(sql)){
@@ -49,6 +49,12 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			pstmt.setString(5, t.getTitular().getIdentificacion());
 			
 			pstmt.setString(6, t.getCiudadEmision().getCodigoPostal());
+			
+			if (t.getEs() == null) {
+				pstmt.setString(7, "N/A");
+			}else {
+				pstmt.setString(7, t.getEs().getIdL());
+			}
 			
 			pstmt.executeUpdate();
 			
