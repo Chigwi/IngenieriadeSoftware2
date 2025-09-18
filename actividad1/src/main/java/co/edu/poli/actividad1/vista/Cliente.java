@@ -1,5 +1,6 @@
 package co.edu.poli.actividad1.vista;
 import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Modelo.Visa;
@@ -10,6 +11,8 @@ import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Repositorios.VisaDao;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
+import co.edu.poli.actividad1.Servicios.POrdinarioBuilder;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +23,7 @@ public class Cliente {
 
 	public static void main(String[] args) {
 		
-		DatabaseConnection db1 = DatabaseConnection.getInstance();
+		/*DatabaseConnection db1 = DatabaseConnection.getInstance();
 		
 	    try(Connection conn = db1.getConnection()){
 	    	
@@ -156,8 +159,29 @@ public class Cliente {
 			
 	    }catch(SQLException e) {
 	    	
-	    }
-
+	    }*/
+		
+		
+		/*String RazonV = "Abrazar a kim";
+		
+		ElementoSeguridad el1 = new ElementoSeguridad("El1","alta seguridad","persona de alto riesgo");
+		String id = "AX400";
+		Titular Sam = new Titular ("10105413","10/20/2005", "Samuel Arce");
+		ArrayList <Ciudad> ciudadesKorea = new ArrayList <Ciudad>();
+		Ciudad Pionyang = new Ciudad ("8501", "Pionyang", true,"148");
+		Pais KoreadelNorte = new Pais ("148","Korea del Norte","koreano", ciudadesKorea);
+		builder = new POrdinarioBuilder();
+		p = builder.agregarNumeroId(id)
+		.agregarPaisEmisor(KoreadelNorte)
+		.agregarFechaEmision("16-09-2025")
+		.agregarFecharExpiracion("16-09-2035")
+		.agregarTitular(Sam)
+		.agregarCiudadEmision(Pionyang)
+		.agregarRazonViaje(RazonV)
+		.agregarElementoSeguridad(el1)
+		.build();*/
+		
+		
 		
 		
 	}
