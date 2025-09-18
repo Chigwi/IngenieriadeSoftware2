@@ -13,7 +13,6 @@ public class ProductControler {
 	@PostMapping
 	public String createProducto() {
 		return "producto Creado";
-		//tt
 		
 	}
 	
