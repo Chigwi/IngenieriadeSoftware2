@@ -1,6 +1,7 @@
 package co.edu.poli.actividad1.vista;
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
+import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Modelo.Visa;
@@ -12,7 +13,7 @@ import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Repositorios.VisaDao;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.POrdinarioBuilder;
-
+import co.edu.poli.actividad1.Servicios.TitularWrapper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -162,7 +163,7 @@ public class Cliente {
 	    }*/
 		
 		
-		/*String RazonV = "Abrazar a kim";
+		String RazonV = "Abrazar a kim";
 		
 		ElementoSeguridad el1 = new ElementoSeguridad("El1","alta seguridad","persona de alto riesgo");
 		String id = "AX400";
@@ -170,8 +171,7 @@ public class Cliente {
 		ArrayList <Ciudad> ciudadesKorea = new ArrayList <Ciudad>();
 		Ciudad Pionyang = new Ciudad ("8501", "Pionyang", true,"148");
 		Pais KoreadelNorte = new Pais ("148","Korea del Norte","koreano", ciudadesKorea);
-		builder = new POrdinarioBuilder();
-		p = builder.agregarNumeroId(id)
+		POrdinario p = new POrdinarioBuilder().agregarNumeroId(id)
 		.agregarPaisEmisor(KoreadelNorte)
 		.agregarFechaEmision("16-09-2025")
 		.agregarFecharExpiracion("16-09-2035")
@@ -179,7 +179,19 @@ public class Cliente {
 		.agregarCiudadEmision(Pionyang)
 		.agregarRazonViaje(RazonV)
 		.agregarElementoSeguridad(el1)
-		.build();*/
+		.build();
+		
+		System.out.println(p);
+		
+		Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+		
+		TitularWrapper t = new TitularWrapper(SalomeDorado);
+		
+		Titular clonSalo = t.clone();
+		
+		System.out.println(SalomeDorado);
+		System.out.println(clonSalo);
+		
 		
 		
 		
