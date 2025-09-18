@@ -31,6 +31,7 @@ public class TitularWrapper implements Cloneable {
     @Override
     public String toString() {
         return titular.toString();
+        //tt
     }
     @Override
     public Titular clone() {
