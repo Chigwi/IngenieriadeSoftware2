@@ -1,5 +1,9 @@
 package producto;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -9,6 +13,7 @@ public class ProductControler {
 	@PostMapping
 	public String createProducto() {
 		return "producto Creado";
+		//tt
 		
 	}
 	
