@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Cliente {
+public class Principal {
 
 	private static PasaporteDao regPass;
 	
