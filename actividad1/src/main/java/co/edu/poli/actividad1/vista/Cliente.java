@@ -171,6 +171,8 @@ public class Cliente {
 		ArrayList <Ciudad> ciudadesKorea = new ArrayList <Ciudad>();
 		Ciudad Pionyang = new Ciudad ("8501", "Pionyang", true,"148");
 		Pais KoreadelNorte = new Pais ("148","Korea del Norte","koreano", ciudadesKorea);
+		
+		
 		POrdinario p = new POrdinarioBuilder().agregarNumeroId(id)
 		.agregarPaisEmisor(KoreadelNorte)
 		.agregarFechaEmision("16-09-2025")
