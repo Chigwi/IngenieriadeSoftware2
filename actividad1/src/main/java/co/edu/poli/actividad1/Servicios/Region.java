@@ -2,7 +2,7 @@ package co.edu.poli.actividad1.Servicios;
 
 import java.util.ArrayList;
 
-public class Region {
+public class Region implements EspacioGeografico {
 	
 	private ArrayList<EspacioGeografico> children = new ArrayList<>();
 	private String nombre;
@@ -23,5 +23,17 @@ public class Region {
 	
 	public ArrayList<EspacioGeografico> getChildren(){
 		return children;
+	}
+
+	@Override
+	public String getNombre() {
+		StringBuilder r = new StringBuilder();
+		r.append(" "+nombre + "\n");
+		if(children.size()>0) {
+			for (int i = 0; i < children.size(); i++) {
+				r.append(" "+children.get(i).getNombre());
+			}
+		}
+		return r.toString();
 	}
 }
