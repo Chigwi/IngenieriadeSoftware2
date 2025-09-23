@@ -33,7 +33,12 @@ public class Region implements EspacioGeografico {
 		StringBuilder r = new StringBuilder();
 		
 		String indentStr = "-".repeat(indent);
-		r.append(indentStr).append(nombre).append("\n");
+		if (indent == 1) {
+			r.append(indentStr).append("+"+ nombre + "+").append("\n");
+		}else {
+			r.append(indentStr).append("+"+ nombre).append("\n");
+		}
+
 		if(children.size()>0) {
 			for (int i = 0; i < children.size(); i++) {
 				r.append(children.get(i).getNombre(indent+1));

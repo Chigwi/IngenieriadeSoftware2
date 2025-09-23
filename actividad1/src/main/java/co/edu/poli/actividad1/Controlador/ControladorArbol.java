@@ -61,6 +61,7 @@ public class ControladorArbol implements Initializable{
 		cundinamarca.add(bog);
 		Ciudad cajica =  new Ciudad("057015", "Cajicá", false, "057");
 		AdaptadorCiudad caj = new AdaptadorCiudad(cajica);
+		cundinamarca.add(caj);
 		
 		ArrayList<EspacioGeografico> listCar = new ArrayList<EspacioGeografico>();
 		Region caribe = new Region(listCar, "Caribe");
