@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 public class ControladorArbol implements Initializable{
 
@@ -22,6 +23,9 @@ public class ControladorArbol implements Initializable{
 
     @FXML
     private Button bttMostrar;
+    
+    @FXML
+    private TextArea outArbol;
     
     private Region regiones;
     
