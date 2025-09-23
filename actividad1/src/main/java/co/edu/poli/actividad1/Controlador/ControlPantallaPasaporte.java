@@ -1,5 +1,6 @@
 package co.edu.poli.actividad1.Controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,6 +26,7 @@ import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
 import co.edu.poli.actividad1.Servicios.OrdinarioCreator;
+import co.edu.poli.actividad1.vista.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -108,6 +110,9 @@ public class ControlPantallaPasaporte implements Initializable {
     
     @FXML
     private Button bttSelectAll;
+    
+    @FXML
+    private Button bttSiguiente;
 
 	//lista observable
 	private ObservableList<String> paises;
@@ -487,6 +492,12 @@ Alert a = new Alert (AlertType.INFORMATION);
     	textEmpty = false;
     	
     	inExtra.setText(regPas.selectAll().toString());
+
+    }
+    
+    @FXML
+    void switchToSecondary(ActionEvent event) throws IOException {
+        App.setRoot("Secondary");
 
     }
     
