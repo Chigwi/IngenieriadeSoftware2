@@ -23,6 +23,7 @@ public class ControladorArbol implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//jota
 		// TODO Auto-generated method stub
 		
 		ArrayList<EspacioGeografico> listAnd = new ArrayList<EspacioGeografico>();
