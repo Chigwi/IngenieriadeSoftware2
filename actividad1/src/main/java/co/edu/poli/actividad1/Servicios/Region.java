@@ -1,10 +1,11 @@
 package co.edu.poli.actividad1.Servicios;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Region implements EspacioGeografico {
 	
-	private ArrayList<EspacioGeografico> children = new ArrayList<>();
+	private List<EspacioGeografico> children = new ArrayList<>();
 	private String nombre;
 	
 	public Region(ArrayList<EspacioGeografico> children, String nombre) {
@@ -14,14 +15,16 @@ public class Region implements EspacioGeografico {
 	}
 
 	public boolean add (EspacioGeografico lugar) {
+		children.add(lugar);
 		return true;
 	}
 	
 	public boolean remove (EspacioGeografico lugar) {
+		children.remove(lugar);
 		return true;
 	}
 	
-	public ArrayList<EspacioGeografico> getChildren(){
+	public List<EspacioGeografico> getChildren(){
 		return children;
 	}
 
