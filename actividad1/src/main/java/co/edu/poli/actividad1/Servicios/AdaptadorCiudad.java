@@ -17,8 +17,9 @@ public class AdaptadorCiudad implements EspacioGeografico{
 	}
 	
 	@Override
-	public String getNombre() {
-		return "  " + adaptada.getNombre()+"\n";
+	public String getNombre(int indent) {
+		String indentStr = "-".repeat(indent);
+		return indentStr + adaptada.getNombre()+"\n";
 	}
 	
 }

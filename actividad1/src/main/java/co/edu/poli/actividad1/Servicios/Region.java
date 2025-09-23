@@ -29,12 +29,14 @@ public class Region implements EspacioGeografico {
 	}
 
 	@Override
-	public String getNombre() {
+	public String getNombre(int indent) {
 		StringBuilder r = new StringBuilder();
-		r.append(nombre + "\n");
+		
+		String indentStr = "-".repeat(indent);
+		r.append(indentStr).append(nombre).append("\n");
 		if(children.size()>0) {
 			for (int i = 0; i < children.size(); i++) {
-				r.append(" "+children.get(i).getNombre());
+				r.append(children.get(i).getNombre(indent+1));
 			}
 		}
 		return r.toString();

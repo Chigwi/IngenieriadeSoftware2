@@ -115,7 +115,8 @@ public class ControladorArbol implements Initializable{
 
     @FXML
     void getNombre(ActionEvent event) {
-    	System.out.println(regiones.getNombre());
+    	outArbol.setDisable(false);
+    	outArbol.setText(regiones.getNombre(0));
     }
 
     @FXML
