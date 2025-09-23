@@ -35,12 +35,6 @@ public class ControladorArbol implements Initializable{
 		ArrayList<EspacioGeografico> listPac = new ArrayList<EspacioGeografico>();
 		Region pacifica = new Region(listPac, "Pacifica");
 		
-		ArrayList<EspacioGeografico> listOri = new ArrayList<EspacioGeografico>();
-		Region orinoquia = new Region(listOri, "Orinoquia");
-		
-		ArrayList<EspacioGeografico> listAma = new ArrayList<EspacioGeografico>();
-		Region Amazonas = new Region(listAma, "Amazonias");
-		
 	}
 
     @FXML
