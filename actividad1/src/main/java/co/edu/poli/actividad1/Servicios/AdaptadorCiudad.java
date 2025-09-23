@@ -12,9 +12,13 @@ public class AdaptadorCiudad implements EspacioGeografico{
 		this.adaptada = adaptada;
 	}
 	
+	public Ciudad getAdaptada() {
+		return adaptada;
+	}
+	
 	@Override
 	public String getNombre() {
-		return adaptada.getNombre()+"/n";
+		return "  " + adaptada.getNombre()+"\n";
 	}
 	
 }
