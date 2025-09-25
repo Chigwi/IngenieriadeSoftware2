@@ -37,7 +37,26 @@ public class ControladorArbol implements Initializable{
 		ArrayList<EspacioGeografico> superO = new ArrayList<EspacioGeografico>();
 		regiones = new Region(superO, "Regiones");
 		
-		ArrayList<EspacioGeografico> listAnd = new ArrayList<EspacioGeografico>();
+		ArrayList<EspacioGeografico> listR1 = new ArrayList<EspacioGeografico>();
+		ArrayList<EspacioGeografico> listR2 = new ArrayList<EspacioGeografico>();
+		Ciudad C1 = new Ciudad ("0001", "C1", false, "001");
+		Ciudad C2 = new Ciudad ("0002", "C2", false, "002");
+		Ciudad C3 = new Ciudad ("0003", "C3", true, "003");
+		
+		AdaptadorCiudad adaptC1 = new AdaptadorCiudad(C1);
+		AdaptadorCiudad adaptC2 = new AdaptadorCiudad(C2);
+		AdaptadorCiudad adaptC3 = new AdaptadorCiudad(C3);
+
+		Region R1 = new Region(listR1, "R1");
+		Region R2 = new Region(listR2, "R2");
+		
+		regiones.add(R1);
+		R1.add(R2);
+		R1.add(adaptC3);
+		R2.add(adaptC1);
+		R2.add(adaptC2);
+		
+		/*ArrayList<EspacioGeografico> listAnd = new ArrayList<EspacioGeografico>();
 		Region andina = new Region(listAnd, "Andina");
 		regiones.add(andina);
 		
@@ -113,25 +132,7 @@ public class ControladorArbol implements Initializable{
 		choco.add(qui);
 		Ciudad condoto = new Ciudad("057325", "Condoto", false, "057");
 		AdaptadorCiudad con = new AdaptadorCiudad(condoto);
-		choco.add(con);
-		
-		ArrayList<EspacioGeografico> listR1 = new ArrayList<EspacioGeografico>();
-		ArrayList<EspacioGeografico> listR2 = new ArrayList<EspacioGeografico>();
-		Ciudad C1 = new Ciudad ("0001", "C1", false, "001");
-		Ciudad C2 = new Ciudad ("0002", "C2", false, "002");
-		Ciudad C3 = new Ciudad ("0003", "C3", true, "003");
-		
-		AdaptadorCiudad adaptC1 = new AdaptadorCiudad(C1);
-		AdaptadorCiudad adaptC2 = new AdaptadorCiudad(C2);
-		AdaptadorCiudad adaptC3 = new AdaptadorCiudad(C3);
-
-		Region R1 = new Region(listR1, "R1");
-		Region R2 = new Region(listR2, "R2");
-		
-		R1.add(R2);
-		R1.add(adaptC3);
-		R2.add(adaptC1);
-		R2.add(adaptC2);
+		choco.add(con);*/
 		
 		
 
