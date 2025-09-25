@@ -34,9 +34,9 @@ public class Region implements EspacioGeografico {
 		
 		String indentStr = "-".repeat(indent);
 		if (indent == 1) {
-			r.append(indentStr).append("*"+ nombre + "*").append("\n");
+			r.append(indentStr).append("*"+ nombre + "*").append("\n");//indentacion Region
 		}else {
-			r.append(indentStr).append("+"+ nombre).append("\n");
+			r.append(indentStr).append("+"+ nombre).append("\n");//indentacion Departamento
 		}
 
 		if(children.size()>0) {
