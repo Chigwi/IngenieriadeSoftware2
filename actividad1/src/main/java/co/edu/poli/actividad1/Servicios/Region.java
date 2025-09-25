@@ -41,7 +41,7 @@ public class Region implements EspacioGeografico {
 
 		if(children.size()>0) {
 			for (int i = 0; i < children.size(); i++) {
-				r.append(children.get(i).getNombre(indent+1));
+				r.append(children.get(i).getNombre(indent+1));//busqueda de profundidad
 			}
 		}
 		return r.toString();
