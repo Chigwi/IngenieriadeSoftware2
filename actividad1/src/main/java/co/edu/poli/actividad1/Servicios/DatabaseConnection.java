@@ -11,6 +11,7 @@ public class DatabaseConnection {
     private Connection connection;
     
     private DatabaseConnection() {
+    	
     	try {
     		
     		String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
