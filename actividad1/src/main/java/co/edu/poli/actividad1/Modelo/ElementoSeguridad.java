@@ -1,6 +1,6 @@
 package co.edu.poli.actividad1.Modelo;
 
-public class ElementoSeguridad {
+public abstract class ElementoSeguridad {
 	
 	
 	 private String idL;
