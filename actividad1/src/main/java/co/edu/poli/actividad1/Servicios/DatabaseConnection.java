@@ -42,7 +42,7 @@ public class DatabaseConnection {
             System.out.println("Error de conexion " + e.getMessage());
         }
     }
-    
+    //teta
     private String resolveEnvVariable(String value) {
         if (value != null && value.startsWith("${") && value.endsWith("}")) {
             String envVar = value.substring(2, value.length() - 1);
