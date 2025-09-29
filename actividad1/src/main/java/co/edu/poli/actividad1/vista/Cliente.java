@@ -1,4 +1,5 @@
 package co.edu.poli.actividad1.vista;
+import co.edu.poli.actividad1.Modelo.Biometrico;
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
 import co.edu.poli.actividad1.Modelo.POrdinario;
@@ -165,7 +166,7 @@ public class Cliente {
 		
 		String RazonV = "Abrazar a kim";
 		
-		ElementoSeguridad el1 = new ElementoSeguridad("El1","alta seguridad","persona de alto riesgo");
+		ElementoSeguridad el1 = new Biometrico("El1","alta seguridad","persona de alto riesgo","Huella Digital");
 		String id = "AX400";
 		Titular Sam = new Titular ("10105413","10/20/2005", "Samuel Arce");
 		ArrayList <Ciudad> ciudadesKorea = new ArrayList <Ciudad>();

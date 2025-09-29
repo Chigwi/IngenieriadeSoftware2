@@ -3,6 +3,7 @@ package co.edu.poli.actividad1.Repositorios;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.poli.actividad1.Modelo.Biometrico;
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
 import co.edu.poli.actividad1.Modelo.PDiplomatico;
@@ -341,7 +342,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
-    	ElementoSeguridad es = new ElementoSeguridad(rs.getString("Es"), null, null);
+    	ElementoSeguridad es = new Biometrico(rs.getString("Es"), null, null,null);
     	
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
@@ -386,7 +387,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
-    	ElementoSeguridad es = new ElementoSeguridad(rs.getString("Es"), null, null);
+    	ElementoSeguridad es = new Biometrico(rs.getString("Es"), null, null,null);
 
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
