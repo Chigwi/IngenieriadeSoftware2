@@ -24,8 +24,15 @@ public class Asistencia extends DecoradorTitular{
 
 	@Override
 	public String getTitularDetallado() {
-		// TODO Auto-generated method stub
-		return null;
+StringBuilder titDetallado = new StringBuilder();
+		
+		titDetallado.append(this.getWrapee().getTitularDetallado());
+		
+		titDetallado.append("\n");
+		
+		titDetallado.append(tipoAsistencia);
+		
+		return titDetallado.toString();
 	}
 	
 	

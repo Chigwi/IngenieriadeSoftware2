@@ -1,5 +1,7 @@
 package co.edu.poli.actividad1.Servicios;
 
+import java.sql.Wrapper;
+
 public class Seguro extends DecoradorTitular{
 
 	private String tipoSeguro;
@@ -29,8 +31,16 @@ public class Seguro extends DecoradorTitular{
 
 	@Override
 	public String getTitularDetallado() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		StringBuilder titDetallado = new StringBuilder();
+		
+		titDetallado.append(this.getWrapee().getTitularDetallado());
+		
+		titDetallado.append("\n");
+		
+		titDetallado.append(tipoSeguro);
+		
+		return titDetallado.toString();
 	}
 
 }
