@@ -28,8 +28,12 @@ private Titular adaptada;
 
 	@Override
 	public String getTitularDetallado() {
-		// Tetas
-		return null;
+		StringBuilder titularDetallado = new StringBuilder();
+		titularDetallado.append("Titular:"+"\n");
+		titularDetallado.append("identificacion: "+ adaptada.getIdentificacion()+"\n");
+		titularDetallado.append("fecha de nacimiento: "+ adaptada.getFechaNacimiento()+"\n");
+		titularDetallado.append("nombre: " + adaptada.getNombre()+"\n");
+		return titularDetallado.toString();
 	}
 	
 	
