@@ -30,7 +30,7 @@ private Titular adaptada;
 
 	@Override
 	public String getTitularDetallado() {
-		// TODO Auto-generated method stub
+		// Tetas
 		return null;
 	}
 	
