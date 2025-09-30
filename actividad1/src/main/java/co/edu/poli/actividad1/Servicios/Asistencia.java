@@ -24,13 +24,13 @@ public class Asistencia extends DecoradorTitular{
 
 	@Override
 	public String getTitularDetallado() {
-StringBuilder titDetallado = new StringBuilder();
+		StringBuilder titDetallado = new StringBuilder();
 		
 		titDetallado.append(this.getWrapee().getTitularDetallado());
 		
 		titDetallado.append("\n");
 		
-		titDetallado.append(tipoAsistencia);
+		titDetallado.append("Asistencia: "+ tipoAsistencia + "\n");
 		
 		return titDetallado.toString();
 	}
