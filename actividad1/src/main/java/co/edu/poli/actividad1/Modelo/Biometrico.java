@@ -23,5 +23,7 @@ public class Biometrico extends ElementoSeguridad{
 		return "Biometrico [tipoBiometria=" + tipoBiometria + "]";
 	}
 	
+	
+	
 
 }
