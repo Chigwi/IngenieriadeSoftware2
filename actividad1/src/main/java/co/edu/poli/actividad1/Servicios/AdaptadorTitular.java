@@ -11,8 +11,6 @@ private Titular adaptada;
 		this.adaptada = adaptada;
 	}
 
-	
-
 	public Titular getAdaptada() {
 		return adaptada;
 	}
