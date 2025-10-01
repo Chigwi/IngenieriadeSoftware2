@@ -12,8 +12,11 @@ import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Repositorios.VisaDao;
+import co.edu.poli.actividad1.Servicios.AdaptadorTitular;
+import co.edu.poli.actividad1.Servicios.Asistencia;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.POrdinarioBuilder;
+import co.edu.poli.actividad1.Servicios.Seguro;
 import co.edu.poli.actividad1.Servicios.TitularWrapper;
 
 import java.sql.Connection;
@@ -163,7 +166,7 @@ public class Cliente {
 	    	
 	    }*/
 		
-		
+		/*pruebas prototype y builder
 		String RazonV = "Abrazar a kim";
 		
 		ElementoSeguridad el1 = new Biometrico("El1","alta seguridad","persona de alto riesgo","Huella Digital");
@@ -194,9 +197,34 @@ public class Cliente {
 		
 		System.out.println(SalomeDorado);
 		System.out.println(clonSalo);
+		*/
+		
+		//pruebas bridge y decorator
+		
+		Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
+		AdaptadorTitular Allie= new AdaptadorTitular(Allyson);
+		Seguro alliesegura = new Seguro(Allie, "seguro de viajes");
+		Asistencia allieasistida = new Asistencia(alliesegura, "apoyo emocional");
+		System.out.println(allieasistida.getTitularDetallado());
+		
+		ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
+		
+		Ciudad medellin = new Ciudad ("0572", "Medellin", false , "1");
+		
+		Ciudad Bogotá = new Ciudad("0571", "Bogotá", true, "1");
+		
+		ciudades.add(medellin);
+		
+		ciudades.add(Bogotá);
+		
+		Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
+		
+		Biometrico bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
+		
+		Pasaporte AlliePasport = new POrdinario("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);
 		
 		
-		
+		System.out.println("\n" + AlliePasport);
 		
 		
 	}

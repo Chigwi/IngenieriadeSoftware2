@@ -20,7 +20,7 @@ public class MicroChip extends ElementoSeguridad{
 
 	@Override
 	public String toString() {
-		return "MicroChip [numeroChip=" + numeroChip + "]";
+		return "MicroChip " + "\n" +"[numeroChip=" + numeroChip + "]";
 	}
 	
 }

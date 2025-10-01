@@ -23,7 +23,7 @@ public class POrdinario extends Pasaporte {
 		return "POrdinario [razonViaje=" + razonViaje + "\n" + ", NumeroId=" + getNumeroId()+ "\n"
 				+ ", PaisEmisor=" + getPaisEmisor().getNombre()+ "\n" + ", FechaEmision=" + getFechaEmision()+ "\n"
 				+ ", FechaExpiracion=" + getFechaExpiracion()+ "\n" + ", Titular=" + getTitular().getNombre()+ "\n"
-				+ ", CiudadEmision=" + getCiudadEmision().getNombre() + "]";
+				+ ", CiudadEmision=" + getCiudadEmision().getNombre() + ", Elemento seguridad="+ getEs().getTipo()+"]";
 	}
 	
 	

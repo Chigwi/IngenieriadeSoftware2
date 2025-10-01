@@ -36,8 +36,6 @@ public class Seguro extends DecoradorTitular{
 		
 		titDetallado.append(this.getWrapee().getTitularDetallado());
 		
-		titDetallado.append("\n");
-		
 		titDetallado.append("Seguro: " + tipoSeguro + "\n");
 		
 		return titDetallado.toString();

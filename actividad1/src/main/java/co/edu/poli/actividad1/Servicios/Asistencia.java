@@ -28,8 +28,6 @@ public class Asistencia extends DecoradorTitular{
 		
 		titDetallado.append(this.getWrapee().getTitularDetallado());
 		
-		titDetallado.append("\n");
-		
 		titDetallado.append("Asistencia: "+ tipoAsistencia + "\n");
 		
 		return titDetallado.toString();
