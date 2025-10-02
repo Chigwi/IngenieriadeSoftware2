@@ -2,6 +2,8 @@ package co.edu.poli.actividad1.vista;
 import co.edu.poli.actividad1.Modelo.Biometrico;
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
+import co.edu.poli.actividad1.Modelo.MicroChip;
+import co.edu.poli.actividad1.Modelo.PDiplomatico;
 import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
@@ -219,9 +221,9 @@ public class Cliente {
 		
 		Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
 		
-		Biometrico bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
+		ElementoSeguridad bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
 		
-		Pasaporte AlliePasport = new POrdinario("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);
+		Pasaporte AlliePasport = new PDiplomatico("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);
 		
 		
 		System.out.println("\n" + AlliePasport);

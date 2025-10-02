@@ -20,7 +20,7 @@ public class Biometrico extends ElementoSeguridad{
 
 	@Override
 	public String toString() {
-		return "Biometrico" + "\n" + "[tipoBiometria=" + tipoBiometria + "]";
+		return "tipo de seguridad"+this.getTipo()+"\n" +"descripcion"+this.getFdescripcion()+ "\n"+"Biometrico"+"\n"+ "[tipoBiometria=" + tipoBiometria + "]";
 	}
 	
 	
