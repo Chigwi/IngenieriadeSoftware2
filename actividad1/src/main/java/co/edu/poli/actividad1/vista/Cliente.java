@@ -228,12 +228,17 @@ public class Cliente {
 		
 		System.out.println("\n" + AlliePasport);*/
 		
-		Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+		/*Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
 		AdaptadorTitular Salo = new AdaptadorTitular(SalomeDorado);
 		Seguro saloB = new Seguro(Salo, "seguro de vida");
 		Asistencia saloA = new Asistencia(saloB, "asistencia emocional");
-		System.out.println(saloA.getTitularDetallado());
+		System.out.println(saloA.getTitularDetallado());*/
 		
+		Titular jamesbonds = new Titular("007", "07/07/77", "JamesBonds");
+		AdaptadorTitular agent007 = new AdaptadorTitular(jamesbonds);
+		Seguro saloB = new Seguro(agent007, "seguro de vida");
+		Asistencia saloA = new Asistencia(saloB, "asistencia emocional");
+		System.out.println(saloA.getTitularDetallado());
 	}
 	
 
