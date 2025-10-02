@@ -191,7 +191,7 @@ public class Cliente {
 		
 		System.out.println(p);
 		
-		Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+	
 		
 		TitularWrapper t = new TitularWrapper(SalomeDorado);
 		
@@ -203,7 +203,7 @@ public class Cliente {
 		
 		//pruebas bridge y decorator
 		
-		Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
+		/*Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
 		AdaptadorTitular Allie= new AdaptadorTitular(Allyson);
 		Seguro alliesegura = new Seguro(Allie, "seguro de viajes");
 		Asistencia allieasistida = new Asistencia(alliesegura, "apoyo emocional");
@@ -226,10 +226,18 @@ public class Cliente {
 		Pasaporte AlliePasport = new PDiplomatico("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);
 		
 		
-		System.out.println("\n" + AlliePasport);
+		System.out.println("\n" + AlliePasport);*/
 		
+		Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+		AdaptadorTitular Salo = new AdaptadorTitular(SalomeDorado);
+		Seguro saloB = new Seguro(Salo, "seguro de vida");
+		Asistencia saloA = new Asistencia(saloB, "asistencia emocional");
+		System.out.println(saloA.getTitularDetallado());
 		
 	}
 	
 
+	
+
+	
 }
