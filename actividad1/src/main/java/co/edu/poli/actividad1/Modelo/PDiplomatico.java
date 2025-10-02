@@ -23,7 +23,7 @@ public class PDiplomatico extends Pasaporte{
 		return "PDiplomatico [misionDiplomatica=" + misionDiplomatica + "\n" + ", NumeroId=" + getNumeroId()+ "\n"
 				+ ", PaisEmisor=" + getPaisEmisor().getNombre()+ "\n" + ", FechaEmision=" + getFechaEmision()+ "\n"
 				+ ", FechaExpiracion=" + getFechaExpiracion()+ "\n" + ", Titular=" + getTitular().getNombre()+ "\n"
-				+ ", CiudadEmision=" + getCiudadEmision().getNombre() + "]";
+				+ ", CiudadEmision=" + getCiudadEmision().getNombre()+"\n"+getEs() + "]";
 	}
 //holi
 	

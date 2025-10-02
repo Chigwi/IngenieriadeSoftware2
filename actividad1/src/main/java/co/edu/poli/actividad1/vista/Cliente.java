@@ -2,6 +2,8 @@ package co.edu.poli.actividad1.vista;
 import co.edu.poli.actividad1.Modelo.Biometrico;
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
+import co.edu.poli.actividad1.Modelo.MicroChip;
+import co.edu.poli.actividad1.Modelo.PDiplomatico;
 import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
@@ -189,7 +191,7 @@ public class Cliente {
 		
 		System.out.println(p);
 		
-		Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+	
 		
 		TitularWrapper t = new TitularWrapper(SalomeDorado);
 		
@@ -201,7 +203,7 @@ public class Cliente {
 		
 		//pruebas bridge y decorator
 		
-		Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
+		/*Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
 		AdaptadorTitular Allie= new AdaptadorTitular(Allyson);
 		Seguro alliesegura = new Seguro(Allie, "seguro de viajes");
 		Asistencia allieasistida = new Asistencia(alliesegura, "apoyo emocional");
@@ -219,15 +221,28 @@ public class Cliente {
 		
 		Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
 		
-		Biometrico bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
+		ElementoSeguridad bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
 		
-		Pasaporte AlliePasport = new POrdinario("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);
-		
-		
-		System.out.println("\n" + AlliePasport);
+		Pasaporte AlliePasport = new PDiplomatico("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);
 		
 		
+		System.out.println("\n" + AlliePasport);*/
+		
+		/*Titular SalomeDorado = new Titular ("1023530646", "17/03/04", "SalomeDorado");
+		AdaptadorTitular Salo = new AdaptadorTitular(SalomeDorado);
+		Seguro saloB = new Seguro(Salo, "seguro de vida");
+		Asistencia saloA = new Asistencia(saloB, "asistencia emocional");
+		System.out.println(saloA.getTitularDetallado());*/
+		
+		Titular jamesbonds = new Titular("007", "07/07/77", "JamesBonds");
+		AdaptadorTitular agent007 = new AdaptadorTitular(jamesbonds);
+		Seguro saloB = new Seguro(agent007, "seguro de vida");
+		Asistencia saloA = new Asistencia(saloB, "asistencia emocional");
+		System.out.println(saloA.getTitularDetallado());
 	}
 	
 
+	
+
+	
 }
