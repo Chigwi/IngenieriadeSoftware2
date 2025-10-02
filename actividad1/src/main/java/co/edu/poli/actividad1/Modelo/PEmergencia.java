@@ -19,7 +19,7 @@ public class PEmergencia extends Pasaporte {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() {//t
 		return "PEmergencia [fechaExpiracionEmergenica=" + fechaExpiracionEmergenica + "]";
 	}
 	
