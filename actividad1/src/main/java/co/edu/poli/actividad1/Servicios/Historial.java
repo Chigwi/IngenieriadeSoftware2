@@ -32,9 +32,14 @@ public class Historial extends DecoradorTitular{
 
 
 	@Override
-	public String getTitularDetallado() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTitularDetallado() {		
+		StringBuilder titDetallado = new StringBuilder();
+	
+		titDetallado.append(this.getWrapee().getTitularDetallado());
+	
+		titDetallado.append("Viajes: " + historiaDeViajes + "\n");
+	
+		return titDetallado.toString();
 	}
 	
 	
