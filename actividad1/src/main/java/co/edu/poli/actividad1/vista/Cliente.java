@@ -4,6 +4,7 @@ import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
 import co.edu.poli.actividad1.Modelo.MicroChip;
 import co.edu.poli.actividad1.Modelo.PDiplomatico;
+import co.edu.poli.actividad1.Modelo.PEmergencia;
 import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
 import co.edu.poli.actividad1.Modelo.Titular;
@@ -17,6 +18,7 @@ import co.edu.poli.actividad1.Repositorios.VisaDao;
 import co.edu.poli.actividad1.Servicios.AdaptadorTitular;
 import co.edu.poli.actividad1.Servicios.Asistencia;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
+import co.edu.poli.actividad1.Servicios.Historial;
 import co.edu.poli.actividad1.Servicios.POrdinarioBuilder;
 import co.edu.poli.actividad1.Servicios.Seguro;
 import co.edu.poli.actividad1.Servicios.TitularWrapper;
@@ -203,7 +205,7 @@ public class Cliente {
 		
 		//pruebas bridge y decorator
 		
-		/*Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
+		/*
 		AdaptadorTitular Allie= new AdaptadorTitular(Allyson);
 		Seguro alliesegura = new Seguro(Allie, "seguro de viajes");
 		Asistencia allieasistida = new Asistencia(alliesegura, "apoyo emocional");
@@ -234,11 +236,34 @@ public class Cliente {
 		Asistencia saloA = new Asistencia(saloB, "asistencia emocional");
 		System.out.println(saloA.getTitularDetallado());*/
 		
-		Titular jamesbonds = new Titular("007", "07/07/77", "JamesBonds");
-		AdaptadorTitular agent007 = new AdaptadorTitular(jamesbonds);
+		Titular Allyson = new Titular ("1000034908","14/04/2002", "Allyson Velandia");
+		AdaptadorTitular agent007 = new AdaptadorTitular(Allyson);
 		Seguro saloB = new Seguro(agent007, "seguro de vida");
 		Asistencia saloA = new Asistencia(saloB, "asistencia emocional");
-		System.out.println(saloA.getTitularDetallado());
+		Historial salo1 = new Historial(saloA, "Brazil,Mexico");
+		System.out.println(salo1.getTitularDetallado());
+		
+ArrayList <Ciudad> ciudades = new ArrayList <Ciudad>();
+		
+		Ciudad medellin = new Ciudad ("0572", "Medellin", false , "1");
+		
+		Ciudad Bogotá = new Ciudad("0571", "Bogotá", true, "1");
+		
+		ciudades.add(medellin);
+		
+		ciudades.add(Bogotá);
+		
+		Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
+		
+		ElementoSeguridad chip = new MicroChip("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
+		
+		Pasaporte AlliePasport = new PEmergencia ("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, chip, "17/06/25");
+		
+		
+		System.out.println("\n" + AlliePasport);
+		
+		
+		
 	}
 	
 
