@@ -1,23 +1,11 @@
 package co.edu.poli.actividad1.Servicios;
 
 public class Fachada {
-	
-	private VerificarId verificarId;
-	private VerificarAnt verificarAnt;
-	private GeneracionP generacionP;
-	
-	
-	
-	public Fachada() {
-		super();
-		this.verificarId = new VerificarId();
-		this.verificarAnt = new VerificarAnt();
-		this.generacionP = new GeneracionP();
-	}
-
-
 
 	public String confirmarPasaporte(int id) {
+		VerificarId verificarId = new VerificarId();
+		VerificarAnt verificarAnt = new VerificarAnt();
+		GeneracionP generacionP = new GeneracionP();
 		if(verificarId.verificarIdentidad(id)) {
 			if(verificarAnt.verificarAntecedentes(id)) {
 				return generacionP.generarPasaporte(id);
