@@ -265,6 +265,8 @@ public class Cliente {
 			
 			//estado del arte
 			
+			/*
+			
 			//flyweight
 			
 			HashMap<String, PasaporteTipo> r = new HashMap<String, PasaporteTipo>();
@@ -303,7 +305,10 @@ public class Cliente {
 			Fachada fach = new Fachada();
 			
 			System.out.println(fach.confirmarPasaporte(d));
+			*/
 		
+			
+			
 			
 	    }catch(Exception e) {
 	    	
