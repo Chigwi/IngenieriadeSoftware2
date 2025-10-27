@@ -4,7 +4,14 @@ public class Proxy implements InterfazProxy{
 	
 	private AdaptadorPasaporte servicio;
 	
-	public String confirmarAcceso(String rol) {
+	
+	
+	public Proxy(AdaptadorPasaporte servicio) {
+		super();
+		this.servicio = servicio;
+	}
+
+	private String confirmarAcceso(String rol) {
 		if(rol.equals("superusuario")) {
 			return "Acceso total";
 		}else if(rol.equals("basicusuario")){

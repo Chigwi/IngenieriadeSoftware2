@@ -7,6 +7,14 @@ public class AdaptadorPasaporte implements InterfazProxy{
 	private Pasaporte adaptada;
 	
 	
+	
+	
+	public AdaptadorPasaporte(Pasaporte adaptada) {
+		super();
+		this.adaptada = adaptada;
+	}
+
+
 
 	public Pasaporte getAdaptada() {
 		return adaptada;
@@ -16,6 +24,13 @@ public class AdaptadorPasaporte implements InterfazProxy{
 
 	public void setAdaptada(Pasaporte adaptada) {
 		this.adaptada = adaptada;
+	}
+	
+
+
+	@Override
+	public String toString() {
+		return "AdaptadorPasaporte [adaptada=" + adaptada + "]";
 	}
 
 

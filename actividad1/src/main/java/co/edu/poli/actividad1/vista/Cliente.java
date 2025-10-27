@@ -15,6 +15,7 @@ import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Repositorios.VisaDao;
+import co.edu.poli.actividad1.Servicios.AdaptadorPasaporte;
 import co.edu.poli.actividad1.Servicios.AdaptadorTitular;
 import co.edu.poli.actividad1.Servicios.Asistencia;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
@@ -22,6 +23,7 @@ import co.edu.poli.actividad1.Servicios.FactoriaFlyweight;
 import co.edu.poli.actividad1.Servicios.Historial;
 import co.edu.poli.actividad1.Servicios.POrdinarioBuilder;
 import co.edu.poli.actividad1.Servicios.PasaporteTipo;
+import co.edu.poli.actividad1.Servicios.Proxy;
 import co.edu.poli.actividad1.Servicios.Seguro;
 import co.edu.poli.actividad1.Servicios.TitularWrapper;
 
@@ -262,9 +264,7 @@ public class Cliente {
 			
 			//estado del arte
 			
-			//spp
-			
-			
+			//flyweight
 			
 			HashMap<String, PasaporteTipo> r = new HashMap<String, PasaporteTipo>();
 			FactoriaFlyweight.setMapaTipos(r);
@@ -288,6 +288,16 @@ public class Cliente {
 			System.out.println(FactoriaFlyweight.getMapaTipos().get("Colombia"));
 			System.out.println(FactoriaFlyweight.getMapaTipos().get("Korea"));
 			System.out.println(FactoriaFlyweight.mostrarDetalles(KairiPasport));
+			
+			
+			
+			//proxy
+			String rol = "superusuario";
+			AdaptadorPasaporte adallie = new AdaptadorPasaporte(AlliePasport);
+			Proxy p = new Proxy(adallie);
+			System.out.println(p.verDetalles(rol));
+			
+			//Fachada
 			
 		
 			
