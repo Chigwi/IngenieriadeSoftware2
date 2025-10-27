@@ -18,6 +18,7 @@ public class PasaporteTipo {
 		this.paisEmisor = paisEmisor;
 		
 		FactoriaFlyweight.getMapaTipos().put(paisEmisor, this);
+		
 	}
 
 	public String getColorCubierta() {

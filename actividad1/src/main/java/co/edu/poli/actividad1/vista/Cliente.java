@@ -264,11 +264,12 @@ public class Cliente {
 			
 			//spp
 			
+			HashMap<String, PasaporteTipo> r = new HashMap<String, PasaporteTipo>();
+			FactoriaFlyweight.setMapaTipos(r);
+			
 			PasaporteTipo col = new PasaporteTipo("Vino tinto", "Español", "Colombia");
 			PasaporteTipo arg = new PasaporteTipo("Azul oscuro", "Koreano", "Korea");
 			
-			
-			HashMap<String, PasaporteTipo>  bases = new HashMap<String, PasaporteTipo>();
 			
 			ElementoSeguridad bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
 			
@@ -277,20 +278,14 @@ public class Cliente {
 			Titular kairi = new Titular("56468464", "13/10/1998", "Kairi");
 			
 			Pasaporte KairiPasport = new PDiplomatico("AX300", KoreadelNorte, "14/08/2025", "14/08/2035", kairi, Haeju, "negocios", bio);	
-
-			
-			bases.put("Korea", arg);
-			bases.put("Colombia", col);
-			
-			FactoriaFlyweight fac = new FactoriaFlyweight(bases);
 			
 			
 			
+			System.out.println(FactoriaFlyweight.getMapaTipos().get("Colombia"));
+			System.out.println(FactoriaFlyweight.getMapaTipos().get("Argentina"));
+			System.out.println(FactoriaFlyweight.mostrarDetalles(KairiPasport));
 			
-			System.out.println(fac.getMapaTipos().get("Colombia"));
-			System.out.println(fac.getMapaTipos().get("Argentina"));
-			
-			System.out.println(col.mostrarDetalles(AlliePasport));
+		
 			
 	    }catch(Exception e) {
 	    	

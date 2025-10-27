@@ -26,7 +26,7 @@ public class FactoriaFlyweight {
 		return "FactoriaFlyweight [mapaTipos=" + mapaTipos + "]";
 	}
 	
-	public String mostrarDetalles(Pasaporte p) {
+	public static String mostrarDetalles(Pasaporte p) {
 		String message = p.toString() + "/n" + mapaTipos.get(p.getPaisEmisor().getNombre());
 		return message;
 	}
