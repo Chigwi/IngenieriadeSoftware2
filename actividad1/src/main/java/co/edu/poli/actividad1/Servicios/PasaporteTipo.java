@@ -12,9 +12,12 @@ public class PasaporteTipo {
 
 	public PasaporteTipo(String colorCubierta, String idioma, String paisEmisor) {
 		super();
+		
 		this.colorCubierta = colorCubierta;
 		this.idioma = idioma;
 		this.paisEmisor = paisEmisor;
+		
+		FactoriaFlyweight.getMapaTipos().put(paisEmisor, this);
 	}
 
 	public String getColorCubierta() {
@@ -47,8 +50,5 @@ public class PasaporteTipo {
 				+ "]";
 	}
 	
-	public String mostrarDetalles(Pasaporte p) {
-		String message = p.toString() + "/n" + this.toString();
-		return message;
-	}
+	
 }
