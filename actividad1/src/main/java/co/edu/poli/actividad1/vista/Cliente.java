@@ -19,6 +19,7 @@ import co.edu.poli.actividad1.Servicios.AdaptadorPasaporte;
 import co.edu.poli.actividad1.Servicios.AdaptadorTitular;
 import co.edu.poli.actividad1.Servicios.Asistencia;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
+import co.edu.poli.actividad1.Servicios.Fachada;
 import co.edu.poli.actividad1.Servicios.FactoriaFlyweight;
 import co.edu.poli.actividad1.Servicios.Historial;
 import co.edu.poli.actividad1.Servicios.POrdinarioBuilder;
@@ -298,7 +299,10 @@ public class Cliente {
 			System.out.println(p.verDetalles(rol));
 			
 			//Fachada
+			int d = 2;
+			Fachada fach = new Fachada();
 			
+			System.out.println(fach.confirmarPasaporte(d));
 		
 			
 	    }catch(Exception e) {
