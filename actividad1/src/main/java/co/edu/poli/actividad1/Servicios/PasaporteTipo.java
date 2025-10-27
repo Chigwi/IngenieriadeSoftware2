@@ -9,15 +9,21 @@ public class PasaporteTipo {
 	private String idioma;
 	
 	private String paisEmisor;
+	
+	
+
+	private PasaporteTipo() {
+		super();
+	}
 
 	public PasaporteTipo(String colorCubierta, String idioma, String paisEmisor) {
 		super();
-		
-		this.colorCubierta = colorCubierta;
-		this.idioma = idioma;
-		this.paisEmisor = paisEmisor;
-		
-		FactoriaFlyweight.getMapaTipos().put(paisEmisor, this);
+		PasaporteTipo r = new PasaporteTipo();
+		r.setColorCubierta(colorCubierta);
+		r.setIdioma(idioma);
+		r.setPaisEmisor(paisEmisor);
+		addToMap(paisEmisor, r);
+	
 		
 	}
 
@@ -49,6 +55,10 @@ public class PasaporteTipo {
 	public String toString() {
 		return "PasaporteTipo [colorCubierta=" + colorCubierta + ", idioma=" + idioma + ", paisEmisor=" + paisEmisor
 				+ "]";
+	}
+	
+	private void addToMap(String key, PasaporteTipo p) {
+		FactoriaFlyweight.getMapaTipos().put(key,p );
 	}
 	
 	

@@ -17,8 +17,8 @@ public class FactoriaFlyweight {
 		return mapaTipos;
 	}
 
-	public static void setMapaTipos(HashMap<String, PasaporteTipo> mapaTipos) {
-		mapaTipos = mapaTipos;
+	public static void setMapaTipos(HashMap<String, PasaporteTipo> r) {
+		mapaTipos = r;
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class FactoriaFlyweight {
 	}
 	
 	public static String mostrarDetalles(Pasaporte p) {
-		String message = p.toString() + "/n" + mapaTipos.get(p.getPaisEmisor().getNombre());
+		String message = p.toString() + "\n" + mapaTipos.get(p.getPaisEmisor().getNombre());
 		return message;
 	}
 	

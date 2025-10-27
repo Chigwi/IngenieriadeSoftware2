@@ -128,7 +128,7 @@ public class Cliente {
 			//paises
 			Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
 			
-			Pais KoreadelNorte = new Pais ("148","Korea del Norte","koreano", ciudadesKorea);
+			Pais KoreadelNorte = new Pais ("148","Korea","koreano", ciudadesKorea);
 			
 			//titulares
 			
@@ -264,13 +264,17 @@ public class Cliente {
 			
 			//spp
 			
+			
+			
 			HashMap<String, PasaporteTipo> r = new HashMap<String, PasaporteTipo>();
 			FactoriaFlyweight.setMapaTipos(r);
+			
+			
 			
 			PasaporteTipo col = new PasaporteTipo("Vino tinto", "Español", "Colombia");
 			PasaporteTipo arg = new PasaporteTipo("Azul oscuro", "Koreano", "Korea");
 			
-			
+			//System.out.println(FactoriaFlyweight.getMapaTipos().toString()); 
 			ElementoSeguridad bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
 			
 			Pasaporte AlliePasport = new PDiplomatico("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);	
@@ -282,7 +286,7 @@ public class Cliente {
 			
 			
 			System.out.println(FactoriaFlyweight.getMapaTipos().get("Colombia"));
-			System.out.println(FactoriaFlyweight.getMapaTipos().get("Argentina"));
+			System.out.println(FactoriaFlyweight.getMapaTipos().get("Korea"));
 			System.out.println(FactoriaFlyweight.mostrarDetalles(KairiPasport));
 			
 		
