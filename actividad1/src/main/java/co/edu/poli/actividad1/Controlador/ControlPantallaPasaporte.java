@@ -11,9 +11,11 @@ import java.util.Observable;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-
-
+import co.edu.poli.actividad1.Modelo.Biometrico;
+import co.edu.poli.actividad1.Modelo.Blockchain;
 import co.edu.poli.actividad1.Modelo.Ciudad;
+import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
+import co.edu.poli.actividad1.Modelo.MicroChip;
 import co.edu.poli.actividad1.Modelo.PDiplomatico;
 import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
@@ -684,6 +686,18 @@ Alert a = new Alert (AlertType.INFORMATION);
 		
 		String id = "";
 		
+		String elementoSeguridar = selectElemento.getSelectionModel().getSelectedItem().toString();
+		
+		ElementoSeguridad es;
+		
+		if (elementoSeguridar.equals("MicroChip")) {
+			es = new MicroChip(null, null, null, null);
+		}else if(elementoSeguridar.equals("Biometrico")) {
+			es = new Biometrico(null, null, null, null);
+		}else {
+			es = new Blockchain(null, null, null, null);
+		}
+		
 		p.setCiudadEmision(ci);
 		p.setFechaEmision(fecha.toString());
 		p.setFechaExpiracion(fechae);
@@ -691,6 +705,7 @@ Alert a = new Alert (AlertType.INFORMATION);
 		p.setNumeroId(idGen(id));
 		p.setMisionDiplomatica(inExtra.getText());
 		p.setTitular(ti);
+		p.setEs(es);
 		
 		return p;
     }
@@ -729,6 +744,18 @@ Alert a = new Alert (AlertType.INFORMATION);
 		String fechae = "01/01/2035";
 		
 		String id = "";
+
+		String elementoSeguridar = selectElemento.getSelectionModel().getSelectedItem().toString();
+		
+		ElementoSeguridad es;
+		
+		if (elementoSeguridar.equals("MicroChip")) {
+			es = new MicroChip(null, null, null, null);
+		}else if(elementoSeguridar.equals("Biometrico")) {
+			es = new Biometrico(null, null, null, null);
+		}else {
+			es = new Blockchain(null, null, null, null);
+		}
 		
 		p.setCiudadEmision(ci);
 		p.setFechaEmision(fecha.toString());
@@ -737,6 +764,7 @@ Alert a = new Alert (AlertType.INFORMATION);
 		p.setNumeroId(idGen(id));
 		p.setRazonViaje(inExtra.getText());
 		p.setTitular(ti);
+		p.setEs(es);
 		
 		return p;
     }
