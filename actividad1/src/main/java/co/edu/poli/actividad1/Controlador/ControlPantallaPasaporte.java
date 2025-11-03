@@ -553,6 +553,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     }
     
     private void update(String id, Pasaporte p) throws SQLException {
+    	//metodo que ejecuta la actualizacion despues de confirmar los datos
     	if (!inIdPasaporte.getText().equals(null)) {
     		if (isEmpty()) {
     			if (inDiplomatico.isSelected()) {
@@ -649,6 +650,7 @@ Alert a = new Alert (AlertType.INFORMATION);
    }
     
     private PDiplomatico llenarDiplomatico(PDiplomatico p) {
+    	//metodo que crea los objetos necesarios para crear un pasaporte diplomatico
     	String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
 		
 		Pais pa = new Pais(null, null, null, null);
@@ -694,6 +696,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     }
     
     private POrdinario llenarOrdinario(POrdinario p) {
+    	//metodo que crea los objetos necesarios para crear un pasaporte ordinario
     	String nPais = selectPais.getSelectionModel().getSelectedItem().toString();
 		
 		Pais pa = new Pais(null, null, null, null);
