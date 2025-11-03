@@ -92,6 +92,7 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     private RadioButton inOrdinario;
+  
 
     @FXML
     private ComboBox<String> selectCiudad;
@@ -731,4 +732,6 @@ Alert a = new Alert (AlertType.INFORMATION);
 		
 		return p;
     }
+    
+   
 }

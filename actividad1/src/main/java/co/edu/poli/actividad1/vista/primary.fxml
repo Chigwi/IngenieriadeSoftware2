@@ -10,12 +10,11 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.actividad1.Controlador.ControlPantallaPasaporte">
    <children>
-      <ComboBox fx:id="selectPais" layoutX="49.0" layoutY="113.0" prefHeight="25.0" prefWidth="173.0" promptText="Pais" />
-      <ComboBox fx:id="selectCiudad" layoutX="269.0" layoutY="113.0" prefHeight="25.0" prefWidth="173.0" promptText="Ciudad" />
-      <ComboBox fx:id="selectUsuarios" layoutX="478.0" layoutY="113.0" prefHeight="25.0" prefWidth="173.0" promptText="Usuarios Registrados" />
+      <ComboBox fx:id="selectPais" layoutX="13.0" layoutY="113.0" prefHeight="25.0" prefWidth="142.0" promptText="Pais" />
+      <ComboBox fx:id="selectCiudad" layoutX="183.0" layoutY="113.0" prefHeight="25.0" prefWidth="142.0" promptText="Ciudad" />
+      <ComboBox fx:id="selectUsuarios" layoutX="512.0" layoutY="113.0" prefHeight="25.0" prefWidth="153.0" promptText="Usuarios Registrados" />
       <DatePicker fx:id="selectFecha" layoutX="470.0" layoutY="35.0" promptText="fechaEmision" />
       <TextArea fx:id="inExtra" layoutX="177.0" layoutY="177.0" prefHeight="107.0" prefWidth="334.0" />
       <Button fx:id="bttShow" layoutX="66.0" layoutY="337.0" mnemonicParsing="false" onAction="#showSelect" text="leer" />
@@ -31,5 +30,7 @@
       </RadioButton>
       <Label layoutX="547.0" layoutY="183.0" text="Tipo de pasaporte" />
       <RadioButton fx:id="inDiplomatico" layoutX="525.0" layoutY="236.0" mnemonicParsing="false" onAction="#textDiplomatico" text="Pasaporte Diplomatico" toggleGroup="$tipoPasaporte" />
+      <ComboBox fx:id="selectElemento" layoutX="344.0" layoutY="113.0" prefHeight="25.0" prefWidth="153.0" promptText="Elemento Seguridad" />
+      <Button fx:id="bttVerificar" layoutX="406.0" layoutY="380.0" mnemonicParsing="false" onAction="#verificar" text="verificar Cambios" />
    </children>
 </AnchorPane>
