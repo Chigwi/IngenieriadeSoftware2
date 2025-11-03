@@ -105,7 +105,7 @@ public class ControlPantallaPasaporte implements Initializable {
     private Button bttVerificar;
 
     @FXML
-    private ComboBox<?> selectElemento;
+    private ComboBox<String> selectElemento;
 
     @FXML
     private ComboBox<String> selectPais;
