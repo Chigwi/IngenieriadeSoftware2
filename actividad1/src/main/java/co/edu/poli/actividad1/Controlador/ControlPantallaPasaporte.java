@@ -161,6 +161,8 @@ public class ControlPantallaPasaporte implements Initializable {
 		
 		titulares  = FXCollections.observableArrayList();
 		
+		elementos = FXCollections.observableArrayList();
+		
 		//quema de objetos
 		
 		//paises
@@ -292,15 +294,13 @@ public class ControlPantallaPasaporte implements Initializable {
 		 elementos.add("Blockchain");
 		 
 		 selectElemento.setItems(elementos);
-		 
-		 selectElemento.setDisable(true);
 		
 		
 		
 	}
-    
+	
     @FXML
-    void SelectCiudades(ActionEvent event) {
+    void SelectPais(ActionEvent event) {
     	
     	if(ciudad.size()>0) {
     		ciudad.clear();
@@ -319,7 +319,6 @@ public class ControlPantallaPasaporte implements Initializable {
     	selectCiudad.setItems(ciudad);
     	selectCiudad.setDisable(false);
     	
-    
     }
     @FXML
     void DeletePasaporte(ActionEvent event) {
@@ -363,7 +362,7 @@ public class ControlPantallaPasaporte implements Initializable {
     void insertarPasaporte(ActionEvent event) {
     	
     	if(!inDiplomatico.isSelected() && !inOrdinario.isSelected()) {
-Alert a = new Alert (AlertType.INFORMATION);
+    		Alert a = new Alert (AlertType.INFORMATION);
     		
         	a.setContentText("Seleccione un tipo de pasaporte a insertar");
         	
