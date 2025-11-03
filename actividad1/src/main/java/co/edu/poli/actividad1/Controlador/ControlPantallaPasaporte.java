@@ -92,13 +92,18 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     private RadioButton inOrdinario;
-  
 
     @FXML
     private ComboBox<String> selectCiudad;
 
     @FXML
     private DatePicker selectFecha;
+    
+    @FXML
+    private Button bttVerificar;
+
+    @FXML
+    private ComboBox<?> selectElemento;
 
     @FXML
     private ComboBox<String> selectPais;
@@ -732,6 +737,8 @@ Alert a = new Alert (AlertType.INFORMATION);
 		
 		return p;
     }
-    
-   
+    @FXML
+    void verificar(ActionEvent event) {
+
+    }
 }
