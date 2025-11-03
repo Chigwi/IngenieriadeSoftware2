@@ -742,7 +742,7 @@ Alert a = new Alert (AlertType.INFORMATION);
     }
     @FXML
     void verificar(ActionEvent event) {
-//SALO
+//SALO.
     	
     }
 }
