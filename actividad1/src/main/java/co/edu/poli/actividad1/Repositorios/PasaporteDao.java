@@ -2,10 +2,13 @@ package co.edu.poli.actividad1.Repositorios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import co.edu.poli.actividad1.Modelo.Biometrico;
+import co.edu.poli.actividad1.Modelo.Blockchain;
 import co.edu.poli.actividad1.Modelo.Ciudad;
 import co.edu.poli.actividad1.Modelo.ElementoSeguridad;
+import co.edu.poli.actividad1.Modelo.MicroChip;
 import co.edu.poli.actividad1.Modelo.PDiplomatico;
 import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pais;
@@ -55,7 +58,17 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			if (t.getEs() == null) {
 				pstmt.setString(7, "N/A");
 			}else {
-				pstmt.setString(7, t.getEs().getIdL());
+				if(t.getEs() instanceof MicroChip) {
+					pstmt.setString(7, "MicroChip");
+				}
+				else if(t.getEs() instanceof Biometrico) {
+					pstmt.setString(7, "Biometrico");
+				}
+				else if(t.getEs() instanceof Blockchain) {
+					pstmt.setString(7, "Blockchain");
+				}else {
+					pstmt.setString(7, "N/A");
+				}
 			}
 			
 			pstmt.executeUpdate();
@@ -342,7 +355,20 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
-    	ElementoSeguridad es = new Biometrico(rs.getString("Es"), null, null,null);
+    	
+    	String tipo = rs.getString("Es");
+    	if(tipo.equals("Microchip")) {
+    		MicroChip es = new MicroChip(null, null, null, tipo);
+    	}
+    	else if(tipo.equals("Biometrico")) {
+    		Biometrico es = new Biometrico(null, null, null, tipo);
+    	}
+    	else if(tipo.equals("Blockchain")) {
+    		
+    	}
+    	else {
+    		ElementoSeguridad es = new Biometrico(null, null, null,null);
+    	}
     	
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
