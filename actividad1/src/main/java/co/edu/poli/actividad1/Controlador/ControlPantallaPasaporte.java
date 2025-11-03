@@ -129,6 +129,8 @@ public class ControlPantallaPasaporte implements Initializable {
 	
 	private ObservableList<String> titulares;
 	
+	private ObservableList<String> elementos;
+	
 	private DiplomaticoCreator dC;
 	
 	private OrdinarioCreator oC;
@@ -282,6 +284,18 @@ public class ControlPantallaPasaporte implements Initializable {
 		selectUsuarios.setItems(titulares);
 		
 		selectCiudad.setDisable(true);
+		
+		//elementos de seguridad
+		
+		 elementos.add("MicroChip");
+		 elementos.add("Biometrico");
+		 elementos.add("Blockchain");
+		 
+		 selectElemento.setItems(elementos);
+		 
+		 selectElemento.setDisable(true);
+		
+		
 		
 	}
     
