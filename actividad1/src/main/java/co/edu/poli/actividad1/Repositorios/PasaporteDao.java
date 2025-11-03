@@ -356,18 +356,19 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
     	
+    	ElementoSeguridad es;
     	String tipo = rs.getString("Es");
     	if(tipo.equals("Microchip")) {
-    		MicroChip es = new MicroChip(null, null, null, tipo);
+    		es = new MicroChip(null, null, null, tipo);
     	}
     	else if(tipo.equals("Biometrico")) {
-    		Biometrico es = new Biometrico(null, null, null, tipo);
+    		es = new Biometrico(null, null, null, tipo);
     	}
     	else if(tipo.equals("Blockchain")) {
-    		
+    		es = new Blockchain(null, null, null, tipo);
     	}
     	else {
-    		ElementoSeguridad es = new Biometrico(null, null, null,null);
+    		es = new Biometrico(null, null, null,null);
     	}
     	
     	List <Ciudad> c = new ArrayList<Ciudad>();
@@ -413,7 +414,20 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	Pais selectPais = regPais.select(rs.getString("paisEmisor"));
     	
-    	ElementoSeguridad es = new Biometrico(rs.getString("Es"), null, null,null);
+    	ElementoSeguridad es;
+    	String tipo = rs.getString("Es");
+    	if(tipo.equals("Microchip")) {
+    		es = new MicroChip(null, null, null, tipo);
+    	}
+    	else if(tipo.equals("Biometrico")) {
+    		es = new Biometrico(null, null, null, tipo);
+    	}
+    	else if(tipo.equals("Blockchain")) {
+    		es = new Blockchain(null, null, null, tipo);
+    	}
+    	else {
+    		es = new Biometrico(null, null, null,null);
+    	}
 
     	List <Ciudad> c = new ArrayList<Ciudad>();
     	
