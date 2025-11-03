@@ -269,28 +269,7 @@ public class Cliente {
 			
 			//flyweight
 			
-			HashMap<String, PasaporteTipo> r = new HashMap<String, PasaporteTipo>();
-			FactoriaFlyweight.setMapaTipos(r);
 			
-			
-			
-			PasaporteTipo col = new PasaporteTipo("Vino tinto", "Español", "Colombia");
-			PasaporteTipo arg = new PasaporteTipo("Azul oscuro", "Koreano", "Korea");
-			
-			//System.out.println(FactoriaFlyweight.getMapaTipos().toString()); 
-			ElementoSeguridad bio = new Biometrico("AS400", "alta seguridad", "seguridad de identidad", "huella digital");
-			
-			Pasaporte AlliePasport = new PDiplomatico("AX400", colombia, "14/08/2025", "14/08/2035", Allyson, Bogotá, "negocios", bio);	
-			
-			Titular kairi = new Titular("56468464", "13/10/1998", "Kairi");
-			
-			Pasaporte KairiPasport = new PDiplomatico("AX300", KoreadelNorte, "14/08/2025", "14/08/2035", kairi, Haeju, "negocios", bio);	
-			
-			
-			
-			System.out.println(FactoriaFlyweight.getMapaTipos().get("Colombia"));
-			System.out.println(FactoriaFlyweight.getMapaTipos().get("Korea"));
-			System.out.println(FactoriaFlyweight.mostrarDetalles(KairiPasport));
 			
 			
 			
@@ -301,11 +280,12 @@ public class Cliente {
 			System.out.println(p.verDetalles(rol));
 			
 			//Fachada
+			
+			*/
 			int d = 2;
 			Fachada fach = new Fachada();
 			
 			System.out.println(fach.confirmarPasaporte(d));
-			*/
 		
 			
 			
