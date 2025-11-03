@@ -20,7 +20,7 @@ public class MicroChip extends ElementoSeguridad{
 
 	@Override
 	public String toString() {
-		return "tipo de seguridad"+this.getTipo()+"\n" +"descripcion"+this.getFdescripcion()+"\n"+"MicroChip " + "\n" +"[numeroChip=" + numeroChip + "]";
+		return "MicroChip: "+ numeroChip;
 	}
 	
 }

@@ -19,7 +19,7 @@ public class Blockchain extends ElementoSeguridad{
 
 		@Override
 		public String toString() {
-			return "Blockchain [hash=" + hash + "]";
+			return "Blockchain: " + hash ;
 		}
 		
 		
