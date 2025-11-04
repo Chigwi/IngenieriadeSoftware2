@@ -445,11 +445,14 @@ public class ControlPantallaPasaporte implements Initializable {
         	}
         	else if(bttselect.getText().equals("Actualizar")) {
         		funcion = "Actualizacion";
+        		
         		if(inDiplomatico.isSelected() == true) {
         			
         			PDiplomatico p = dC.createPasaporte();
         			
-            		update(inIdPasaporte.getText(), p);
+        			update(inIdPasaporte.getText(), p);
+        			
+        			
             		
             		
                 	
@@ -555,6 +558,7 @@ public class ControlPantallaPasaporte implements Initializable {
         	a.showAndWait();
     	}else {
     		Pasaporte p = regPas.select(id);
+    		visualizarCampoPasaporte(p);
         	
         	Alert a = new Alert(AlertType.INFORMATION);
     		
@@ -576,7 +580,8 @@ public class ControlPantallaPasaporte implements Initializable {
     				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
-    					regPas.Update(p);
+    					//regPas.Update(p);
+    					visualizarCampoPasaporte(p);
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
@@ -598,7 +603,8 @@ public class ControlPantallaPasaporte implements Initializable {
     				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
-    					regPas.Update(p);
+    					//regPas.Update(p);
+    					visualizarCampoPasaporte(p);
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
@@ -630,7 +636,6 @@ public class ControlPantallaPasaporte implements Initializable {
         	
         	a.showAndWait();
     	}
-    	
     }
     
     private void delete (String id) throws SQLException {
