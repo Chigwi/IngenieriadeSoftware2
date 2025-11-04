@@ -786,4 +786,35 @@ public class ControlPantallaPasaporte implements Initializable {
 //SALO.
     	
     }
+    
+    void visualizarCampoPasaporte (Pasaporte in) {
+    	selectPais.setPromptText(in.getPaisEmisor().getNombre());
+    	selectCiudad.setPromptText(in.getCiudadEmision().getNombre());
+    	selectUsuarios.setPromptText(in.getTitular().getNombre());
+    	
+    	selectFecha.setPromptText(in.getFechaEmision());
+    	ElementoSeguridad elemen = in.getEs();
+    	
+    	
+    	if(elemen instanceof MicroChip) {
+    		selectElemento.setPromptText("MicroChip");
+    	}else if (elemen instanceof Biometrico) {
+    		selectElemento.setPromptText("Biometrico");
+    	}else {
+    		selectElemento.setPromptText("Blockchain");
+    	}
+    	if(in instanceof POrdinario) {
+    		POrdinario p = (POrdinario) in;
+    		inOrdinario.setSelected(true);
+    		inDiplomatico.setSelected(false);
+    		inExtra.setText(p.getRazonViaje());
+    	}else {
+    		PDiplomatico p = (PDiplomatico)in;
+    		inDiplomatico.setSelected(true);
+    		inOrdinario.setSelected(false);
+    		inExtra.setText(p.getMisionDiplomatica());
+    		
+    	}
+    	
+    }
 }
