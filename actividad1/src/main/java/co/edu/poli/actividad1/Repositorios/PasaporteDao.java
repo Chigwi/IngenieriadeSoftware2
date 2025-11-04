@@ -120,7 +120,6 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			pstmt.setString(1, id);
 			
 			
-			
 			 ResultSet rs = pstmt.executeQuery();
 			 
 	            if (rs.next()) {
