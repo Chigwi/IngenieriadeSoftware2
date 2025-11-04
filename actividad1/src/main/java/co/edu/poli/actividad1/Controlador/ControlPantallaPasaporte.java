@@ -25,9 +25,12 @@ import co.edu.poli.actividad1.Repositorios.CiudadDao;
 import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
+import co.edu.poli.actividad1.Servicios.Cancilleria;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
+import co.edu.poli.actividad1.Servicios.Migracion;
 import co.edu.poli.actividad1.Servicios.OrdinarioCreator;
+import co.edu.poli.actividad1.Servicios.Policia;
 import co.edu.poli.actividad1.Servicios.Publisher;
 import co.edu.poli.actividad1.vista.App;
 import javafx.collections.FXCollections;
@@ -587,6 +590,16 @@ public class ControlPantallaPasaporte implements Initializable {
     					visualizarCampoPasaporte(p);
     					
     					Publisher ob = new Publisher();
+    					
+    					Policia policia = new Policia();
+    					
+    					Migracion migracion = new Migracion();
+    					
+    					Cancilleria cancilleria = new Cancilleria();
+    					
+    					ob.subscribir(cancilleria);
+    					ob.subscribir(migracion);
+    					ob.subscribir(policia);
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		

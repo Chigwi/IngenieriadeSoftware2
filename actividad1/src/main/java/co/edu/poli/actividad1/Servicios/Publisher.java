@@ -11,11 +11,17 @@ public class Publisher {
 	}
 	
 	public String subscribir(EntidadGubernamental subscriptor) {
-		return null;
+		
+		subscriptores.add(subscriptor);
+		
+		return "Insertado con exito: "+ subscriptor.toString();
 	}
 	
 	public String desubscribir(EntidadGubernamental subscriptor) {
-		return null;
+		
+		subscriptores.remove(subscriptor);
+		
+		return "subcriptor " + subscriptor.toString() + " fue eliminado con exito";
 	}
 
 	public Publisher() {
