@@ -4,8 +4,8 @@ public class Policia implements EntidadGubernamental{
 
 	@Override
 	public String recibirNotificacion() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "La policia nacional ha sido notificada";
 	}
 
 }

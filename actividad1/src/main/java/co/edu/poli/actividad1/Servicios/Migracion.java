@@ -4,8 +4,8 @@ public class Migracion implements EntidadGubernamental{
 
 	@Override
 	public String recibirNotificacion() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "La agencia de migracion colombiana ha sifo notificada";
 	}
 
 }

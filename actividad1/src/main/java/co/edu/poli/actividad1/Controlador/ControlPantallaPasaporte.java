@@ -611,7 +611,7 @@ public class ControlPantallaPasaporte implements Initializable {
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
-    	        		a.setContentText("Actualizacion exitosa");
+    	        		a.setContentText(ob.notificar(id));
     	            	
     	            	a.showAndWait();
     				}
@@ -634,9 +634,21 @@ public class ControlPantallaPasaporte implements Initializable {
     					
     					visualizarCampoPasaporte(p);
     					
+    					Publisher ob = new Publisher();
+    					
+    					Policia policia = new Policia();
+    					
+    					Migracion migracion = new Migracion();
+    					
+    					Cancilleria cancilleria = new Cancilleria();
+    					
+    					ob.subscribir(cancilleria);
+    					ob.subscribir(migracion);
+    					ob.subscribir(policia);
+    					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
-    	        		a.setContentText("Actualizacion exitosa");
+    	        		a.setContentText(ob.notificar(id));
     	            	
     	            	a.showAndWait();
     				}

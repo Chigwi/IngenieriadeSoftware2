@@ -7,7 +7,17 @@ public class Publisher {
 	private ArrayList<EntidadGubernamental> subscriptores;
 	
 	public String notificar(String id) {
-		return "";
+		
+		StringBuilder mensaje = new StringBuilder();
+		mensaje.append("los cambios realizados al pasaporte identificado con numero de identificacion: ");
+		mensaje.append(id);
+		mensaje.append("\n");
+		mensaje.append("fueron notificados a la siguientes entidades: " + "\n");
+		for (EntidadGubernamental entidadGubernamental : subscriptores) {
+			mensaje.append(entidadGubernamental.recibirNotificacion()+ "\n");
+				
+		}
+		return mensaje.toString();
 	}
 	
 	public String subscribir(EntidadGubernamental subscriptor) {

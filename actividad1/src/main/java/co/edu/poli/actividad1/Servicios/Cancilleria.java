@@ -4,8 +4,8 @@ public class Cancilleria implements EntidadGubernamental{
 
 	@Override
 	public String recibirNotificacion() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "La cancilleria ha sido notificada";
 	}
 
 }
