@@ -18,7 +18,7 @@ public class Publisher {
 		return null;
 	}
 
-	public Publisher(ArrayList<EntidadGubernamental> subscriptores) {
+	public Publisher() {
 		super();
 		this.subscriptores = new ArrayList<EntidadGubernamental>();
 	}
