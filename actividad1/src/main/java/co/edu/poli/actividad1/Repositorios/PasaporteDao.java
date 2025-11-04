@@ -184,7 +184,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 	}
 	@Override
 	public String Update(Pasaporte t) {
-		String sql = "UPDATE \"Pasaporte\" SET \"paisEmisor\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, \"titular\" = ?, \"ciudadEmision\", \"Es\" = ? WHERE \"numeroId\" = ?";
+		String sql = "UPDATE \"Pasaporte\" SET \"paisEmisor\" = ?, \"fechaEmision\" = ?, \"fechaExpiracion\" = ?, \"titular\" = ?, \"ciudadEmision\" = ?, \"Es\" = ? WHERE \"numeroId\" = ?";
 		
 		String sql1 = "UPDATE \"POrdinario\" SET \"razonViaje\" = ? WHERE \"numeroId\" = ? ";
 		
@@ -200,7 +200,16 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			
 			pstmt.setString(5, t.getCiudadEmision().getCodigoPostal());
 			
-			pstmt.setString(6, t.getEs().getIdL());
+			if(t.getEs() instanceof MicroChip) {
+				pstmt.setString(6, "MicroChip");
+			}else if(t.getEs() instanceof Biometrico) {
+				pstmt.setString(6, "Biometrico");
+				
+			}else if(t.getEs() instanceof Blockchain) {
+				pstmt.setString(6, "Blockchain");
+			}else {
+				pstmt.setString(6, "N/A");
+			}
 			
 			pstmt.setString(7, t.getNumeroId());
 			
@@ -358,6 +367,9 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	ElementoSeguridad es;
     	String tipo = rs.getString("Es");
+    	if(tipo == null) {
+    		tipo = "N/A";
+    	}
     	if(tipo.equals("Microchip")) {
     		es = new MicroChip(null, null, null, tipo);
     	}
@@ -416,6 +428,9 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	
     	ElementoSeguridad es;
     	String tipo = rs.getString("Es");
+    	if(tipo == null) {
+    		tipo = "N/A";
+    	}
     	if(tipo.equals("Microchip")) {
     		es = new MicroChip(null, null, null, tipo);
     	}
