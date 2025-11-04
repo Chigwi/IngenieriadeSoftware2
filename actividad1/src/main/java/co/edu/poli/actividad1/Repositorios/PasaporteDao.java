@@ -369,7 +369,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	if(tipo == null) {
     		tipo = "N/A";
     	}
-    	if(tipo.equals("Microchip")) {
+    	if(tipo.equals("MicroChip")) {
     		es = new MicroChip(null, null, null, tipo);
     	}
     	else if(tipo.equals("Biometrico")) {
@@ -430,7 +430,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
     	if(tipo == null) {
     		tipo = "N/A";
     	}
-    	if(tipo.equals("Microchip")) {
+    	if(tipo.equals("MicroChip")) {
     		es = new MicroChip(null, null, null, tipo);
     	}
     	else if(tipo.equals("Biometrico")) {

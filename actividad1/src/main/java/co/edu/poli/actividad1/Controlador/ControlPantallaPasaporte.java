@@ -298,7 +298,11 @@ public class ControlPantallaPasaporte implements Initializable {
 		 elementos.add("Blockchain");
 		 
 		 selectElemento.setItems(elementos);
-		
+		 
+		 //bloqueo de actualizar hasta que se lea
+	    	bttactualizar.setDisable(true);
+	    	bttVerificar.setVisible(false);
+	    	bttVerificar.setDisable(true);		
 		
 		
 	}
@@ -353,9 +357,11 @@ public class ControlPantallaPasaporte implements Initializable {
     	inIdPasaporte.setDisable(false);
     	inIdPasaporte.setVisible(true);
     	
-    	bttselect.setDisable(false);
+    	bttselect.setDisable(true);
     	bttselect.setVisible(true);
     	
+    	bttVerificar.setVisible(true);
+    	bttVerificar.setDisable(false);
     	bttselect.setText("Actualizar");
     
 
@@ -437,6 +443,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	String funcion ="";
     	try {
     		if(bttselect.getText().equals("Buscar")) {
+    			bttactualizar.setDisable(false);
     			funcion = "Busqueda";
         		read(inIdPasaporte.getText());
         		
@@ -492,6 +499,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	
     	bttselect.setDisable(false);
     	bttselect.setVisible(true);
+    	
     	
     	bttselect.setText("Buscar");
     	
@@ -808,6 +816,9 @@ public class ControlPantallaPasaporte implements Initializable {
     }
     @FXML
     void verificar(ActionEvent event) {
+    	
+    	bttselect.setDisable(false);
+    	bttactualizar.setDisable(false);
     	
     	if (!inIdPasaporte.getText().equals(null)) {
     		String id = inIdPasaporte.getText();
