@@ -580,7 +580,9 @@ public class ControlPantallaPasaporte implements Initializable {
     				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
-    					//regPas.Update(p);
+    					
+    					regPas.Update(p);
+    					
     					visualizarCampoPasaporte(p);
     					
     					Alert a = new Alert(AlertType.INFORMATION);
@@ -603,7 +605,9 @@ public class ControlPantallaPasaporte implements Initializable {
     				p.setNumeroId(id);
     				
     				if (regPas.select(id) != null) {
-    					//regPas.Update(p);
+    					
+    					regPas.Update(p);
+    					
     					visualizarCampoPasaporte(p);
     					
     					Alert a = new Alert(AlertType.INFORMATION);
@@ -788,7 +792,33 @@ public class ControlPantallaPasaporte implements Initializable {
     }
     @FXML
     void verificar(ActionEvent event) {
-//SALO.
+    	
+    	if (!inIdPasaporte.getText().equals(null)) {
+    		String id = inIdPasaporte.getText();
+    		
+    		if (!regPas.select(id).equals(null)) {
+    			Pasaporte p = regPas.select(id);
+    			if (p instanceof POrdinario) {
+    				POrdinario po = (POrdinario) p;
+    				visualizarCampoPasaporte(po);
+    			}else {
+    				PDiplomatico pd = (PDiplomatico) p;
+    				visualizarCampoPasaporte(pd);
+    			}
+    		}else {
+    			Alert a = new Alert(AlertType.INFORMATION);
+        		
+        		a.setContentText("Pasaporte no existe");
+            	
+            	a.showAndWait();
+    		}
+    	}else {
+    		Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText("Inserte pasaporte a verificar.");
+        	
+        	a.showAndWait();
+    	}
     	
     }
     
