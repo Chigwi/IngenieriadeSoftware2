@@ -28,6 +28,7 @@ import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
 import co.edu.poli.actividad1.Servicios.OrdinarioCreator;
+import co.edu.poli.actividad1.Servicios.Publisher;
 import co.edu.poli.actividad1.vista.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -584,6 +585,8 @@ public class ControlPantallaPasaporte implements Initializable {
     					regPas.Update(p);
     					
     					visualizarCampoPasaporte(p);
+    					
+    					Publisher ob = new Publisher();
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
