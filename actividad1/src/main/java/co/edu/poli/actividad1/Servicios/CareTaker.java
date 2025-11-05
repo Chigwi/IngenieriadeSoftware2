@@ -4,6 +4,6 @@ import java.util.HashMap;
 
 public class CareTaker{
 	
-	private HashMap<String, AdaptadorPasaporte> Historial;
+	private HashMap<String, Memento> Historial;
 
 }
