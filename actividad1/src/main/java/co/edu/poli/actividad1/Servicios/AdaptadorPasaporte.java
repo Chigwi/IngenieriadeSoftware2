@@ -41,7 +41,9 @@ public class AdaptadorPasaporte implements InterfazProxy{
 	
 	//metodos memento
 	public ConcreteMemento createMemento () {
-		ConcreteMemento m = new ConcreteMemento (this);
+		Pasaporte p = adaptada;
+		AdaptadorPasaporte r = new AdaptadorPasaporte(p);
+		ConcreteMemento m = new ConcreteMemento (r);
 		return m;
 	}
 	
