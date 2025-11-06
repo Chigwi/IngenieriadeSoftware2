@@ -10,7 +10,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.actividad1.Controlador.ControlPantallaPasaporte">
+<AnchorPane fx:id="selectCambio" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.actividad1.Controlador.ControlPantallaPasaporte">
    <children>
       <ComboBox fx:id="selectPais" layoutX="13.0" layoutY="113.0" onAction="#SelectPais" prefHeight="25.0" prefWidth="142.0" promptText="Pais" />
       <ComboBox fx:id="selectCiudad" layoutX="183.0" layoutY="113.0" prefHeight="25.0" prefWidth="142.0" promptText="Ciudad" />
@@ -31,6 +31,10 @@
       <Label layoutX="547.0" layoutY="183.0" text="Tipo de pasaporte" />
       <RadioButton fx:id="inDiplomatico" layoutX="525.0" layoutY="236.0" mnemonicParsing="false" onAction="#textDiplomatico" text="Pasaporte Diplomatico" toggleGroup="$tipoPasaporte" />
       <ComboBox fx:id="selectElemento" layoutX="344.0" layoutY="113.0" prefHeight="25.0" prefWidth="153.0" promptText="Elemento Seguridad" />
-      <Button fx:id="bttVerificar" layoutX="406.0" layoutY="380.0" mnemonicParsing="false" onAction="#verificar" text="verificar Cambios" />
+      <Button fx:id="bttVerificar" layoutX="427.0" layoutY="381.0" mnemonicParsing="false" onAction="#verificar" text="visualizar" />
+      <ComboBox fx:id="selectCambios" layoutX="234.0" layoutY="35.0" prefWidth="150.0" promptText="Cmbios realizados" />
+      <Button fx:id="bttconfirmar" layoutX="177.0" layoutY="393.0" mnemonicParsing="false" onAction="#confirmar" text="confirmar cambios" />
+      <Button fx:id="bttGuardar" layoutX="102.0" layoutY="393.0" mnemonicParsing="false" onAction="#saveMemento" text="guardar" />
+      <Button fx:id="bttRestaurar" layoutX="27.0" layoutY="393.0" mnemonicParsing="false" onAction="#restore" text="restaurar" />
    </children>
 </AnchorPane>

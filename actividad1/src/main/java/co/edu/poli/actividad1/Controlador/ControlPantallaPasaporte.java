@@ -74,6 +74,19 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     private Button bttInsertar;
+    
+    @FXML
+    private Button bttRestaurar;
+
+    @FXML
+    private Button bttGuardar;
+
+    @FXML
+    private Button bttconfirmar;
+    
+
+    @FXML
+    private ComboBox<?> selectCambios;
 
     @FXML
     private Button bttShow;
@@ -889,5 +902,21 @@ public class ControlPantallaPasaporte implements Initializable {
     		
     	}
     	
+    }
+
+    @FXML
+    void restore(ActionEvent event) {
+
+    }
+
+    @FXML
+    void confirmar(ActionEvent event) {
+    	}
+    
+
+    @FXML
+    void saveMemento(ActionEvent event) {
+
+    }
     }
 }
