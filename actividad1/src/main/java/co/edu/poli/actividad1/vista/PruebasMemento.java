@@ -12,6 +12,7 @@ import co.edu.poli.actividad1.Modelo.Titular;
 import co.edu.poli.actividad1.Servicios.AdaptadorPasaporte;
 import co.edu.poli.actividad1.Servicios.CareTaker;
 import co.edu.poli.actividad1.Servicios.ConcreteMemento;
+import co.edu.poli.actividad1.Servicios.PasaporteOriginator;
 
 public class PruebasMemento {
 
@@ -41,7 +42,7 @@ public class PruebasMemento {
 		Pasaporte KairiPasport = new PDiplomatico("AX300", KoreadelNorte, "14/08/2025", "14/08/2035", kairi, Haeju, "negocios", bio);	
 		
 		
-		AdaptadorPasaporte Allie = new AdaptadorPasaporte(AlliePasport);
+		PasaporteOriginator Allie = new PasaporteOriginator(AlliePasport);
 		
 		CareTaker historial = new CareTaker();
 		
@@ -51,19 +52,19 @@ public class PruebasMemento {
 		
 		System.out.println(Allie.restore((ConcreteMemento) historial.getMemento(1)));
 		
-		Allie.getAdaptada().getTitular().setNombre("Arlette");
+		Allie.getState().setTitular(kairi);
 		
-		System.out.println(Allie);
+		System.out.println(Allie + "\n debe decir Allyson aqui");
 		
 		System.out.println(historial.getMemento(1));
 		
-		Allie.getAdaptada().getTitular().setNombre("Allie");
+		Allie.getState().getTitular().setNombre("Allie");
 		
 		ConcreteMemento r2 = Allie.createMemento();
 		
 		historial.addMemento(2, r2);
 		
-		System.out.println(Allie.restore((ConcreteMemento) historial.getMemento(2)));
+		//System.out.println(Allie.restore((ConcreteMemento) historial.getMemento(1)));
 	}
 
 }

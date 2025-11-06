@@ -12,5 +12,11 @@ public class ConcreteMemento implements Memento{
 	public PasaporteOriginator getMemento() {
 		return this.state;
 	}
+
+	@Override
+	public String toString() {
+		return "ConcreteMemento [state=" + state + "]";
+	}
+	
 	
 }

@@ -9,6 +9,19 @@ public class PDiplomatico extends Pasaporte{
 		super(numeroId, paisEmisor, fechaEmision, fechaExpiracion, titular, ciudadEmision, es);
 		this.misionDiplomatica = misionDiplomatica;
 	}
+	
+	public PDiplomatico (PDiplomatico pasaporte) {
+		super(
+		        pasaporte.getNumeroId(),
+		        pasaporte.getPaisEmisor(),
+		        pasaporte.getFechaEmision(),
+		        pasaporte.getFechaExpiracion(),
+		        pasaporte.getTitular(),
+		        pasaporte.getCiudadEmision(),
+		        pasaporte.getEs()
+		    );
+		this.misionDiplomatica = pasaporte.getMisionDiplomatica();
+	}
 
 	public String getMisionDiplomatica() {
 		return misionDiplomatica;

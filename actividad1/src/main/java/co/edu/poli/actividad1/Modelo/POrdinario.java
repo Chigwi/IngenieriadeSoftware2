@@ -9,6 +9,19 @@ public class POrdinario extends Pasaporte {
 		super(numeroId, paisEmisor, fechaEmision, fechaExpiracion, titular, ciudadEmision, es);
 		this.razonViaje = razonViaje;
 	}
+	
+	public POrdinario(POrdinario pasaporte) {
+	    super(
+	        pasaporte.getNumeroId(),
+	        pasaporte.getPaisEmisor(),
+	        pasaporte.getFechaEmision(),
+	        pasaporte.getFechaExpiracion(),
+	        pasaporte.getTitular(),
+	        pasaporte.getCiudadEmision(),
+	        pasaporte.getEs()
+	    );
+	    this.razonViaje = pasaporte.getRazonViaje();
+	}
 
 	public String getRazonViaje() {
 		return razonViaje;
