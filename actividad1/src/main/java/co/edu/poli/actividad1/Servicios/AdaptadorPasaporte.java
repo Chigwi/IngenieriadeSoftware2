@@ -25,7 +25,6 @@ public class AdaptadorPasaporte implements InterfazProxy{
 	public void setAdaptada(Pasaporte adaptada) {
 		this.adaptada = adaptada;
 	}
-	
 
 
 	@Override
@@ -38,6 +37,18 @@ public class AdaptadorPasaporte implements InterfazProxy{
 	@Override
 	public String verDetalles(String rol) {
 		return "Acceso denegado";
+	}
+	
+	//metodos memento
+	public ConcreteMemento createMemento () {
+		ConcreteMemento m = new ConcreteMemento (this);
+		return m;
+	}
+	
+	public AdaptadorPasaporte restore(ConcreteMemento m) {
+		AdaptadorPasaporte r = m.getMemento();
+		this.setAdaptada(r.getAdaptada());
+		return this;
 	}
 	
 	

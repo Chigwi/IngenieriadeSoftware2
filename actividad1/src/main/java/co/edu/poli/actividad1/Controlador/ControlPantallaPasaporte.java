@@ -570,7 +570,6 @@ public class ControlPantallaPasaporte implements Initializable {
         	a.showAndWait();
     	}else {
     		Pasaporte p = regPas.select(id);
-    		visualizarCampoPasaporte(p);
         	
         	Alert a = new Alert(AlertType.INFORMATION);
     		
