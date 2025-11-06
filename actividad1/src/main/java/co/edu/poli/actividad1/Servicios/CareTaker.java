@@ -22,4 +22,5 @@ public class CareTaker{
 		return this.Historial.get(key);
 		
 	}
+	//spp
 }
