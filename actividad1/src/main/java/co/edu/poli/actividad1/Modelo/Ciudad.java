@@ -35,6 +35,13 @@ public class Ciudad {
 		this.esCapital = esCapital;
 		this.codigoPais = codigoPais;
 	}
+	
+	public Ciudad (Ciudad ciudad) {
+		this.codigoPostal = ciudad.getCodigoPostal();
+		this.nombre = ciudad.getNombre();
+		this.esCapital = ciudad.isEsCapital();
+		this.codigoPais = ciudad.getCodigoPais();
+	}
 
 	public String getNombre() {
 		return nombre;

@@ -50,7 +50,7 @@ public class PruebasMemento {
 		
 		historial.addMemento(1,meme);
 		
-		System.out.println(Allie.restore((ConcreteMemento) historial.getMemento(1)));
+		System.out.println(Allie.restore((ConcreteMemento) historial.getMemento(1)) + "debe decir Allyson");
 		
 		Allie.getState().setTitular(kairi);
 		
@@ -64,7 +64,7 @@ public class PruebasMemento {
 		
 		historial.addMemento(2, r2);
 		
-		//System.out.println(Allie.restore((ConcreteMemento) historial.getMemento(1)));
+		System.out.println(Allie.restore((ConcreteMemento) historial.getMemento(2)));
 	}
 
 }

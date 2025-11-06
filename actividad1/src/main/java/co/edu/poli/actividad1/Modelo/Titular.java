@@ -27,7 +27,6 @@ public class Titular{
 	}
 	
 	public Titular(Titular titular) {
-		super();
 		this.identificacion = titular.getIdentificacion();
 		this.fechaNacimiento = titular.getFechaNacimiento();
 		this.nombre = titular.getNombre();

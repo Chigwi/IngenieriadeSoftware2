@@ -11,15 +11,15 @@ public class POrdinario extends Pasaporte {
 	}
 	
 	public POrdinario(POrdinario pasaporte) {
-	    super(
-	        pasaporte.getNumeroId(),
-	        pasaporte.getPaisEmisor(),
-	        pasaporte.getFechaEmision(),
-	        pasaporte.getFechaExpiracion(),
-	        pasaporte.getTitular(),
-	        pasaporte.getCiudadEmision(),
-	        pasaporte.getEs()
-	    );
+		super(
+		        pasaporte.getNumeroId(),
+		        new Pais(pasaporte.getPaisEmisor()),
+		        pasaporte.getFechaEmision(),
+		        pasaporte.getFechaExpiracion(),
+		        new Titular(pasaporte.getTitular()),
+		        new Ciudad(pasaporte.getCiudadEmision()),
+		        copyElementoSeguridad(pasaporte.getEs())
+		    );
 	    this.razonViaje = pasaporte.getRazonViaje();
 	}
 
@@ -38,7 +38,17 @@ public class POrdinario extends Pasaporte {
 				+ ", FechaExpiracion=" + getFechaExpiracion()+ "\n" + ", Titular=" + getTitular().getNombre()+ "\n"
 				+ ", CiudadEmision=" + getCiudadEmision().getNombre() + "\n"+",Elemento seguridad="+ getEs()+"]";
 	}
-	
+	private static ElementoSeguridad copyElementoSeguridad(ElementoSeguridad es) {
+	    if (es instanceof Biometrico) {
+	        return new Biometrico((Biometrico) es);
+	    } else if (es instanceof MicroChip) {
+	        return new MicroChip((MicroChip) es);
+	    } else if (es instanceof Blockchain) {
+	        return new Blockchain((Blockchain) es);
+	    } else {
+	        throw new IllegalArgumentException("Tipo de ElementoSeguridad desconocido");
+	    }
+	}
 	
 
 }

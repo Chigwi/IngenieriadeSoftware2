@@ -13,12 +13,12 @@ public class PDiplomatico extends Pasaporte{
 	public PDiplomatico (PDiplomatico pasaporte) {
 		super(
 		        pasaporte.getNumeroId(),
-		        pasaporte.getPaisEmisor(),
+		        new Pais(pasaporte.getPaisEmisor()),
 		        pasaporte.getFechaEmision(),
 		        pasaporte.getFechaExpiracion(),
-		        pasaporte.getTitular(),
-		        pasaporte.getCiudadEmision(),
-		        pasaporte.getEs()
+		        new Titular(pasaporte.getTitular()),
+		        new Ciudad(pasaporte.getCiudadEmision()),
+		        copyElementoSeguridad(pasaporte.getEs())
 		    );
 		this.misionDiplomatica = pasaporte.getMisionDiplomatica();
 	}
@@ -30,6 +30,7 @@ public class PDiplomatico extends Pasaporte{
 	public void setMisionDiplomatica(String misionDiplomatica) {
 		this.misionDiplomatica = misionDiplomatica;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -37,6 +38,18 @@ public class PDiplomatico extends Pasaporte{
 				+ ", PaisEmisor=" + getPaisEmisor().getNombre()+ "\n" + ", FechaEmision=" + getFechaEmision()+ "\n"
 				+ ", FechaExpiracion=" + getFechaExpiracion()+ "\n" + ", Titular=" + getTitular().getNombre()+ "\n"
 				+ ", CiudadEmision=" + getCiudadEmision().getNombre()+"\n"+getEs() + "]";
+	}
+
+	private static ElementoSeguridad copyElementoSeguridad(ElementoSeguridad es) {
+	    if (es instanceof Biometrico) {
+	        return new Biometrico((Biometrico) es);
+	    } else if (es instanceof MicroChip) {
+	        return new MicroChip((MicroChip) es);
+	    } else if (es instanceof Blockchain) {
+	        return new Blockchain((Blockchain) es);
+	    } else {
+	        throw new IllegalArgumentException("Tipo de ElementoSeguridad desconocido");
+	    }
 	}
 //holi
 	

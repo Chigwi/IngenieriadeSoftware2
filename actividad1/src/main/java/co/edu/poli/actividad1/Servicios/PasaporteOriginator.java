@@ -31,10 +31,20 @@ public class PasaporteOriginator implements Cloneable {
 	}
 	
 	public PasaporteOriginator restore(ConcreteMemento m) {
-		this.state = m.getMemento().getState();
-		return this;
+	    Pasaporte restored = m.getMemento().getState();
+
+	    Pasaporte copy;
+	    if (restored instanceof POrdinario) {
+	        copy = new POrdinario((POrdinario) restored);
+	    } else if (restored instanceof PDiplomatico) {
+	        copy = new PDiplomatico((PDiplomatico) restored);
+	    } else {
+	        throw new IllegalStateException("Pasaporte desconocido");
+	    }
+
+	    this.state = copy;
+	    return this;
 	}
-	
 	
 	
 	@Override
