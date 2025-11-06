@@ -36,6 +36,14 @@ public class Pais {
 		this.idioma = idioma;
 		this.ciudades = ciudades;
 	}
+	
+	public Pais(Pais pais) {
+		super();
+		this.idPais = pais.getIdPais();
+		this.nombre = pais.getNombre();
+		this.idioma = pais.getIdioma();
+		this.ciudades = pais.getCiudades();
+	}
 
 	public String getIdPais() {
 		return idPais;

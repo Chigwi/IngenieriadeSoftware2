@@ -39,6 +39,15 @@ public class Visa {
 		this.fechaExpiracion = fechaExpiracion;
 		this.pasaporte = pasaporte;
 	}
+	
+	public Visa(Visa visa) {
+		super();
+		this.idVisa = visa.getIdVisa();
+		this.paisDestino = visa.getPaisDestino();
+		this.fechaEmision = visa.getFechaEmision();
+		this.fechaExpiracion = visa.getFechaExpiracion();
+		this.pasaporte = visa.getPasaporte();
+	}
 
 	public String getIdVisa() {
 		return idVisa;

@@ -53,6 +53,18 @@ public abstract class Pasaporte {
 		this.ciudadEmision = ciudadEmision;
 		this.es = es;
 	}
+	
+	public Pasaporte(Pasaporte pasaporte) {
+		super();
+		this.numeroId = pasaporte.getNumeroId();
+		this.paisEmisor = pasaporte.getPaisEmisor();
+		this.fechaEmision = pasaporte.getFechaEmision();
+		this.fechaExpiracion = pasaporte.getFechaExpiracion();
+		this.titular = pasaporte.getTitular();
+		this.ciudadEmision = pasaporte.getCiudadEmision();
+		this.es = pasaporte.getEs();
+	}
+
 
 	public String getNumeroId() {
 		return numeroId;

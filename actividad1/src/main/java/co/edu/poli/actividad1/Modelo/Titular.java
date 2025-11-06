@@ -25,6 +25,13 @@ public class Titular{
 		this.fechaNacimiento = fechaNacimiento;
 		this.nombre = nombre;
 	}
+	
+	public Titular(Titular titular) {
+		super();
+		this.identificacion = titular.getIdentificacion();
+		this.fechaNacimiento = titular.getFechaNacimiento();
+		this.nombre = titular.getNombre();
+	}
 
 	public String getNombre() {
 		return nombre;

@@ -9,6 +9,11 @@ public class PEmergencia extends Pasaporte {
 		super(numeroId, paisEmisor, fechaEmision, fechaExpiracion, titular, ciudadEmision, es);
 		this.fechaExpiracionEmergenica = fechaExpiracionEmergenica;
 	}
+	
+	public PEmergencia(PEmergencia pEmergencia) {
+		super(pEmergencia.getNumeroId(), pEmergencia.getPaisEmisor(), pEmergencia.getFechaEmision(), pEmergencia.getFechaExpiracion(), pEmergencia.getTitular(), pEmergencia.getCiudadEmision(), pEmergencia.getEs());
+		this.fechaExpiracionEmergenica = pEmergencia.getFechaExpiracionEmergenica();
+	}
 
 	public String getFechaExpiracionEmergenica() {
 		return fechaExpiracionEmergenica;
