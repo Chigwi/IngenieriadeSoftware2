@@ -21,6 +21,12 @@ public abstract class ElementoSeguridad {
 			this.tipo = tipo;
 			this.descripcion = fdescripcion;
 		}
+		
+		public ElementoSeguridad(ElementoSeguridad elemento) {
+			this.idL = elemento.getIdL();
+			this.tipo = elemento.getTipo();
+			this.descripcion = elemento.getFdescripcion();
+		}
 
 		public String getIdL() {
 			return idL;

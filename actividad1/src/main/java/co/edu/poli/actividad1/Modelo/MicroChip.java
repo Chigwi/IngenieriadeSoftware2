@@ -9,6 +9,13 @@ public class MicroChip extends ElementoSeguridad{
 		this.numeroChip = numeroChip;
 		// TODO Auto-generated constructor stub
 	}
+	
+	public MicroChip (MicroChip micro) {
+		super(micro.getIdL(),
+		micro.getTipo(),
+		micro.getFdescripcion());
+		this.numeroChip = micro.getNumeroChip();
+	}
 
 	public String getNumeroChip() {
 		return numeroChip;

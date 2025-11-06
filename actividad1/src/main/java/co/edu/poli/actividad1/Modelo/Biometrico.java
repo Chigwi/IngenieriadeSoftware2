@@ -9,6 +9,14 @@ public class Biometrico extends ElementoSeguridad{
 		this.tipoBiometria = tipoBiometria;
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Biometrico (Biometrico biometrico) {
+		super(biometrico.getIdL(),
+		biometrico.getTipo(),
+		biometrico.getFdescripcion());
+		this.tipoBiometria = biometrico.getTipoBiometria();
+	}
+	
 
 	public String getTipoBiometria() {
 		return tipoBiometria;

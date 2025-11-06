@@ -8,6 +8,13 @@ public class Blockchain extends ElementoSeguridad{
 			super(idL, tipo, fdescripcion);
 			this.hash = hash;
 		}
+		
+		public Blockchain (Blockchain blockchain) {
+			super(blockchain.getIdL(),
+			blockchain.getTipo(),
+			blockchain.getFdescripcion());
+			this.hash = blockchain.getHash();
+		}
 
 		public String getHash() {
 			return hash;
