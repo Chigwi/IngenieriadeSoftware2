@@ -2,14 +2,14 @@ package co.edu.poli.actividad1.Servicios;
 
 public class ConcreteMemento implements Memento{
 
-	private AdaptadorPasaporte state;
+	private PasaporteOriginator state;
 
-	public ConcreteMemento(AdaptadorPasaporte state) {
+	public ConcreteMemento(PasaporteOriginator state) {
 		super();
 		this.state = state;
 	}
 	
-	public AdaptadorPasaporte getMemento() {
+	public PasaporteOriginator getMemento() {
 		return this.state;
 	}
 	
