@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 public class CareTaker{
 	
-	private HashMap<String, Memento> Historial;
+	private HashMap<Integer, Memento> Historial;
 
+	
+	
 }
