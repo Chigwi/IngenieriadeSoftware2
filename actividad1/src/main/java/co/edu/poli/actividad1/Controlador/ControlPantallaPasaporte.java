@@ -999,8 +999,18 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void restore(ActionEvent event) {
-    	ConcreteMemento og = (ConcreteMemento)historial.getMemento(selectCambios.getSelectionModel().getSelectedItem());
-    	visualizarCampoPasaporte(og.getMemento().getState());
+    	if(selectCambios.getSelectionModel().getSelectedItem() == null) {
+    		Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText("Porfavor seleccione el cambio a restaurar");
+        	
+        	a.showAndWait();
+    	}else {
+    		ConcreteMemento og = (ConcreteMemento)historial.getMemento(selectCambios.getSelectionModel().getSelectedItem());
+        	visualizarCampoPasaporte(og.getMemento().getState());
+    		
+    	}
+    
 
     }
 
@@ -1013,13 +1023,7 @@ public class ControlPantallaPasaporte implements Initializable {
     @FXML
     void saveMemento(ActionEvent event) {
     	bttselect.setDisable(true);
-    	if(selectCambios.getSelectionModel().getSelectedItem() == null) {
-    		Alert a = new Alert(AlertType.INFORMATION);
-    		
-    		a.setContentText("Porfavor seleccione el cambio a restaurar");
-        	
-        	a.showAndWait();
-    	}else {
+     
     		if(isEmpty()) {
         		Pasaporte p = null;
             	if(inDiplomatico.isSelected()) {
@@ -1050,7 +1054,7 @@ public class ControlPantallaPasaporte implements Initializable {
             	
             	a.showAndWait();
         	}
-    	}
+    	
     	
     	
     }
