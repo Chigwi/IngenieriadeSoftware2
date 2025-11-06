@@ -38,20 +38,5 @@ public class AdaptadorPasaporte implements InterfazProxy{
 	public String verDetalles(String rol) {
 		return "Acceso denegado";
 	}
-	
-	//metodos memento
-	public ConcreteMemento createMemento () {
-		Pasaporte p = adaptada;
-		AdaptadorPasaporte r = new AdaptadorPasaporte(p);
-		ConcreteMemento m = new ConcreteMemento (r);
-		return m;
-	}
-	
-	public AdaptadorPasaporte restore(ConcreteMemento m) {
-		AdaptadorPasaporte r = m.getMemento();
-		this.setAdaptada(r.getAdaptada());
-		return this;
-	}
-	
-	
+		
 }
