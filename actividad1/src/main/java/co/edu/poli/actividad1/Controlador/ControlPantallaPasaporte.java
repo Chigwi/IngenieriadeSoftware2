@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Random;
@@ -26,10 +27,14 @@ import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Servicios.Cancilleria;
+import co.edu.poli.actividad1.Servicios.CareTaker;
+import co.edu.poli.actividad1.Servicios.ConcreteMemento;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
+import co.edu.poli.actividad1.Servicios.Memento;
 import co.edu.poli.actividad1.Servicios.Migracion;
 import co.edu.poli.actividad1.Servicios.OrdinarioCreator;
+import co.edu.poli.actividad1.Servicios.PasaporteOriginator;
 import co.edu.poli.actividad1.Servicios.Policia;
 import co.edu.poli.actividad1.Servicios.Publisher;
 import co.edu.poli.actividad1.vista.App;
@@ -86,7 +91,7 @@ public class ControlPantallaPasaporte implements Initializable {
     
 
     @FXML
-    private ComboBox<?> selectCambios;
+    private ComboBox<Integer> selectCambios;
 
     @FXML
     private Button bttShow;
@@ -148,11 +153,18 @@ public class ControlPantallaPasaporte implements Initializable {
 	
 	private ObservableList<String> elementos;
 	
+	private ObservableList<Integer>cambios;
+	
 	private DiplomaticoCreator dC;
 	
 	private OrdinarioCreator oC;
 	
 	private boolean textEmpty;
+	
+	private CareTaker historial;
+	
+	private Integer cambio;
+	
 	
 	
 	
@@ -316,7 +328,19 @@ public class ControlPantallaPasaporte implements Initializable {
 	    	bttactualizar.setDisable(true);
 	    	bttVerificar.setVisible(false);
 	    	bttVerificar.setDisable(true);		
-		
+	    	
+	    //bloqueo botones memento
+	    	bttconfirmar.setVisible(false);
+			bttGuardar.setVisible(false);
+			bttRestaurar.setVisible(false);
+	    	bttconfirmar.setDisable(true);
+			bttGuardar.setDisable(true);
+			bttRestaurar.setDisable(true);
+			selectCambios.setVisible(false);
+		//historial memento
+		historial = new CareTaker();
+		cambio = 0;
+		cambios =  FXCollections.observableArrayList();
 		
 	}
 	
@@ -348,6 +372,18 @@ public class ControlPantallaPasaporte implements Initializable {
     		inExtra.clear();
     	}
     	
+    	bttactualizar.setDisable(true);
+    	bttVerificar.setVisible(false);
+    	bttVerificar.setDisable(true);		
+    	
+    	bttconfirmar.setVisible(false);
+		bttGuardar.setVisible(false);
+		bttRestaurar.setVisible(false);
+    	bttconfirmar.setDisable(true);
+		bttGuardar.setDisable(true);
+		bttRestaurar.setDisable(true);
+		selectCambios.setVisible(false);
+		
     	inIdPasaporte.setDisable(false);
     	inIdPasaporte.setVisible(true);
     	
@@ -367,6 +403,15 @@ public class ControlPantallaPasaporte implements Initializable {
     		inExtra.clear();
     	}
     	
+    	bttconfirmar.setVisible(true);
+		bttGuardar.setVisible(true);
+		bttRestaurar.setVisible(true);
+    	
+    	bttconfirmar.setDisable(false);
+		bttGuardar.setDisable(false);
+		bttRestaurar.setDisable(false);
+		selectCambios.setVisible(true);
+    	
     	inIdPasaporte.setDisable(false);
     	inIdPasaporte.setVisible(true);
     	
@@ -376,6 +421,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	bttVerificar.setVisible(true);
     	bttVerificar.setDisable(false);
     	bttselect.setText("Actualizar");
+    	bttselect.setDisable(true);
     
 
 
@@ -383,6 +429,18 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void insertarPasaporte(ActionEvent event) {
+    	
+    	bttactualizar.setDisable(true);
+    	bttVerificar.setVisible(false);
+    	bttVerificar.setDisable(true);		
+    	
+    	bttconfirmar.setVisible(false);
+		bttGuardar.setVisible(false);
+		bttRestaurar.setVisible(false);
+    	bttconfirmar.setDisable(true);
+		bttGuardar.setDisable(true);
+		bttRestaurar.setDisable(true);
+		selectCambios.setVisible(false);
     	
     	if(!inDiplomatico.isSelected() && !inOrdinario.isSelected()) {
     		Alert a = new Alert (AlertType.INFORMATION);
@@ -507,6 +565,18 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void showSelect(ActionEvent event) {
+    	bttactualizar.setDisable(true);
+    	bttVerificar.setVisible(false);
+    	bttVerificar.setDisable(true);		
+    	
+    	bttconfirmar.setVisible(false);
+		bttGuardar.setVisible(false);
+		bttRestaurar.setVisible(false);
+    	bttconfirmar.setDisable(true);
+		bttGuardar.setDisable(true);
+		bttRestaurar.setDisable(true);
+		selectCambios.setVisible(false);
+		
     	inIdPasaporte.setDisable(false);
     	inIdPasaporte.setVisible(true);
     	
@@ -537,11 +607,24 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void selectAll(ActionEvent event) {
+
+    	bttactualizar.setDisable(true);
+    	bttVerificar.setVisible(false);
+    	bttVerificar.setDisable(true);		
+    	
+    	bttconfirmar.setVisible(false);
+		bttGuardar.setVisible(false);
+		bttRestaurar.setVisible(false);
+    	bttconfirmar.setDisable(true);
+		bttGuardar.setDisable(true);
+		bttRestaurar.setDisable(true);
+		selectCambios.setVisible(false);
     	
     	textEmpty = false;
     	
     	inExtra.setText(regPas.selectAll().toString());
 
+    
     }
     
     @FXML
@@ -713,6 +796,7 @@ public class ControlPantallaPasaporte implements Initializable {
 				selectPais.getSelectionModel().getSelectedItem() != null &&
 				selectCiudad.getSelectionModel().getSelectedItem()!= null &&
 				selectUsuarios.getSelectionModel().getSelectedItem()!=null &&
+				selectElemento.getSelectionModel().getSelectedItem()!=null &&
 				!inExtra.getText().isBlank()) {
 		   return true;
 		   
@@ -874,20 +958,29 @@ public class ControlPantallaPasaporte implements Initializable {
     }
     
     void visualizarCampoPasaporte (Pasaporte in) {
-    	selectPais.setPromptText(in.getPaisEmisor().getNombre());
-    	selectCiudad.setPromptText(in.getCiudadEmision().getNombre());
-    	selectUsuarios.setPromptText(in.getTitular().getNombre());
+    	bttselect.setDisable(true);
     	
+    	Alert a = new Alert(AlertType.INFORMATION);
+		
+		a.setContentText("Recuerde que esto visualiza los datos, \n Favor llenar los datos completos");
+    	
+    	a.showAndWait();
+    	
+    	selectPais.setValue(in.getPaisEmisor().getNombre());
+    	selectCiudad.setValue(in.getCiudadEmision().getNombre());
+    	selectUsuarios.setValue(in.getTitular().getNombre());
+    	
+    	selectFecha.setValue(null);
     	selectFecha.setPromptText(in.getFechaEmision());
     	ElementoSeguridad elemen = in.getEs();
     	
     	
     	if(elemen instanceof MicroChip) {
-    		selectElemento.setPromptText("MicroChip");
+    		selectElemento.setValue("MicroChip");
     	}else if (elemen instanceof Biometrico) {
-    		selectElemento.setPromptText("Biometrico");
+    		selectElemento.setValue("Biometrico");
     	}else {
-    		selectElemento.setPromptText("Blockchain");
+    		selectElemento.setValue("Blockchain");
     	}
     	if(in instanceof POrdinario) {
     		POrdinario p = (POrdinario) in;
@@ -906,17 +999,62 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void restore(ActionEvent event) {
+    	ConcreteMemento og = (ConcreteMemento)historial.getMemento(selectCambios.getSelectionModel().getSelectedItem());
+    	visualizarCampoPasaporte(og.getMemento().getState());
 
     }
 
     @FXML
     void confirmar(ActionEvent event) {
-    	}
+    	bttselect.setDisable(false);
+    }
     
 
     @FXML
     void saveMemento(ActionEvent event) {
+    	bttselect.setDisable(true);
+    	if(selectCambios.getSelectionModel().getSelectedItem() == null) {
+    		Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText("Porfavor seleccione el cambio a restaurar");
+        	
+        	a.showAndWait();
+    	}else {
+    		if(isEmpty()) {
+        		Pasaporte p = null;
+            	if(inDiplomatico.isSelected()) {
+            		p = new PDiplomatico(null,null,null,null,null,null,null,null);
+            		p =llenarDiplomatico((PDiplomatico)p);
+            	}else if(inOrdinario.isSelected()) {
+            		p = new POrdinario(null,null,null,null,null,null,null,null);
+            		p =llenarOrdinario((POrdinario)p);
+            	}else {
+                	Alert a = new Alert(AlertType.INFORMATION);
+            		
+            		a.setContentText("Seleccione un tipo de pasaporte");
+                	
+                	a.showAndWait();
+            	}
+            	p.setNumeroId(inIdPasaporte.getText());
+            	PasaporteOriginator og = new PasaporteOriginator(p);
+            	
+            	cambio = cambio+1;
+            	historial.addMemento(cambio, og.createMemento());
+            	cambios.add(cambio);
+            	selectCambios.setItems(cambios);
+        	}
+        	else {
+        		Alert a = new Alert(AlertType.INFORMATION);
+        		
+        		a.setContentText("Porfavor ingrese los datos completos del pasaporte");
+            	
+            	a.showAndWait();
+        	}
+    	}
+    	
+    	
+    }
+    
 
-    }
-    }
-}
+ }
+
