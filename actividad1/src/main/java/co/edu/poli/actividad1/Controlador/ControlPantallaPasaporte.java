@@ -43,6 +43,7 @@ import co.edu.poli.actividad1.Servicios.Policia;
 import co.edu.poli.actividad1.Servicios.Publisher;
 import co.edu.poli.actividad1.Servicios.RelacionesExteriores;
 import co.edu.poli.actividad1.Servicios.Supervisor;
+import co.edu.poli.actividad1.Servicios.Validacion;
 import co.edu.poli.actividad1.vista.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,6 +61,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 public class ControlPantallaPasaporte implements Initializable {
+	
+	private Validacion val;
 	
 	private Connection con;
 	
@@ -98,6 +101,15 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     private Button bttSolicitar;
+    
+    @FXML
+    private Button bttValFecha;
+
+    @FXML
+    private Button bttValTipo;
+
+    @FXML
+    private Button bttValTitular;
     
 
     @FXML
@@ -372,6 +384,10 @@ public class ControlPantallaPasaporte implements Initializable {
 		selectUsuarios.setDisable(true);
 		inDiplomatico.setDisable(true);
 		inOrdinario.setDisable(true);
+		
+		//command
+		
+		val = new Validacion(regPas);
 	}
 
     @FXML
@@ -679,6 +695,21 @@ public class ControlPantallaPasaporte implements Initializable {
     void textOrdinario(ActionEvent event) {
     	
     	inExtra.setPromptText("ingrese mision de viaje");
+
+    }
+    
+    @FXML
+    void validarFecha(ActionEvent event) {
+
+    }
+
+    @FXML
+    void validarTitular(ActionEvent event) {
+
+    }
+
+    @FXML
+    void valildarTipo(ActionEvent event) {
 
     }
    
