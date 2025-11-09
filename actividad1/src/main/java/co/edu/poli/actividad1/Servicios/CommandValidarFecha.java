@@ -1,14 +1,14 @@
 package co.edu.poli.actividad1.Servicios;
 
-public class CommandValidarFecha /*implements Command*/{
+public class CommandValidarFecha implements Command{
 
 	private Validacion validacion;
 	
 	private String fecha;
 
-	public CommandValidarFecha(Validacion validacion) {
-		super();
+	public CommandValidarFecha(Validacion validacion, String fecha) {
 		this.validacion = validacion;
+		this.fecha = fecha;
 	}
 
 	public Validacion getValidacion() {
@@ -19,12 +19,22 @@ public class CommandValidarFecha /*implements Command*/{
 		this.validacion = validacion;
 	}
 
+	
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
 	@Override
 	public String toString() {
 		return "CommandValidarFecha [validacion=" + validacion + "]";
 	}
 	
-	public String validate(String fecha) {
+	@Override
+	public String validate() {
 
 		boolean val = validacion.fechaActual(fecha);
 		
@@ -35,15 +45,5 @@ public class CommandValidarFecha /*implements Command*/{
 		}
 		
 		
-	}
-	
-	public String validarFecha(Validacion validacion, String fecha ) {
-		
-		this.validacion = validacion;
-		
-		validate(fecha);
-		
-		return null;
-	}
-	
+	}	
 }
