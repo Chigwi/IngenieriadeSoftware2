@@ -3,6 +3,8 @@ package co.edu.poli.actividad1.Servicios;
 public class CommandValidarTitular implements Command{
 	
 	private Validacion validacion;
+	
+	private AdaptadorPasaporte pasaporte;
 
 	@Override
 	public String validate() {

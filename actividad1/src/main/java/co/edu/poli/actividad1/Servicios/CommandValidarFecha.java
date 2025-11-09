@@ -3,6 +3,8 @@ package co.edu.poli.actividad1.Servicios;
 public class CommandValidarFecha /*implements Command*/{
 
 	private Validacion validacion;
+	
+	private String fecha;
 
 	public CommandValidarFecha(Validacion validacion) {
 		super();
