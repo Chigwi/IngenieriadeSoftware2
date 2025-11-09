@@ -1,6 +1,11 @@
 package co.edu.poli.actividad1.Servicios;
 
-public interface Handler {
+public abstract class Handler {
+	
+		private Handler nextHandler;
 
-		String manejarSolicitud (Integer in, String sol);
+		public String manejarSolicitud (Integer in, String sol) {
+			//TODO
+			return null;
+		}
 }
