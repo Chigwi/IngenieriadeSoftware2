@@ -4,6 +4,40 @@ public class Asesor implements Handler {
 
 	private Handler nextHandler;
 	
+	
+	
+	public Asesor() {
+		nextHandler = null;
+	}
+
+
+
+	public Asesor(Handler nextHandler) {
+		super();
+		this.nextHandler = nextHandler;
+	}
+
+	
+
+	public Handler getNextHandler() {
+		return nextHandler;
+	}
+
+
+
+	public void setNextHandler(Handler nextHandler) {
+		this.nextHandler = nextHandler;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "Asesor [nextHandler=" + nextHandler + "]";
+	}
+
+
+
 	@Override
 	public String manejarSolicitud(Integer in, String sol) {
 	

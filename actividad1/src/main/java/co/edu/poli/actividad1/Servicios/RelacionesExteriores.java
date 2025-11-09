@@ -4,6 +4,40 @@ public class RelacionesExteriores implements Handler {
 	
 	private Handler nextHandler;
 	
+	
+	
+
+	public RelacionesExteriores() {
+		this.nextHandler = null;
+	}
+
+
+
+	public RelacionesExteriores(Handler nextHandler) {
+		super();
+		this.nextHandler = nextHandler;
+	}
+
+	
+
+	public Handler getNextHandler() {
+		return nextHandler;
+	}
+
+
+
+	public void setNextHandler(Handler nextHandler) {
+		this.nextHandler = nextHandler;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "RelacionesExteriores [nextHandler=" + nextHandler + "]";
+	}
+
+
 
 	@Override
 	public String manejarSolicitud(Integer in, String sol) {
