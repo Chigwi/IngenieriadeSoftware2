@@ -64,6 +64,10 @@ public abstract class Pasaporte {
 		this.ciudadEmision = pasaporte.getCiudadEmision();
 		this.es = pasaporte.getEs();
 	}
+	
+	public Pasaporte() {
+		super();
+	}
 
 
 	public String getNumeroId() {

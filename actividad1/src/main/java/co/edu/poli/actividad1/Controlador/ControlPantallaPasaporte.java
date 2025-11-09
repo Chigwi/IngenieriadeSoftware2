@@ -26,12 +26,18 @@ import co.edu.poli.actividad1.Repositorios.CiudadDao;
 import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
+import co.edu.poli.actividad1.Servicios.AdaptadorPasaporte;
 import co.edu.poli.actividad1.Servicios.Asesor;
 import co.edu.poli.actividad1.Servicios.Cancilleria;
 import co.edu.poli.actividad1.Servicios.CareTaker;
 import co.edu.poli.actividad1.Servicios.CertificarBiometria;
 import co.edu.poli.actividad1.Servicios.CertificarBlockChain;
 import co.edu.poli.actividad1.Servicios.CertificarMicroChip;
+import co.edu.poli.actividad1.Servicios.Command;
+import co.edu.poli.actividad1.Servicios.CommandManager;
+import co.edu.poli.actividad1.Servicios.CommandValidarFecha;
+import co.edu.poli.actividad1.Servicios.CommandValidarTipo;
+import co.edu.poli.actividad1.Servicios.CommandValidarTitular;
 import co.edu.poli.actividad1.Servicios.ConcreteMemento;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
@@ -700,16 +706,137 @@ public class ControlPantallaPasaporte implements Initializable {
     
     @FXML
     void validarFecha(ActionEvent event) {
+    	
+    	
+    	
+    	if(inDiplomatico.isSelected()) {
+    		PDiplomatico pd = (PDiplomatico)dC.createPasaporte();
+    		pd = llenarDiplomatico(pd);
+    		
+    		String fecha = pd.getFechaEmision();
+        	
+        	CommandValidarFecha valFecha = new CommandValidarFecha(val, fecha);
+        	
+        	CommandManager man = new CommandManager(valFecha);
+        	
+        	String msg = man.execute();
+        	
+        	Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText(msg);
+        	
+        	a.showAndWait();
+    	}else {
+    		POrdinario po = (POrdinario)oC.createPasaporte();
+    		po = llenarOrdinario(po);
+    		
+    		String fecha = po.getFechaEmision();
+        	
+        	CommandValidarFecha valFecha = new CommandValidarFecha(val, fecha);
+        	
+        	CommandManager man = new CommandManager(valFecha);
+        	
+        	String msg = man.execute();
+        	
+        	Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText(msg);
+        	
+        	a.showAndWait();
+    	}
 
     }
 
     @FXML
     void validarTitular(ActionEvent event) {
 
+    	if(inDiplomatico.isSelected()) {
+    		
+    		PDiplomatico pd = dC.createPasaporte();
+    		pd = llenarDiplomatico(pd);
+    		
+    		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(pd);
+    		
+    		CommandValidarTitular c = new CommandValidarTitular(adaptada, val);
+    		
+    		CommandManager man = new CommandManager(c);
+    		
+    		String msg = man.execute();
+        	
+        	Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText(msg);
+        	
+        	a.showAndWait();
+    		
+    	}else {
+    		
+    		POrdinario po = oC.createPasaporte();
+    		po = llenarOrdinario(po);
+    		
+    		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(po);
+    		
+    		CommandValidarTitular c = new CommandValidarTitular(adaptada, val);
+    		
+    		CommandManager man = new CommandManager(c);
+    		
+    		String msg = man.execute();
+        	
+        	Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText(msg);
+        	
+        	a.showAndWait();
+    		
+    	}
+    	
     }
 
     @FXML
     void valildarTipo(ActionEvent event) {
+    	
+    	if (inDiplomatico.isSelected()) {
+    		String tipo = "diplomatico";
+    		
+    		PDiplomatico pd = dC.createPasaporte();
+    		pd = llenarDiplomatico(pd);
+    		
+    		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(pd);
+    		
+    		CommandValidarTipo c = new CommandValidarTipo(tipo, val, adaptada);
+    		
+    		CommandManager man = new CommandManager(c);
+    		
+    		String msg = man.execute();
+        	
+        	Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText(msg);
+        	
+        	a.showAndWait();
+    		
+    	}else {
+    		
+    		String tipo = "ordinario";
+    		
+    		POrdinario po = oC.createPasaporte();
+    		po = llenarOrdinario(po);
+    		
+    		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(po);
+    		
+    		CommandValidarTipo c = new CommandValidarTipo(tipo, val, adaptada);
+    		
+    		CommandManager man = new CommandManager(c);
+    		
+    		String msg = man.execute();
+        	
+        	Alert a = new Alert(AlertType.INFORMATION);
+    		
+    		a.setContentText(msg);
+        	
+        	a.showAndWait();
+    		
+    	}
 
     }
    

@@ -106,7 +106,7 @@ public class PruebasCorComandStrategy {
 	    	
 	    	CommandValidarTipo tip = new CommandValidarTipo(tipo, val, ad);
 	    	
-	    	CommandValidarTitular tit = new CommandValidarTitular(AlliePasport, val);
+	    	CommandValidarTitular tit = new CommandValidarTitular(ad, val);
 	    	
 	    	CommandManager man = new CommandManager(fech);
 	    	

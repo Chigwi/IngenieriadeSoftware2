@@ -9,9 +9,9 @@ public class CommandValidarTitular implements Command{
 	private AdaptadorPasaporte pasaporte;
 
 	
-	public CommandValidarTitular(Pasaporte in, Validacion val) {
+	public CommandValidarTitular(AdaptadorPasaporte adaptada, Validacion val) {
 		
-		this.pasaporte = new AdaptadorPasaporte(in);
+		this.pasaporte = adaptada;
 		this.validacion = val;
 	}
 	
