@@ -23,7 +23,6 @@ public class Validacion {
 			}
 		}
 		return false;
-		
 	}
 	
 	public boolean modificacionTipo(Pasaporte in, String tipo) {
