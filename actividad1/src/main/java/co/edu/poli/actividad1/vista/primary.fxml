@@ -30,7 +30,7 @@
       </RadioButton>
       <Label layoutX="547.0" layoutY="183.0" text="Tipo de pasaporte" />
       <RadioButton fx:id="inDiplomatico" layoutX="525.0" layoutY="236.0" mnemonicParsing="false" onAction="#textDiplomatico" text="Pasaporte Diplomatico" toggleGroup="$tipoPasaporte" />
-      <ComboBox fx:id="selectElemento" layoutX="344.0" layoutY="113.0" prefHeight="25.0" prefWidth="153.0" promptText="Elemento Seguridad" />
+      <ComboBox fx:id="selectElemento" layoutX="344.0" layoutY="113.0" onAction="#selectStrategy" prefHeight="25.0" prefWidth="153.0" promptText="Elemento Seguridad" />
       <Button fx:id="bttVerificar" layoutX="427.0" layoutY="381.0" mnemonicParsing="false" onAction="#verificar" text="visualizar" />
       <ComboBox fx:id="selectCambios" layoutX="234.0" layoutY="35.0" prefWidth="150.0" promptText="Cmbios realizados" />
       <Button fx:id="bttconfirmar" layoutX="177.0" layoutY="393.0" mnemonicParsing="false" onAction="#confirmar" text="confirmar cambios" />

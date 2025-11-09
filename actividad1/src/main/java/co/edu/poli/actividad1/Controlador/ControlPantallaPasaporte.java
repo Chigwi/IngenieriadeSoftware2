@@ -343,6 +343,16 @@ public class ControlPantallaPasaporte implements Initializable {
 		cambios =  FXCollections.observableArrayList();
 		
 	}
+
+    @FXML
+    void selectStrategy(ActionEvent event) {
+    	
+
+    }
+    private void strategy(HashMap<String,String>estrategia) {
+    	
+    	
+    }
 	
     @FXML
     void SelectPais(ActionEvent event) {
