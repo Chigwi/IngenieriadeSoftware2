@@ -56,7 +56,7 @@ public class CommandValidarTipo implements Command{
 		if(val) {
 			return "NO se puede cambiar el tipo del pasaporte.";
 		}else {
-			return "Validacion Exitosa.";
+			return "Validacion Exitosa!";
 		}
 			
 	}

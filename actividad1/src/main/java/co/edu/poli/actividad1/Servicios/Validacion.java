@@ -14,6 +14,13 @@ public class Validacion {
 	
 	private PasaporteDao dao;
 	
+	
+	
+	public Validacion(PasaporteDao dao) {
+		super();
+		this.dao = dao;
+	}
+
 	public boolean titularDuplicado(Pasaporte in) {
 		String id = in.getTitular().getIdentificacion();
 		List<Pasaporte> pasaportes = dao.selectAll();
@@ -28,21 +35,21 @@ public class Validacion {
 	public boolean modificacionTipo(Pasaporte in, String tipo) {
 		String id = in.getNumeroId();
 		Pasaporte p = dao.select(id);
+		Boolean val = false;
 		if(tipo.equals("ordinario")) {
 			if(p instanceof POrdinario) {
-				return false;
+				val = false;
 			}else {
-				return true;
+				val = true;
 			}
 		}else if(tipo.equals("diplomatico")) {
 			if(p instanceof PDiplomatico) {
-				return false;
+				val = false;
 			}else {
-				return true;
+				val = true;
 			}
-		}else {
-			return true;
 		}
+		return val;
 	}
 	
 	public boolean fechaActual(String fecha) {
