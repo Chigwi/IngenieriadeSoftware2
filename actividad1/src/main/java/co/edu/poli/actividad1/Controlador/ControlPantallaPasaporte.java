@@ -149,7 +149,7 @@ public class ControlPantallaPasaporte implements Initializable {
     
     //paises strategy
     
-    private ArrayList<String> stratP;
+    private ArrayList<String> stratP =  new ArrayList<String>();
 
 	//lista observable
 	private ObservableList<String> paises;
@@ -398,9 +398,9 @@ public class ControlPantallaPasaporte implements Initializable {
 		
 		ObservableList<String> newP = FXCollections.observableArrayList();
 		
-		for (Map.Entry<String, String> entry : estrategia.entrySet()) {
-			String key = entry.getKey();
+		for(Map.Entry<String, String> entry : estrategia.entrySet()) {
 			String val = entry.getValue();
+			String key = entry.getKey();
 			if(!val.equals("Bloqueado")) {
 				newP.add(key);
 				if(val.equals("Ordinario")) {
@@ -410,6 +410,7 @@ public class ControlPantallaPasaporte implements Initializable {
 				}
 			}
 		}
+
 		selectPais.setItems(newP);
     }
 	
