@@ -1,6 +1,6 @@
 package co.edu.poli.actividad1.Servicios;
 
-public class Supervisor implements Handler{
+public class Supervisor extends Handler{
 	
 	private Handler nextHandler;
 	
