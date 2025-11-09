@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Observable;
+import java.util.Map;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -28,6 +28,9 @@ import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
 import co.edu.poli.actividad1.Servicios.Cancilleria;
 import co.edu.poli.actividad1.Servicios.CareTaker;
+import co.edu.poli.actividad1.Servicios.CertificarBiometria;
+import co.edu.poli.actividad1.Servicios.CertificarBlockChain;
+import co.edu.poli.actividad1.Servicios.CertificarMicroChip;
 import co.edu.poli.actividad1.Servicios.ConcreteMemento;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
@@ -143,6 +146,10 @@ public class ControlPantallaPasaporte implements Initializable {
     
     @FXML
     private Button bttSiguiente;
+    
+    //paises strategy
+    
+    private ArrayList<String> stratP;
 
 	//lista observable
 	private ObservableList<String> paises;
@@ -304,6 +311,11 @@ public class ControlPantallaPasaporte implements Initializable {
 		paises.add(KoreadelNorte.getNombre());
 		paises.add(Mexico.getNombre());
 		
+		stratP.add(colombia.getNombre());
+		stratP.add(EstadosUnidos.getNombre());
+		stratP.add(KoreadelNorte.getNombre());
+		stratP.add(Mexico.getNombre());
+		
 		selectPais.setItems(paises);
 		
 		//añadir titulares
@@ -342,16 +354,63 @@ public class ControlPantallaPasaporte implements Initializable {
 		cambio = 0;
 		cambios =  FXCollections.observableArrayList();
 		
+		//strategy
+		bttInsertar.setDisable(true);
+		bttdelete.setDisable(true);
+		bttShow.setDisable(true);
+		inExtra.setDisable(true);
+		selectFecha.setDisable(true);
+		selectPais.setDisable(true);
+		selectUsuarios.setDisable(true);
+		inDiplomatico.setDisable(true);
+		inOrdinario.setDisable(true);
 	}
 
     @FXML
     void selectStrategy(ActionEvent event) {
-    	
-
+    	if(selectElemento.getSelectionModel().getSelectedItem().equals("MicroChip")) {
+    		CertificarMicroChip c = new CertificarMicroChip();
+    		HashMap<String, String> strat = c.certificar(stratP);
+    		strategy(strat);
+    	}else if(selectElemento.getSelectionModel().getSelectedItem().equals("Biometrico")) {
+    		CertificarBiometria c = new CertificarBiometria();
+    		HashMap<String, String> strat = c.certificar(stratP);
+    		strategy(strat);
+    	}else {
+    		CertificarBlockChain c = new CertificarBlockChain();
+    		HashMap<String, String> strat = c.certificar(stratP);
+    		strategy(strat);
+    	}
     }
     private void strategy(HashMap<String,String>estrategia) {
     	
-    	
+    	bttInsertar.setDisable(false);
+		bttdelete.setDisable(false);
+		bttShow.setDisable(false);
+		inExtra.setDisable(false);
+		selectFecha.setDisable(false);
+		selectUsuarios.setDisable(false);
+		
+		
+		selectPais.setDisable(false);
+		inDiplomatico.setDisable(true);
+		inOrdinario.setDisable(true);
+		
+		ObservableList<String> newP = FXCollections.observableArrayList();
+		
+		for (Map.Entry<String, String> entry : estrategia.entrySet()) {
+			String key = entry.getKey();
+			String val = entry.getValue();
+			if(!val.equals("Bloqueado")) {
+				newP.add(key);
+				if(val.equals("Ordinario")) {
+					inOrdinario.setDisable(false);
+				}else {
+					inDiplomatico.setDisable(false);
+				}
+			}
+		}
+		selectPais.setItems(newP);
     }
 	
     @FXML
