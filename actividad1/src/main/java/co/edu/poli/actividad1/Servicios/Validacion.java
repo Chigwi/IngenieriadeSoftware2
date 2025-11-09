@@ -1,5 +1,11 @@
 package co.edu.poli.actividad1.Servicios;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import co.edu.poli.actividad1.Modelo.PDiplomatico;
+import co.edu.poli.actividad1.Modelo.POrdinario;
 import co.edu.poli.actividad1.Modelo.Pasaporte;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 
@@ -9,16 +15,47 @@ public class Validacion {
 	private PasaporteDao dao;
 	
 	public boolean titularDuplicado(Pasaporte in) {
+		String id = in.getTitular().getIdentificacion();
+		List<Pasaporte> pasaportes = dao.selectAll();
+		for (Pasaporte pasaporte : pasaportes) {
+			if(pasaporte.getTitular().getIdentificacion().equals(id)) {
+				return true;
+			}
+		}
+		return false;
 		
-		return true;
 	}
 	
 	public boolean modificacionTipo(Pasaporte in, String tipo) {
-		return true;
+		String id = in.getNumeroId();
+		Pasaporte p = dao.select(id);
+		if(tipo.equals("ordinario")) {
+			if(p instanceof POrdinario) {
+				return false;
+			}else {
+				return true;
+			}
+		}else if(tipo.equals("diplomatico")) {
+			if(p instanceof PDiplomatico) {
+				return false;
+			}else {
+				return true;
+			}
+		}else {
+			return true;
+		}
 	}
 	
 	public boolean fechaActual(String fecha) {
-		return true;
+		
+		LocalDate in = LocalDate.parse(fecha);
+		LocalDate current = LocalDate.now();
+		
+		if(in.isAfter(current)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 }
