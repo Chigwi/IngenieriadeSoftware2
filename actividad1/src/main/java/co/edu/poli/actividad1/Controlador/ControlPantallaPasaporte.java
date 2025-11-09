@@ -26,6 +26,7 @@ import co.edu.poli.actividad1.Repositorios.CiudadDao;
 import co.edu.poli.actividad1.Repositorios.PaisDao;
 import co.edu.poli.actividad1.Repositorios.PasaporteDao;
 import co.edu.poli.actividad1.Repositorios.TitularDao;
+import co.edu.poli.actividad1.Servicios.Asesor;
 import co.edu.poli.actividad1.Servicios.Cancilleria;
 import co.edu.poli.actividad1.Servicios.CareTaker;
 import co.edu.poli.actividad1.Servicios.CertificarBiometria;
@@ -40,6 +41,8 @@ import co.edu.poli.actividad1.Servicios.OrdinarioCreator;
 import co.edu.poli.actividad1.Servicios.PasaporteOriginator;
 import co.edu.poli.actividad1.Servicios.Policia;
 import co.edu.poli.actividad1.Servicios.Publisher;
+import co.edu.poli.actividad1.Servicios.RelacionesExteriores;
+import co.edu.poli.actividad1.Servicios.Supervisor;
 import co.edu.poli.actividad1.vista.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -91,6 +94,10 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     private Button bttconfirmar;
+    
+
+    @FXML
+    private Button bttSolicitar;
     
 
     @FXML
@@ -349,6 +356,7 @@ public class ControlPantallaPasaporte implements Initializable {
 			bttGuardar.setDisable(true);
 			bttRestaurar.setDisable(true);
 			selectCambios.setVisible(false);
+			bttSolicitar.setDisable(true);
 		//historial memento
 		historial = new CareTaker();
 		cambio = 0;
@@ -1086,7 +1094,7 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void confirmar(ActionEvent event) {
-    	bttselect.setDisable(false);
+    	bttSolicitar.setDisable(false);
     }
     
 
@@ -1124,9 +1132,33 @@ public class ControlPantallaPasaporte implements Initializable {
             	
             	a.showAndWait();
         	}
+    }
+    
+    @FXML
+    void solicitar(ActionEvent event) {
+    	Random ran = new Random();
+    	Asesor as1 = new Asesor();
+    	Asesor as2 = new Asesor();
+    	Supervisor sup1 = new Supervisor();
+    	Supervisor sup2 = new Supervisor();
+    	RelacionesExteriores ministro = new RelacionesExteriores();
+    	
+    	as1.setNextHandler(as2);
+    	as2.setNextHandler(sup1);
+    	sup1.setNextHandler(sup2);
+    	sup2.setNextHandler(ministro);
+    	
+    	Integer in = ran.nextInt(60);
+    	String sol = "";
     	
     	
+    	bttselect.setDisable(false);
     	
+    	Alert a = new Alert(AlertType.INFORMATION);
+		
+		a.setContentText(as1.manejarSolicitud(in, sol));
+    	
+    	a.showAndWait();
     }
     
 
