@@ -1,6 +1,6 @@
 package co.edu.poli.actividad1.Servicios;
 
-public class CommandValidarFecha {
+public class CommandValidarFecha /*implements Command*/{
 
 	private Validacion validacion;
 
@@ -22,11 +22,25 @@ public class CommandValidarFecha {
 		return "CommandValidarFecha [validacion=" + validacion + "]";
 	}
 	
-	public String validate() {
-		return null;
+	public String validate(String fecha) {
+
+		boolean val = validacion.fechaActual(fecha);
+		
+		if (val) {
+			return "Fecha de emision valida.";
+		}else {
+			return "La fecha de emision no puede ser despues de el dia de hoy.";
+		}
+		
+		
 	}
 	
-	public String validateFecha(Validacion validacion) {
+	public String validarFecha(Validacion validacion, String fecha ) {
+		
+		this.validacion = validacion;
+		
+		validate(fecha);
+		
 		return null;
 	}
 	

@@ -6,7 +6,9 @@ public class CommandValidarTitular implements Command{
 
 	@Override
 	public String validate() {
-		// TODO Auto-generated method stub
+		
+		/*boolean val = validacion.titularDuplicado(in);*/
+		
 		return null;
 	}
 	
