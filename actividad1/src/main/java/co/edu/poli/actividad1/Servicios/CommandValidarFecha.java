@@ -39,9 +39,9 @@ public class CommandValidarFecha implements Command{
 		boolean val = validacion.fechaActual(fecha);
 		
 		if (val) {
-			return "Fecha de emision valida.";
+			return "Fecha de emision invalida.";
 		}else {
-			return "La fecha de emision no puede ser despues de el dia de hoy.";
+			return "Validacion exitosa!";
 		}
 		
 		

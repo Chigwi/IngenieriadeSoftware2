@@ -55,8 +55,14 @@ public class CommandValidarTitular implements Command{
 	@Override
 	public String validate() {
 		
-		/*boolean val = validacion.titularDuplicado(in);*/
+		Pasaporte p = pasaporte.getAdaptada();
 		
-		return null;
+		boolean val = validacion.titularDuplicado(p);
+		
+		if(val) {
+			return "El titular ya tiene un pasaporte registrado";
+		}else {
+			return "Validacion exitosa!";
+		}
 	}
 }
