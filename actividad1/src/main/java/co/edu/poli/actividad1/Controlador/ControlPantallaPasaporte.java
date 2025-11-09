@@ -195,7 +195,7 @@ public class ControlPantallaPasaporte implements Initializable {
 		//quema de objetos
 		
 		//paises
-		Pais colombia = new Pais ("1","colombia","espaniol", ciudades);
+		Pais colombia = new Pais ("1","Colombia","espaniol", ciudades);
 		
 		Pais KoreadelNorte = new Pais ("148","Korea del Norte","koreano", ciudadesKorea);
 		
