@@ -47,7 +47,7 @@ public class PruebasCorComandStrategy {
 		
 		sup.setNextHandler(ministro);
 		
-		//System.out.println(as.manejarSolicitud(in, sol));
+		System.out.println(as.manejarSolicitud(in, sol));
 		
 		//pruebas Strategy
 		
@@ -65,11 +65,11 @@ public class PruebasCorComandStrategy {
 		
 		CertificarMicroChip cert2 = new CertificarMicroChip();
 		
-		/*System.out.println("Biometria \n" + cert.certificar(paises) + "\n");
+		System.out.println("Biometria \n" + cert.certificar(paises) + "\n");
 		
 		System.out.println("Blockchain \n" + cert1.certificar(paises) + "\n");
 		
-		System.out.println("Microchip \n" + cert2.certificar(paises) + "\n");*/
+		System.out.println("Microchip \n" + cert2.certificar(paises) + "\n");
 		
 		//pruebas Command
 		
@@ -110,7 +110,7 @@ public class PruebasCorComandStrategy {
 	    	
 	    	CommandManager man = new CommandManager(fech);
 	    	
-	    	//System.out.println(man.execute());
+	    	System.out.println(man.execute());
 	    	
 	    	man.setCommand(tip);
 	    	
@@ -118,7 +118,7 @@ public class PruebasCorComandStrategy {
 	    	
 	    	man.setCommand(tit);
 	    	
-	    	//System.out.println(man.execute());
+	    	System.out.println(man.execute());
 	    	
 	    	
 	    }catch(Exception e) {
