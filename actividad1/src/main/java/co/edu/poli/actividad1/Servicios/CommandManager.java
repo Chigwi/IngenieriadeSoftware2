@@ -14,7 +14,7 @@ public class CommandManager {
 	}
 	
 	public String execute() {
-		return null;
+		return comando.validate();
 	}
 
 	@Override
