@@ -480,7 +480,7 @@ public class PasaporteDao implements DaoEx <Pasaporte>{
 			return mapRStuPasaporteD(rs);
 		}
 		else {
-			System.out.println("tipo no valido de pasaporte");
+			System.out.println("");
 			return null;
 		}
 	}

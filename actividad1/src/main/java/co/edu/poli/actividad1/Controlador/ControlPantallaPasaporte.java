@@ -392,7 +392,9 @@ public class ControlPantallaPasaporte implements Initializable {
 		inOrdinario.setDisable(true);
 		
 		//command
-		
+		bttValFecha.setDisable(true);
+		bttValTipo.setDisable(true);
+		bttValTitular.setDisable(true);
 		val = new Validacion(regPas);
 	}
 
@@ -713,6 +715,8 @@ public class ControlPantallaPasaporte implements Initializable {
     		PDiplomatico pd = (PDiplomatico)dC.createPasaporte();
     		pd = llenarDiplomatico(pd);
     		
+    		pd.setNumeroId(inIdPasaporte.getText());
+    		
     		String fecha = pd.getFechaEmision();
         	
         	CommandValidarFecha valFecha = new CommandValidarFecha(val, fecha);
@@ -729,6 +733,8 @@ public class ControlPantallaPasaporte implements Initializable {
     	}else {
     		POrdinario po = (POrdinario)oC.createPasaporte();
     		po = llenarOrdinario(po);
+    		
+    		po.setNumeroId(inIdPasaporte.getText());
     		
     		String fecha = po.getFechaEmision();
         	
@@ -755,6 +761,8 @@ public class ControlPantallaPasaporte implements Initializable {
     		PDiplomatico pd = dC.createPasaporte();
     		pd = llenarDiplomatico(pd);
     		
+    		pd.setNumeroId(inIdPasaporte.getText());
+    		
     		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(pd);
     		
     		CommandValidarTitular c = new CommandValidarTitular(adaptada, val);
@@ -773,6 +781,8 @@ public class ControlPantallaPasaporte implements Initializable {
     		
     		POrdinario po = oC.createPasaporte();
     		po = llenarOrdinario(po);
+    		
+    		po.setNumeroId(inIdPasaporte.getText());
     		
     		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(po);
     		
@@ -801,6 +811,10 @@ public class ControlPantallaPasaporte implements Initializable {
     		PDiplomatico pd = dC.createPasaporte();
     		pd = llenarDiplomatico(pd);
     		
+    		pd.setNumeroId(inIdPasaporte.getText());
+    		
+    		pd.setNumeroId(inIdPasaporte.getText());
+    		
     		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(pd);
     		
     		CommandValidarTipo c = new CommandValidarTipo(tipo, val, adaptada);
@@ -821,6 +835,8 @@ public class ControlPantallaPasaporte implements Initializable {
     		
     		POrdinario po = oC.createPasaporte();
     		po = llenarOrdinario(po);
+    		
+    		po.setNumeroId(inIdPasaporte.getText());
     		
     		AdaptadorPasaporte adaptada = new AdaptadorPasaporte(po);
     		
@@ -1163,6 +1179,9 @@ public class ControlPantallaPasaporte implements Initializable {
     	
     	bttselect.setDisable(false);
     	bttactualizar.setDisable(false);
+    	bttValFecha.setDisable(false);
+    	bttValTipo.setDisable(false);
+    	bttValTitular.setDisable(false);
     	
     	if (!inIdPasaporte.getText().equals(null)) {
     		String id = inIdPasaporte.getText();
@@ -1206,7 +1225,7 @@ public class ControlPantallaPasaporte implements Initializable {
     	selectCiudad.setValue(in.getCiudadEmision().getNombre());
     	selectUsuarios.setValue(in.getTitular().getNombre());
     	
-    	selectFecha.setValue(null);
+    	selectFecha.setValue(LocalDate.parse(in.getFechaEmision()));
     	selectFecha.setPromptText(in.getFechaEmision());
     	ElementoSeguridad elemen = in.getEs();
     	
