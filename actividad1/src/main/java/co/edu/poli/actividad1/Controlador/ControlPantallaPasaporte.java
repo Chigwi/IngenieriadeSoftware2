@@ -1314,7 +1314,7 @@ public class ControlPantallaPasaporte implements Initializable {
             	a.showAndWait();
         	}
     }
-    
+    //patron handler
     @FXML
     void solicitar(ActionEvent event) {
     	Random ran = new Random();

@@ -1,7 +1,7 @@
 package co.edu.poli.actividad1.Servicios;
 
-public class Asesor implements Handler {
-
+public class Asesor extends Handler {
+//direccionamiento a el siguiente handler
 	private Handler nextHandler;
 	
 	
@@ -54,6 +54,7 @@ public class Asesor implements Handler {
 				return sol + "\n solicitud negada por los asesores competentes";
 			}	
 		}
+	
 	}
 
 }

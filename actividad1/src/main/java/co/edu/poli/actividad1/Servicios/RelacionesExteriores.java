@@ -1,7 +1,7 @@
 package co.edu.poli.actividad1.Servicios;
 
-public class RelacionesExteriores implements Handler {
-	
+public class RelacionesExteriores extends Handler {
+	//direccionamiento a el siguiente handler
 	private Handler nextHandler;
 	
 	
