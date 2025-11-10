@@ -27,7 +27,6 @@ public class ContextoSeguridad {
 	
 	public HashMap<String,String> certificar(ArrayList<String> paises) {
 		return estrategiaCertificacion.certificar(paises);
-		
 	}
 	
 }
