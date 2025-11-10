@@ -1,5 +1,8 @@
 package co.edu.poli.actividad1.Servicios;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ContextoSeguridad {
 
 	private CertificarSeguridad estrategiaCertificacion;
@@ -22,9 +25,8 @@ public class ContextoSeguridad {
 		return "ContextoSeguridad [estrategiaCertificacion=" + estrategiaCertificacion + "]";
 	}
 	
-	public String certificar() {
-		//TODO
-		return null;
+	public HashMap<String,String> certificar(ArrayList<String> paises) {
+		return estrategiaCertificacion.certificar(paises);
 		
 	}
 	

@@ -39,6 +39,7 @@ import co.edu.poli.actividad1.Servicios.CommandValidarFecha;
 import co.edu.poli.actividad1.Servicios.CommandValidarTipo;
 import co.edu.poli.actividad1.Servicios.CommandValidarTitular;
 import co.edu.poli.actividad1.Servicios.ConcreteMemento;
+import co.edu.poli.actividad1.Servicios.ContextoSeguridad;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
 import co.edu.poli.actividad1.Servicios.DiplomaticoCreator;
 import co.edu.poli.actividad1.Servicios.Memento;
@@ -402,15 +403,18 @@ public class ControlPantallaPasaporte implements Initializable {
     void selectStrategy(ActionEvent event) {
     	if(selectElemento.getSelectionModel().getSelectedItem().equals("MicroChip")) {
     		CertificarMicroChip c = new CertificarMicroChip();
-    		HashMap<String, String> strat = c.certificar(stratP);
+    		ContextoSeguridad con = new ContextoSeguridad(c);
+    		HashMap<String, String> strat = con.certificar(stratP);
     		strategy(strat);
     	}else if(selectElemento.getSelectionModel().getSelectedItem().equals("Biometrico")) {
     		CertificarBiometria c = new CertificarBiometria();
-    		HashMap<String, String> strat = c.certificar(stratP);
+    		ContextoSeguridad con = new ContextoSeguridad(c);
+    		HashMap<String, String> strat = con.certificar(stratP);
     		strategy(strat);
     	}else {
     		CertificarBlockChain c = new CertificarBlockChain();
-    		HashMap<String, String> strat = c.certificar(stratP);
+    		ContextoSeguridad con = new ContextoSeguridad(c);
+    		HashMap<String, String> strat = con.certificar(stratP);
     		strategy(strat);
     	}
     }
