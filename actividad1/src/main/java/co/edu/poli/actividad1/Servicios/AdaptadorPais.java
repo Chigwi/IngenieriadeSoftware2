@@ -15,6 +15,14 @@ public class AdaptadorPais {
 		this.estado = estado;
 		estado.cambiarContexto(this);
 	}
+	
+	
+
+	public AdaptadorPais(Pais pais) {
+		super();
+		this.pais = pais;
+	}
+
 
 	public String cambiarEstado (Estado estado) {
 		System.out.println(this.estado.cambiarEstado(estado));
