@@ -1,6 +1,6 @@
 package co.edu.poli.actividad1.Servicios;
 
-public class Migracion implements EntidadGubernamental{
+public class Migracion extends Componente implements EntidadGubernamental{
 
 	@Override
 	public String recibirNotificacion() {

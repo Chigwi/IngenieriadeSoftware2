@@ -1,6 +1,6 @@
 package co.edu.poli.actividad1.Servicios;
 
-public class Cancilleria implements EntidadGubernamental{
+public class Cancilleria extends Componente implements EntidadGubernamental{
 
 	@Override
 	public String recibirNotificacion() {
