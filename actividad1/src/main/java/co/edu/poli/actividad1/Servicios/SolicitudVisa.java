@@ -27,4 +27,10 @@ public class SolicitudVisa implements Estado{
 		this.contexto = contexto;
 	}
 
+	@Override
+	public void cambiarContexto(AdaptadorPais contexto) {
+		this.contexto= contexto;
+		
+	}
+
 }

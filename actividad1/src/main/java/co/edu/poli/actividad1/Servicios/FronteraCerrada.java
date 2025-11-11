@@ -22,6 +22,13 @@ public class FronteraCerrada implements Estado{
 	public void setContexto(AdaptadorPais contexto) {
 		this.contexto = contexto;
 	}
+
+	@Override
+	public void cambiarContexto(AdaptadorPais contexto) {
+		this.contexto= contexto;
+		
+	}
+	
 	
 	
 

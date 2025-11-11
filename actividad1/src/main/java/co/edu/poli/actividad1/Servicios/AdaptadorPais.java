@@ -12,11 +12,14 @@ public class AdaptadorPais {
 		
 		if(resultado.equals("estado actualizado con exito")) {
 			this.estado = estado;
+			estado.cambiarContexto(this);
+			return "estado actualizado con exito";
+			
+		}else {
+			return "cambio de estado no valido";
 			
 		}
-		return null;
-		
-		
+	
 		
 	}
 
