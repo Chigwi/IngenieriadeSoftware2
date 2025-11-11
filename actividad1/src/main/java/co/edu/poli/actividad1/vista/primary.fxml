@@ -40,5 +40,7 @@
       <Button fx:id="bttValFecha" layoutX="27.0" layoutY="455.0" mnemonicParsing="false" onAction="#validarFecha" text="Validar fecha" />
       <Button fx:id="bttValTipo" layoutX="146.0" layoutY="455.0" mnemonicParsing="false" onAction="#valildarTipo" text="Validar mod. tipo" />
       <Button fx:id="bttValTitular" layoutX="289.0" layoutY="455.0" mnemonicParsing="false" onAction="#validarTitular" text="Validar disp. titutar" />
+      <Button fx:id="notificaciones" layoutX="461.0" layoutY="455.0" mnemonicParsing="false" onAction="#switchToSecondary" text="centro de notificaciones" />
+      <Button fx:id="estados" layoutX="460.0" layoutY="494.0" mnemonicParsing="false" onAction="#switchToEstado" text="estados diplomaticos" />
    </children>
 </AnchorPane>

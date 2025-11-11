@@ -173,6 +173,12 @@ public class ControlPantallaPasaporte implements Initializable {
     @FXML
     private Button bttSiguiente;
     
+    @FXML
+    private Button notificaciones;
+    
+    @FXML
+    private Button estados;
+    
     //paises strategy
     
     private ArrayList<String> stratP =  new ArrayList<String>();
@@ -885,8 +891,14 @@ public class ControlPantallaPasaporte implements Initializable {
     
     @FXML
     void switchToSecondary(ActionEvent event) throws IOException {
-        App.setRoot("Secondary");
+        App.setRoot("notificar");
 
+    }
+    
+
+    @FXML
+    void switchToEstado(ActionEvent event) throws IOException {
+    	App.setRoot("State");
     }
     
     
