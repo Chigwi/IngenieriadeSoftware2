@@ -6,13 +6,10 @@ public class EstadoNormal implements Estado{
 	@Override
 	public String cambiarEstado(Estado estado) {
 		if(estado instanceof SolicitudVisa) {
-			contexto.cambiarEstado(estado);
 			return "estado actualizado con exito";
 		}else if(estado instanceof EstadoRevision) {
-			contexto.cambiarEstado(estado);
 			return "estado actualizado con exito";
 		}else if (estado instanceof FronteraCerrada) {
-			contexto.cambiarEstado(estado);
 			return "estado actualizado con exito";
 		}else {
 			return "cambio no valido para este estado";
@@ -33,6 +30,12 @@ public class EstadoNormal implements Estado{
 		this.contexto = contexto;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "EstadoNormal [contexto=" + contexto + "]";
+	}
+	
 	
 	
 

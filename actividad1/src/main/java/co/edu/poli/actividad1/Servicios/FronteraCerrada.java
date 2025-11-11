@@ -6,7 +6,6 @@ public class FronteraCerrada implements Estado{
 	@Override
 	public String cambiarEstado(Estado estado) {
 		if(estado instanceof EstadoNormal) {
-			contexto.cambiarEstado(estado);
 			return "estado actualizado con exito";
 		}else {
 			return "cambio no valido para este estado";

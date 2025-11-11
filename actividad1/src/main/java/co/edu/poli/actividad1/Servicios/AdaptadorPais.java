@@ -7,10 +7,18 @@ public class AdaptadorPais {
 	private Pais pais;
 	private Estado estado;
 	
+	
+	
+	public AdaptadorPais(Pais pais, Estado estado) {
+		super();
+		this.pais = pais;
+		this.estado = estado;
+		estado.cambiarContexto(this);
+	}
+
 	public String cambiarEstado (Estado estado) {
-		String resultado = estado.cambiarEstado(estado);
-		
-		if(resultado.equals("estado actualizado con exito")) {
+		System.out.println(this.estado.cambiarEstado(estado));
+		if(this.estado.cambiarEstado(estado).equals("estado actualizado con exito")) {
 			this.estado = estado;
 			estado.cambiarContexto(this);
 			return "estado actualizado con exito";
@@ -37,6 +45,11 @@ public class AdaptadorPais {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	@Override
+	public String toString() {
+		return "AdaptadorPais [pais=" + pais + "]";
 	}
 	
 
