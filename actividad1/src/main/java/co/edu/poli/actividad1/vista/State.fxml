@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -26,9 +25,9 @@
             <Button fx:id="bttSwitch" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="150.0" text="volver" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="bttEstado" mnemonicParsing="false" onAction="#cambiarEstado" prefHeight="25.0" prefWidth="150.0" text="Cambiar Estado" GridPane.rowIndex="2" />
             <ComboBox fx:id="selectPais" onAction="#showEstado" prefHeight="25.0" prefWidth="150.0" promptText="Seleccione Pais" GridPane.rowIndex="1" />
-            <TextField fx:id="showCurrent" disable="true" prefHeight="25.0" prefWidth="151.0" promptText="Estado actual" GridPane.columnIndex="1" />
             <Label alignment="BOTTOM_CENTER" text="Estado Actual" />
             <ComboBox fx:id="selectEstado" prefHeight="25.0" prefWidth="150.0" promptText="Seleccione Estado" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="showCurrent" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <Label layoutX="209.0" layoutY="14.0" text="Estado diplomatico del pais" />
