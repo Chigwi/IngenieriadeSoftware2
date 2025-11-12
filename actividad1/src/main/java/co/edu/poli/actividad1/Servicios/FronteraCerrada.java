@@ -27,6 +27,11 @@ public class FronteraCerrada implements Estado{
 		this.contexto= contexto;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "FronteraCerrada";
+	}
 	
 	
 	

@@ -8,13 +8,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.actividad1.Controlador.ControladorNotificaciones">
    <children>
-      <GridPane layoutX="127.0" layoutY="118.0" prefHeight="213.0" prefWidth="379.0">
+      <GridPane layoutX="130.0" layoutY="249.0" prefHeight="158.0" prefWidth="379.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="191.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="188.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="180.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="199.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -26,9 +25,10 @@
             <Button fx:id="bttCancilleria" mnemonicParsing="false" onAction="#notificarCancilleria" text="Notificar Cancilleria" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="bttMigracion" mnemonicParsing="false" onAction="#notificarMigracion" text="Notificar Migracion" GridPane.rowIndex="2" />
             <Button fx:id="bttSwitch" mnemonicParsing="false" onAction="#switchToPrimary" text="Volver" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextArea fx:id="inText" prefHeight="200.0" prefWidth="200.0" promptText="Inserte mensaje a notificar" />
+            <Button fx:id="clear" mnemonicParsing="false" onAction="#cleanText" text="Clear text" />
          </children>
       </GridPane>
       <Label layoutX="252.0" layoutY="47.0" text="Centro de notificaciones" />
+      <TextArea fx:id="inText" layoutX="110.0" layoutY="117.0" prefHeight="119.0" prefWidth="418.0" promptText="Inserte mensaje a notificar" />
    </children>
 </AnchorPane>

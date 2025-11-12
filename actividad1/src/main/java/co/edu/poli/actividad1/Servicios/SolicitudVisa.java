@@ -31,4 +31,11 @@ public class SolicitudVisa implements Estado{
 		
 	}
 
+	@Override
+	public String toString() {
+		return "SolicitudVisa";
+	}
+	
+	
+
 }

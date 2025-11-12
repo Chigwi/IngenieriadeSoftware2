@@ -28,6 +28,11 @@ public class EstadoRevision implements Estado{
 		this.contexto= contexto;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "EstadoRevision";
+	}
 	
 
 }

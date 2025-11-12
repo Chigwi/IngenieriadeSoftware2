@@ -33,7 +33,7 @@ public class EstadoNormal implements Estado{
 
 	@Override
 	public String toString() {
-		return "EstadoNormal [contexto=" + contexto + "]";
+		return "EstadoNormal";
 	}
 	
 	
