@@ -38,6 +38,8 @@ import co.edu.poli.actividad1.Servicios.CommandManager;
 import co.edu.poli.actividad1.Servicios.CommandValidarFecha;
 import co.edu.poli.actividad1.Servicios.CommandValidarTipo;
 import co.edu.poli.actividad1.Servicios.CommandValidarTitular;
+import co.edu.poli.actividad1.Servicios.ComponenteP;
+import co.edu.poli.actividad1.Servicios.ConcreteMediador;
 import co.edu.poli.actividad1.Servicios.ConcreteMemento;
 import co.edu.poli.actividad1.Servicios.ContextoSeguridad;
 import co.edu.poli.actividad1.Servicios.DatabaseConnection;
@@ -960,7 +962,11 @@ public class ControlPantallaPasaporte implements Initializable {
     					
     					visualizarCampoPasaporte(p);
     					
-    					Publisher ob = new Publisher();
+    					ConcreteMediador con = new ConcreteMediador();
+    					
+    					ComponenteP com = new ComponenteP(con);
+    					
+    					/*Publisher ob = new Publisher();
     					
     					Policia policia = new Policia();
     					
@@ -970,11 +976,11 @@ public class ControlPantallaPasaporte implements Initializable {
     					
     					ob.subscribir(cancilleria);
     					ob.subscribir(migracion);
-    					ob.subscribir(policia);
+    					ob.subscribir(policia);*/
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
-    	        		a.setContentText(ob.notificar(id));
+    	        		a.setContentText(con.notificar(com));
     	            	
     	            	a.showAndWait();
     				}
@@ -997,7 +1003,11 @@ public class ControlPantallaPasaporte implements Initializable {
     					
     					visualizarCampoPasaporte(p);
     					
-    					Publisher ob = new Publisher();
+    					ConcreteMediador con = new ConcreteMediador();
+    					
+    					ComponenteP com = new ComponenteP(con);
+    					
+    					/*Publisher ob = new Publisher();
     					
     					Policia policia = new Policia();
     					
@@ -1007,11 +1017,11 @@ public class ControlPantallaPasaporte implements Initializable {
     					
     					ob.subscribir(cancilleria);
     					ob.subscribir(migracion);
-    					ob.subscribir(policia);
+    					ob.subscribir(policia);*/
     					
     					Alert a = new Alert(AlertType.INFORMATION);
     	        		
-    	        		a.setContentText(ob.notificar(id));
+    	        		a.setContentText(con.notificar(com));
     	            	
     	            	a.showAndWait();
     				}
@@ -1287,6 +1297,7 @@ public class ControlPantallaPasaporte implements Initializable {
 
     @FXML
     void confirmar(ActionEvent event) {
+    	bttselect.setDisable(false);
     	bttSolicitar.setDisable(false);
     }
     
